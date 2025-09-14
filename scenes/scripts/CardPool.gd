@@ -1,15 +1,13 @@
 extends Node
 
-class_name CardPool
-
 var cards : Array[Card] = []
 
-func _ready():
+func init():
 	# Initialize the card pool with some cards
 	create_card("Paper Card", "A simple paper card.", AnimatedSprite2D.new(), 1, 0.0)
 	create_card("Rock Card", "A sturdy rock card.", AnimatedSprite2D.new(), 2, 0.0)
 	create_card("Scissors Card", "A sharp scissors card.", AnimatedSprite2D.new(), 3, 0.0)
-
+	print("Card pool contains %d cards", cards.size())
 
 func create_card(card_name: String, description: String, sprite: AnimatedSprite2D, damage: int, rng_required: float) -> Card:
 	var new_card = Card.new()

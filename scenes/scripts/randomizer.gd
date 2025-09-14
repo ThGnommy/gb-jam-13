@@ -5,6 +5,7 @@ extends Node2D
 var rng = RandomNumberGenerator.new()
 
 func _ready() -> void:
+	CardPool.init()
 	luck = clamp(luck, 0.0, 1.0)
 
 	# Luck factor for random number generation: can be between -0.5 and 0.5 to model unluckiness
@@ -20,8 +21,8 @@ func _ready() -> void:
 	print("Average random value : " + str(cumulative_random_value / number_of_tests))
 
 func get_random_value() -> float:
-	assert(Globals.is_equal_approx(luck, 0) || luck > 0.0)
-	assert(Globals.is_equal_approx(luck, 1) || luck < 1.0)
+	assert(is_equal_approx(luck, 0) || luck > 0.0)
+	assert(is_equal_approx(luck, 1) || luck < 1.0)
 	assert(rng != null)
 
 	var luck_factor : float = luck - 0.5

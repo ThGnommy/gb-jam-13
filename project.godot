@@ -19,10 +19,7 @@ boot_splash/minimum_display_time=2000
 
 [autoload]
 
-EventsManager="*res://Scripts/EventsManager.gd"
-Globals="*res://Scripts/Globals.gd"
-GlobalTimerHead="*res://Scripts/GlobalTimerHead.gd"
-SpawnManager="*res://Scripts/spawn_manager.gd"
+CardPool="*res://scenes/scripts/CardPool.gd"
 
 [display]
 
