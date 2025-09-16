@@ -1,6 +1,5 @@
 extends Node2D
 
-
 @export var enemy_array : Array[Enemy] = []
 @export var player : Player
 

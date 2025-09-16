@@ -1,4 +1,4 @@
-class_name Slime
+class_name Cowboy
 
 extends Enemy
 

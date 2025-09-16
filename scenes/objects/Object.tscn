@@ -15,7 +15,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_q4gfw")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
@@ -28,8 +28,10 @@ script = ExtResource("1_6obf0")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_fsexx")]
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7kndf")
+animation = &"idle"
+autoplay = "idle"
 offset = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

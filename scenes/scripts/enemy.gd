@@ -13,7 +13,6 @@ func _ready() -> void:
 	position += Vector2.ONE * TILE_SIZE / 2
 
 func do_action(target:Vector2) -> void:
-
 	print("need to be implemented")
 	pass
 
