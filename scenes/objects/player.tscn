@@ -1,18 +1,20 @@
 [gd_scene load_steps=4 format=3 uid="uid://b8ebdasa41hb3"]
 
 [ext_resource type="Script" uid="uid://w6mcrux13v7k" path="res://scenes/scripts/player.gd" id="1_2147m"]
-[ext_resource type="Texture2D" uid="uid://bwei0fmxf3tud" path="res://icon.svg" id="1_a8lix"]
+[ext_resource type="Texture2D" uid="uid://cwnorjh1oblav" path="res://assets/sprites/Player/Player-Sheet.png" id="2_2147m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2147m"]
-size = Vector2(64, 64)
+size = Vector2(24, 24)
 
 [node name="Player" type="Area2D"]
 script = ExtResource("1_2147m")
+animation_speed = 5
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_a8lix")
+texture = ExtResource("2_2147m")
+region_enabled = true
+region_rect = Rect2(0, 4, 16, 16)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -20,5 +22,5 @@ shape = SubResource("RectangleShape2D_2147m")
 metadata/_edit_group_ = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
-target_position = Vector2(0, 32)
+target_position = Vector2(0, 12)
 metadata/_edit_group_ = true

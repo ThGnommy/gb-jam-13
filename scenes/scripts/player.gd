@@ -3,10 +3,10 @@ extends Area2D
 @export var animation_speed = 1
 @onready var raycast = $RayCast2D
 
-const TILE_SIZE = 32
+const TILE_SIZE = 24
 var moving: bool = false
 
-var inputs = {
+var inputs: Dictionary = {
 	"right": Vector2.RIGHT,
 	"left": Vector2.LEFT,
 	"up": Vector2.UP,
@@ -26,13 +26,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			move(dir)
 
 func move(dir) -> void:
-	raycast.target_position = inputs[dir] * TILE_SIZE
+	raycast.target_position = inputs[dir] * TILE_SIZE / 2
 	raycast.force_raycast_update()
 	if !raycast.is_colliding():
-		position += inputs[dir] * TILE_SIZE
 		var tween = create_tween()
 		var direction = position + inputs[dir] * TILE_SIZE
-		tween.tween_property(self, "positionm", direction, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
+		tween.tween_property(self, "position", direction, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
 		moving = true
 		print_debug("move")
 		await tween.finished
