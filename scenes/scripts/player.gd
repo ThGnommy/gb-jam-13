@@ -2,6 +2,7 @@ extends Area2D
 
 @export var animation_speed = 1
 @onready var raycast = $RayCast2D
+@onready var anim = $AnimatedSprite2D
 
 const TILE_SIZE = 24
 var moving: bool = false
@@ -23,6 +24,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	for dir in inputs.keys():
 		if event.is_action_pressed(dir):
+			animate(dir)
 			move(dir)
 
 func move(dir) -> void:
@@ -33,6 +35,28 @@ func move(dir) -> void:
 		var direction = position + inputs[dir] * TILE_SIZE
 		tween.tween_property(self, "position", direction, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
 		moving = true
-		print_debug("move")
 		await tween.finished
 		moving = false
+		anim.animation = "idle"
+
+func animate(dir) -> void:
+	match inputs[dir]:
+		Vector2.RIGHT:
+			jump(10)
+			anim.animation = "jump_side"
+			anim.flip_h = false
+		Vector2.LEFT:
+			jump(10)
+			anim.animation = "jump_side"
+			anim.flip_h = true
+		Vector2.UP:
+			jump(5)
+			anim.animation = "jump_top"
+		Vector2.DOWN:
+			jump(5)
+			anim.animation = "jump_down"
+
+func jump(height: int) -> void:
+	var jump_tween = create_tween()
+	jump_tween.tween_property(anim, "position:y", -height, (1.0 / animation_speed) / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	jump_tween.tween_property(anim, "position:y", 0, (1.0 / animation_speed) / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)

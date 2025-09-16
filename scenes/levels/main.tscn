@@ -1,13 +1,49 @@
-[gd_scene load_steps=3 format=3 uid="uid://6er53p8dim3l"]
+[gd_scene load_steps=7 format=3 uid="uid://6er53p8dim3l"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_72ix8"]
-[ext_resource type="PackedScene" uid="uid://co2yl7qm7j5ga" path="res://scenes/objects/Object.tscn" id="2_2vj2h"]
+[ext_resource type="PackedScene" path="res://scenes/objects/Object.tscn" id="2_2vj2h"]
+[ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="3_u81e1"]
+[ext_resource type="Shader" path="res://shaders/palette_swap.gdshader" id="3_y0acb"]
+[ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="5_b6bv0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
+shader = ExtResource("3_y0acb")
+shader_parameter/brightness = -1.0
+shader_parameter/source_palette = ExtResource("3_u81e1")
+shader_parameter/target_palette = ExtResource("5_b6bv0")
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_72ix8")]
+position = Vector2(-60, -36)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Object" parent="." instance=ExtResource("2_2vj2h")]
 position = Vector2(35, 15)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(10, 10)
+texture = ExtResource("3_u81e1")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(4.03263, 3.66414)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_j4d2a")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -22.8139
+offset_top = -7.0958
+offset_right = -22.8139
+offset_bottom = -7.0958
+grow_horizontal = 2
+grow_vertical = 2
