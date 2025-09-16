@@ -141,6 +141,7 @@ _data = {
 }
 
 [node name="Player" type="Area2D"]
+collision_mask = 2
 script = ExtResource("1_2147m")
 animation_speed = 2
 metadata/_edit_group_ = true
@@ -151,6 +152,8 @@ metadata/_edit_group_ = true
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 12)
+collision_mask = 2
+collide_with_areas = true
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
