@@ -5,6 +5,7 @@ extends Area2D
 @export var animation_speed = 1
 @onready var raycast = $RayCast2D
 @onready var anim = $AnimatedSprite2D
+@onready var Bullet = preload("res://scenes/bullet.tscn")
 
 signal player_moved
 
@@ -16,6 +17,13 @@ var inputs: Dictionary = {
 	"left": Vector2.LEFT,
 	"up": Vector2.UP,
 	"down": Vector2.DOWN
+}
+
+var shootInputs: Dictionary = {
+	"shootRight" : Vector2.RIGHT,
+	"shootLeft" : Vector2.LEFT,
+	"shootUp" : Vector2.UP,
+	"shootDown" : Vector2.DOWN
 }
 
 func _ready() -> void:
@@ -35,6 +43,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 			move(dir)
 			animate(dir)
+
+func _process(delta: float) -> void:
+	for dir in shootInputs.keys():
+		if Input.is_action_just_pressed(dir):
+			shoot(shootInputs[dir])
 
 func move(dir) -> void:
 	var tween = create_tween()
@@ -71,3 +84,21 @@ func jump_animation(px_height: int) -> void:
 func update_raycast(dir) -> void:
 	raycast.target_position = inputs[dir] * TILE_SIZE / 2
 	raycast.force_raycast_update()
+
+func shoot(dir: Vector2) -> void:
+	match dir:
+		Vector2.RIGHT:
+			anim.animation = "shootRight"
+		Vector2.LEFT:
+			anim.flip_h = true
+			anim.animation = "shootRight"
+		Vector2.UP:
+			anim.animation = "shootUp"
+		Vector2.DOWN:
+			anim.animation = "shootDown"
+	
+	# Create and launch the bullet
+	var bullet_instance = Bullet.instantiate()
+	bullet_instance.position = position + dir * (TILE_SIZE / 2)
+	bullet_instance.set_direction(dir)
+	get_parent().add_child(bullet_instance)
