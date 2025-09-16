@@ -93,6 +93,8 @@ down={
 2d_physics/layer_3="Projectiles"
 2d_physics/layer_4="Environment"
 2d_physics/layer_5="Pickup"
+2d_physics/layer_7="Platforms"
+2d_physics/layer_8="Objects"
 
 [rendering]
 

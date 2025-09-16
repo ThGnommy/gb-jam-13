@@ -12,22 +12,16 @@ func _ready() -> void:
 	position = position.snapped(Vector2.ONE * TILE_SIZE)
 	position += Vector2.ONE * TILE_SIZE / 2
 
-func move(target:Vector2) -> void:
-	var dir = (target - position).normalized()
+func do_action(target:Vector2) -> void:
+
+	print("need to be implemented")
+	pass
+
+func _choose_direction(target_position : Vector2) -> Vector2:
+	var dir = (target_position - position).normalized()
 
 	if abs(dir.x) > abs(dir.y):
 		dir.y = 0
 	if abs(dir.x) <= abs(dir.y):
 		dir.x = 0
-	dir = dir.normalized()
-
-	raycast.target_position = dir * TILE_SIZE / 2
-	raycast.force_raycast_update()
-	if !raycast.is_colliding():
-		var tween = create_tween()
-		var direction = position + dir * TILE_SIZE
-		tween.tween_property(self, "position", direction, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
-		moving = true
-		print_debug("move")
-		await tween.finished
-		moving = false
+	return dir.normalized()

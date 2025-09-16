@@ -6,10 +6,8 @@ extends Node2D
 
 func _ready() -> void:
 	player.player_moved.connect(move_enemies)
-	for enemy in enemy_array:
-		enemy.move(player.position)
 	pass
 
 func move_enemies() -> void:
 	for enemy in enemy_array:
-		enemy.move(player.position)
+		enemy.do_action(player.position)
