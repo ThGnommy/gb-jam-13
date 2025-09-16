@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://6er53p8dim3l"]
+[gd_scene load_steps=8 format=3 uid="uid://6er53p8dim3l"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_72ix8"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="3_u81e1"]
 [ext_resource type="Shader" uid="uid://ce3l41fe36x0c" path="res://shaders/palette_swap.gdshader" id="3_y0acb"]
 [ext_resource type="Script" uid="uid://dtk71t6jho560" path="res://scenes/scripts/enemyManager.gd" id="4_ubwgw"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="5_b6bv0"]
-[ext_resource type="PackedScene" uid="uid://cf7nmojtvmslc" path="res://scenes/objects/cowboy.tscn" id="5_ubwgw"]
 [ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="5_vkq25"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
@@ -16,29 +15,31 @@ shader_parameter/target_palette = ExtResource("5_b6bv0")
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_72ix8")]
-position = Vector2(-60, -36)
+[node name="Player" parent="." node_paths=PackedStringArray("manager") instance=ExtResource("1_72ix8")]
+position = Vector2(0, 24)
+current_cell = Vector2i(0, 3)
+manager = NodePath("../GameManager")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 72)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(10, 10)
 texture = ExtResource("3_u81e1")
 
-[node name="EnemyManager" type="Node2D" parent="." node_paths=PackedStringArray("enemy_array", "player")]
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("enemy_array", "player")]
 script = ExtResource("4_ubwgw")
-enemy_array = [NodePath("Enemy"), NodePath("Enemy2"), NodePath("Cowboy")]
+enemy_array = [NodePath("Slime"), NodePath("Slime2")]
 player = NodePath("../Player")
 
-[node name="Enemy" parent="EnemyManager" instance=ExtResource("5_vkq25")]
-position = Vector2(83, 44)
+[node name="Slime" parent="GameManager" node_paths=PackedStringArray("manager") instance=ExtResource("5_vkq25")]
+current_cell = Vector2(1, 2)
+manager = NodePath("..")
 
-[node name="Enemy2" parent="EnemyManager" instance=ExtResource("5_vkq25")]
-position = Vector2(-112, 40)
-
-[node name="Cowboy" parent="EnemyManager" instance=ExtResource("5_ubwgw")]
-position = Vector2(-24, 60)
+[node name="Slime2" parent="GameManager" node_paths=PackedStringArray("manager") instance=ExtResource("5_vkq25")]
+current_cell = Vector2(3, 3)
+manager = NodePath("..")
 
 [node name="Control" type="Control" parent="."]
 visible = false

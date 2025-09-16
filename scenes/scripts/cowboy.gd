@@ -2,7 +2,7 @@ class_name Cowboy
 
 extends Enemy
 
-func do_action(target:Vector2) -> void:
+func do_action(target:Vector2i) -> void:
 	var dir = _choose_direction(target)
 	raycast.target_position = dir * TILE_SIZE / 2
 	raycast.force_raycast_update()

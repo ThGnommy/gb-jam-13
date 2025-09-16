@@ -39,7 +39,7 @@ metadata/_edit_group_ = true
 sprite_frames = SubResource("SpriteFrames_q574h")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.360026
+frame_progress = 0.356056
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2147m")
