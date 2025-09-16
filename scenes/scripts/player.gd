@@ -1,8 +1,12 @@
+class_name Player 
+
 extends Area2D
 
 @export var animation_speed = 1
 @onready var raycast = $RayCast2D
 @onready var anim = $AnimatedSprite2D
+
+signal player_moved
 
 const TILE_SIZE = 24
 var moving: bool = false
@@ -38,6 +42,7 @@ func move(dir) -> void:
 	tween.tween_property(self, "position", direction, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
 	moving = true
 	await tween.finished
+	player_moved.emit()
 	moving = false
 	anim.animation = "idle"
 
