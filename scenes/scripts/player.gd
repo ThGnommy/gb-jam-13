@@ -24,39 +24,45 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	for dir in inputs.keys():
 		if event.is_action_pressed(dir):
-			animate(dir)
+			update_raycast(dir)
+			
+			if raycast.is_colliding():
+				return
+			
 			move(dir)
+			animate(dir)
 
 func move(dir) -> void:
-	raycast.target_position = inputs[dir] * TILE_SIZE / 2
-	raycast.force_raycast_update()
-	if !raycast.is_colliding():
-		var tween = create_tween()
-		var direction = position + inputs[dir] * TILE_SIZE
-		tween.tween_property(self, "position", direction, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
-		moving = true
-		await tween.finished
-		moving = false
-		anim.animation = "idle"
+	var tween = create_tween()
+	var direction = position + inputs[dir] * TILE_SIZE
+	tween.tween_property(self, "position", direction, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
+	moving = true
+	await tween.finished
+	moving = false
+	anim.animation = "idle"
 
 func animate(dir) -> void:
 	match inputs[dir]:
 		Vector2.RIGHT:
-			jump(10)
+			jump_animation(10)
 			anim.animation = "jump_side"
 			anim.flip_h = false
 		Vector2.LEFT:
-			jump(10)
+			jump_animation(10)
 			anim.animation = "jump_side"
 			anim.flip_h = true
 		Vector2.UP:
-			jump(5)
+			jump_animation(5)
 			anim.animation = "jump_top"
 		Vector2.DOWN:
-			jump(5)
+			jump_animation(5)
 			anim.animation = "jump_down"
 
-func jump(height: int) -> void:
+func jump_animation(px_height: int) -> void:
 	var jump_tween = create_tween()
-	jump_tween.tween_property(anim, "position:y", -height, (1.0 / animation_speed) / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	jump_tween.tween_property(anim, "position:y", -px_height, (1.0 / animation_speed) / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	jump_tween.tween_property(anim, "position:y", 0, (1.0 / animation_speed) / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
+func update_raycast(dir) -> void:
+	raycast.target_position = inputs[dir] * TILE_SIZE / 2
+	raycast.force_raycast_update()

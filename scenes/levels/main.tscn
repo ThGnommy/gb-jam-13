@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://6er53p8dim3l"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_72ix8"]
-[ext_resource type="PackedScene" path="res://scenes/objects/Object.tscn" id="2_2vj2h"]
+[ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/Object.tscn" id="2_2vj2h"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="3_u81e1"]
 [ext_resource type="Shader" path="res://shaders/palette_swap.gdshader" id="3_y0acb"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="5_b6bv0"]
@@ -27,6 +27,7 @@ scale = Vector2(10, 10)
 texture = ExtResource("3_u81e1")
 
 [node name="Control" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

@@ -1,7 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://co2yl7qm7j5ga"]
+[gd_scene load_steps=7 format=3 uid="uid://c5yswikogtdy6"]
 
 [ext_resource type="Script" uid="uid://ckk3ajiu4q41c" path="res://scenes/scripts/object.gd" id="1_6obf0"]
-[ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="1_fsexx"]
+[ext_resource type="PackedScene" path="res://HealthComponent.tscn" id="1_fsexx"]
 [ext_resource type="Texture2D" uid="uid://ds0wjj48ohst4" path="res://assets/sprites/Enemies/Slime-Sheet.png" id="3_77e02"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q4gfw"]
@@ -22,7 +22,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6obf0"]
 size = Vector2(24, 24)
 
-[node name="Object" type="StaticBody2D"]
+[node name="Enemy" type="Area2D"]
+collision_layer = 2
 script = ExtResource("1_6obf0")
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_fsexx")]
