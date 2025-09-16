@@ -28,7 +28,6 @@ window/size/viewport_height=144
 window/size/window_width_override=800
 window/size/window_height_override=720
 window/stretch/mode="viewport"
-window/stretch/scale=4.0
 
 [dotnet]
 
@@ -97,6 +96,7 @@ down={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 environment/defaults/default_clear_color=Color(0.0196078, 0.2, 0.270588, 1)
 2d/snap/snap_2d_transforms_to_pixel=true
