@@ -20,6 +20,7 @@ boot_splash/minimum_display_time=2000
 [autoload]
 
 CardPool="*res://scenes/scripts/CardPool.gd"
+GridManager="*res://scenes/scripts/enemyManager.gd"
 
 [display]
 
