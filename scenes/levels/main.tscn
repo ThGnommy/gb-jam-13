@@ -11,7 +11,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
 shader = ExtResource("3_y0acb")
-shader_parameter/brightness = -1.0
+shader_parameter/brightness = 4.75e-08
 shader_parameter/source_palette = ExtResource("3_u81e1")
 shader_parameter/target_palette = ExtResource("5_b6bv0")
 
@@ -41,31 +41,7 @@ position = Vector2(-112, 40)
 [node name="Cowboy" parent="EnemyManager" instance=ExtResource("5_ubwgw")]
 position = Vector2(-24, 60)
 
-[node name="Control" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-scale = Vector2(4.03263, 3.66414)
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-visible = false
-material = SubResource("ShaderMaterial_j4d2a")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -20.8301
-offset_top = -19.9228
-offset_right = -20.8301
-offset_bottom = -19.9228
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Objects" type="Node" parent="."]
+[node name="Objects" type="Node2D" parent="."]
 
 [node name="Barrel" parent="Objects" instance=ExtResource("6_vkq25")]
 position = Vector2(67, -38)
@@ -78,3 +54,25 @@ position = Vector2(12, 60)
 
 [node name="Barrel4" parent="Objects" instance=ExtResource("6_vkq25")]
 position = Vector2(13, -60)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(4.03263, 3.66414)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_j4d2a")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.8301
+offset_top = -19.9228
+offset_right = -20.8301
+offset_bottom = -19.9228
+grow_horizontal = 2
+grow_vertical = 2
