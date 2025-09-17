@@ -4,7 +4,7 @@ extends Node2D
 @export var player : Player
 @export var grid_size = Vector2i(10, 10)
 
-var cell_size = 24
+const CELL_SIZE = 24
 @export var occupancy_map : Array = []
 
 func _init() -> void:
@@ -56,18 +56,18 @@ func move_enemy(enemy, target_cell: Vector2i, animation_speed: float = 4.0) -> b
 	return false
 
 func cell_to_world(cell: Vector2i) -> Vector2i:
-	return Vector2i(cell.x * cell_size, cell.y * cell_size)
+	return Vector2i(cell.x * CELL_SIZE, cell.y * CELL_SIZE)
 
 func world_to_cell(pos: Vector2i) -> Vector2i:
-	return Vector2i(pos.x / cell_size, pos.y / cell_size)
+	return Vector2i(pos.x / CELL_SIZE, pos.y / CELL_SIZE)
 
 func _draw():
 	for x in range(grid_size.x):
-		var start = Vector2i(x * cell_size, 0)
-		var end = Vector2i(x * cell_size, grid_size.y * cell_size)
+		var start = Vector2i(x * CELL_SIZE, 0)
+		var end = Vector2i(x * CELL_SIZE, grid_size.y * CELL_SIZE)
 		draw_line(start, end, Color.DARK_GOLDENROD, 1.0)
 
 	for y in range(grid_size.y):
-		var start = Vector2i(0, y * cell_size)
-		var end = Vector2i(grid_size.x * cell_size, y * cell_size)
+		var start = Vector2i(0, y * CELL_SIZE)
+		var end = Vector2i(grid_size.x * CELL_SIZE, y * CELL_SIZE)
 		draw_line(start, end, Color.DARK_GOLDENROD, 1.0)
