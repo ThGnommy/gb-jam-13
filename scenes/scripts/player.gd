@@ -6,7 +6,7 @@ extends Area2D
 @onready var raycast = $RayCast2D
 @onready var anim = $AnimatedSprite2D
 
-@export var current_cell: Vector2i
+var current_cell: Vector2i
 @export var manager: Node
 
 signal player_moved
@@ -22,8 +22,10 @@ var inputs: Dictionary = {
 }
 
 func _ready() -> void:
-	position = manager.cell_to_world(self.current_cell)
-	manager.occupy_cell(self.current_cell)
+	#position = manager.cell_to_world(self.current_cell)
+	#manager.occupy_cell(self.current_cell)
+	current_cell = manager.world_to_cell(global_position)
+	manager.occupy_cell(current_cell)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if moving:

@@ -1,13 +1,14 @@
 class_name Slime
-
 extends Enemy
 
-@export var current_cell: Vector2
+var current_cell: Vector2
 @export var manager: Node
 
 func _ready() -> void:
-	position = manager.cell_to_world(self.current_cell)
-	manager.occupy_cell(self.current_cell)
+	current_cell = manager.world_to_cell(global_position)
+	manager.occupy_cell(current_cell)
+	#position = manager.cell_to_world(self.current_cell)
+	#manager.occupy_cell(self.current_cell)
 
 func do_action(target: Vector2) -> void:
 	var dir = _choose_direction(target)
