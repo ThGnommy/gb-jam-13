@@ -7,16 +7,19 @@ extends Area2D
 @onready var anim = $AnimatedSprite2D
 @onready var Bullet = preload("res://scenes/bullet.tscn")
 
+var current_cell: Vector2i
+@export var manager: Node
+
 signal player_moved
 
 const TILE_SIZE = 24
 var moving: bool = false
 
 var inputs: Dictionary = {
-	"right": Vector2.RIGHT,
-	"left": Vector2.LEFT,
-	"up": Vector2.UP,
-	"down": Vector2.DOWN
+	"right": Vector2i.RIGHT,
+	"left": Vector2i.LEFT,
+	"up": Vector2i.UP,
+	"down": Vector2i.DOWN
 }
 
 var shootInputs: Dictionary = {
@@ -27,8 +30,10 @@ var shootInputs: Dictionary = {
 }
 
 func _ready() -> void:
-	position = position.snapped(Vector2.ONE * TILE_SIZE)
-	position += Vector2.ONE * TILE_SIZE / 2
+	#position = manager.cell_to_world(self.current_cell)
+	#manager.occupy_cell(self.current_cell)
+	current_cell = manager.world_to_cell(global_position)
+	manager.occupy_cell(current_cell)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if moving:
@@ -50,29 +55,26 @@ func _process(delta: float) -> void:
 			shoot(shootInputs[dir])
 
 func move(dir) -> void:
-	var tween = create_tween()
-	var direction = position + inputs[dir] * TILE_SIZE
-	tween.tween_property(self, "position", direction, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
 	moving = true
-	await tween.finished
+	await manager.move_enemy(self, current_cell + inputs[dir])
 	player_moved.emit()
 	moving = false
 	anim.animation = "idle"
 
 func animate(dir) -> void:
 	match inputs[dir]:
-		Vector2.RIGHT:
+		Vector2i.RIGHT:
 			jump_animation(10)
 			anim.animation = "jump_side"
 			anim.flip_h = false
-		Vector2.LEFT:
+		Vector2i.LEFT:
 			jump_animation(10)
 			anim.animation = "jump_side"
 			anim.flip_h = true
-		Vector2.UP:
+		Vector2i.UP:
 			jump_animation(5)
 			anim.animation = "jump_top"
-		Vector2.DOWN:
+		Vector2i.DOWN:
 			jump_animation(5)
 			anim.animation = "jump_down"
 
