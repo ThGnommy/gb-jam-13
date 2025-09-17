@@ -14,5 +14,3 @@ func do_action(target):
 	print_debug("move")
 	await tween.finished
 	moving = false
-
-

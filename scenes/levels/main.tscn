@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://6er53p8dim3l"]
+[gd_scene load_steps=9 format=3 uid="uid://6er53p8dim3l"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_72ix8"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="3_u81e1"]
@@ -6,10 +6,11 @@
 [ext_resource type="Script" uid="uid://dtk71t6jho560" path="res://scenes/scripts/enemyManager.gd" id="4_ubwgw"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="5_b6bv0"]
 [ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="5_vkq25"]
+[ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/barrel.tscn" id="6_vkq25"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
 shader = ExtResource("3_y0acb")
-shader_parameter/brightness = -1.0
+shader_parameter/brightness = 4.75e-08
 shader_parameter/source_palette = ExtResource("3_u81e1")
 shader_parameter/target_palette = ExtResource("5_b6bv0")
 
@@ -37,12 +38,13 @@ player = NodePath("../Player")
 current_cell = Vector2(1, 2)
 manager = NodePath("..")
 
-[node name="Slime2" parent="GameManager" node_paths=PackedStringArray("manager") instance=ExtResource("5_vkq25")]
-current_cell = Vector2(3, 3)
-manager = NodePath("..")
+[node name="Enemy2" parent="EnemyManager" instance=ExtResource("5_vkq25")]
+position = Vector2(-112, 40)
+
+[node name="Cowboy" parent="EnemyManager" instance=ExtResource("5_ubwgw")]
+position = Vector2(-24, 60)
 
 [node name="Control" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -57,9 +59,9 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -22.8139
-offset_top = -7.0958
-offset_right = -22.8139
-offset_bottom = -7.0958
+offset_left = -20.8301
+offset_top = -19.9228
+offset_right = -20.8301
+offset_bottom = -19.9228
 grow_horizontal = 2
 grow_vertical = 2

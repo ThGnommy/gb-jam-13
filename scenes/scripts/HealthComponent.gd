@@ -11,7 +11,15 @@ func init(health: int):
 func check():
 	assert (currentHealth > 0 and currentHealth < maxHealth)
 
+func heal(healAmount : int):
+	assert(healAmount >= 0)
+	if currentHealth + healAmount > maxHealth:
+		currentHealth = maxHealth
+	else:
+		currentHealth += maxHealth
+
 func take_damage(damage: int):
+	assert(damage >= 0)
 	if currentHealth - damage < 1:
 		handle_death()
 	else:
