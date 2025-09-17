@@ -88,6 +88,7 @@ func update_raycast(dir) -> void:
 func shoot(dir: Vector2) -> void:
 	match dir:
 		Vector2.RIGHT:
+			anim.flip_h = false
 			anim.animation = "shootRight"
 		Vector2.LEFT:
 			anim.flip_h = true
