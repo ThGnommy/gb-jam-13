@@ -8,7 +8,6 @@ extends Area2D
 @onready var Bullet = preload("res://scenes/bullet.tscn")
 
 var current_cell: Vector2i
-@export var manager: Node
 
 signal player_moved
 
@@ -32,8 +31,9 @@ var shootInputs: Dictionary = {
 func _ready() -> void:
 	#position = manager.cell_to_world(self.current_cell)
 	#manager.occupy_cell(self.current_cell)
-	current_cell = manager.world_to_cell(global_position)
-	manager.occupy_cell(current_cell)
+	current_cell = GridManager.world_to_cell(global_position)
+	GridManager.occupy_cell(current_cell)
+	GridManager.set_player(self)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if moving:
@@ -56,8 +56,8 @@ func _process(delta: float) -> void:
 
 func move(dir) -> void:
 	moving = true
-	await manager.move_enemy(self, current_cell + inputs[dir])
-	player_moved.emit()
+	await GridManager.move_enemy(self, current_cell + inputs[dir])
+	GridManager.move_enemies()
 	moving = false
 	anim.animation = "idle"
 
