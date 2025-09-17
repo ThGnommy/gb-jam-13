@@ -21,7 +21,7 @@ region = Rect2(48, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
 atlas = ExtResource("1_mkf8s")
-region = Rect2(0, 0, 16, 16)
+region = Rect2(0, 0, 16, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_26lx3"]
 animations = [{
@@ -52,7 +52,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkf8s"]
-size = Vector2(10, 7.5)
+size = Vector2(10, 7)
 
 [node name="Bullet" type="Node2D"]
 script = ExtResource("1_y25gk")

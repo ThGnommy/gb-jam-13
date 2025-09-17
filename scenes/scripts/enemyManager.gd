@@ -5,7 +5,7 @@ extends Node2D
 var player : Player
 
 const CELL_SIZE = 24
-@export var occupancy_map : Array = []
+var occupancy_map : Array = []
 
 func _init() -> void:
 	map_matrix_init()
@@ -29,6 +29,9 @@ func map_matrix_init():
 			occupancy_map[x][y] = false
 
 func is_cell_free(cell: Vector2i) -> bool:
+	# return true if the cell is out of bounds
+	if cell.x < 0 or cell.y < 0 or cell.x >= grid_size.x or cell.y >= grid_size.y:
+		return true
 	return not occupancy_map[cell.x][cell.y]
 	
 func occupy_cell(cell: Vector2i):

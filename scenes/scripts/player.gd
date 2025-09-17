@@ -102,6 +102,6 @@ func shoot(dir: Vector2) -> void:
 	
 	# Create and launch the bullet
 	var bullet_instance = Bullet.instantiate()
-	bullet_instance.position = position + dir * (TILE_SIZE / 2)
+	bullet_instance.position = position + dir * (TILE_SIZE)
 	bullet_instance.set_direction(dir)
 	get_parent().add_child(bullet_instance)
