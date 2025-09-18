@@ -1,8 +1,8 @@
 extends Node2D
 
 @export var enemy_array : Array[Enemy] = []
-@export var player : Player
 @export var grid_size = Vector2i(10, 10)
+var player : Player
 
 const CELL_SIZE = 24
 @export var occupancy_map : Array = []
@@ -10,8 +10,11 @@ const CELL_SIZE = 24
 func _init() -> void:
 	map_matrix_init()
 
-func _ready() -> void:
-	player.player_moved.connect(move_enemies)
+func set_player(p: Player) -> void:
+	player = p
+
+func add_enemy(enemy: Enemy) -> void:
+	enemy_array.append(enemy)
 
 func move_enemies() -> void:
 	for enemy in enemy_array:
