@@ -84,7 +84,6 @@ func jump_animation(px_height: int) -> void:
 	jump_tween.tween_property(anim, "position:y", 0, (1.0 / animation_speed) / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await jump_tween.finished
 	TurnManager.next_turn(TurnManager.TurnState.Enemies)
-	emit_signal("turn_change")
 
 func update_raycast(dir) -> void:
 	raycast.target_position = inputs[dir] * TILE_SIZE / 2
