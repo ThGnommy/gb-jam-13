@@ -18,7 +18,7 @@ var CellData := {
 	"entity" : Node2D
 }
 
-const CELL_SIZE = 24
+const CELL_SIZE : int = 24
 var occupancy_map : Array = []
 
 func _init() -> void:
@@ -101,8 +101,8 @@ func move_entity(entity: Node2D, entity_type: EntityType, target_cell: Vector2i,
 func cell_to_world(cell: Vector2i) -> Vector2i:
 	return Vector2i(cell.x * CELL_SIZE, cell.y * CELL_SIZE)
 
-func world_to_cell(pos: Vector2i) -> Vector2i:
-	return Vector2i(pos.x / CELL_SIZE, pos.y / CELL_SIZE)
+func world_to_cell(pos: Vector2) -> Vector2i:
+	return Vector2i(roundi(pos.x / CELL_SIZE), roundi(pos.y / CELL_SIZE))
 
 func _draw():
 	for x in range(grid_size.x):
