@@ -5,7 +5,9 @@ extends Area2D
 @export var animation_speed = 1
 @onready var raycast = $RayCast2D
 @onready var anim = $AnimatedSprite2D
-@onready var Bullet = preload("res://scenes/bullet.tscn")
+
+@onready var belt : Array = ["Regular", "Barrel", "Regular", "Barrel", "Regular", "Regular"]
+var remaining_bullets : Array
 
 var current_cell: Vector2i
 
@@ -34,6 +36,7 @@ func _ready() -> void:
 	current_cell = GridManager.world_to_cell(global_position)
 	GridManager.occupy_cell(current_cell, GridManager.EntityType.Player, self)
 	GridManager.set_player(self)
+	reload()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if moving:
@@ -90,6 +93,10 @@ func update_raycast(dir) -> void:
 	raycast.force_raycast_update()
 
 func shoot(dir: Vector2) -> void:
+	if remaining_bullets.size() == 0:
+		reload()
+		return
+
 	match dir:
 		Vector2.RIGHT:
 			anim.flip_h = false
@@ -101,9 +108,20 @@ func shoot(dir: Vector2) -> void:
 			anim.animation = "shootUp"
 		Vector2.DOWN:
 			anim.animation = "shootDown"
-	
-	# Create and launch the bullet
-	var bullet_instance = Bullet.instantiate()
+		
+	# Choose a random bullet from the remaining bullets
+	var random_chamber = randi() % remaining_bullets.size()
+	var bullet_type = remaining_bullets[random_chamber]
+
+	# Remove the bullet from the remaining bullets
+	remaining_bullets.remove_at(random_chamber)
+
+	# Create and shoot the bullet
+	var bullet_instance = BulletFactory.create_bullet(bullet_type)
 	bullet_instance.position = position + dir * (TILE_SIZE)
 	bullet_instance.set_direction(dir)
 	get_parent().add_child(bullet_instance)
+
+func reload() -> void:
+	remaining_bullets = belt.duplicate()
+	print("Reloaded! Now have %d bullets." % remaining_bullets.size())

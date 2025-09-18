@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name Bullet
+
 var direction : Vector2 = Vector2.RIGHT
 var last_cell_visited = Vector2.ZERO
 var current_cell = Vector2.ZERO

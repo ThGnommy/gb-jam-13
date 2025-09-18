@@ -1,26 +1,26 @@
 [gd_scene load_steps=10 format=3 uid="uid://c4ng3uy1wbhyj"]
 
-[ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="1_mkf8s"]
-[ext_resource type="Script" uid="uid://b0ah5jdiysjuf" path="res://scenes/scripts/bullet.gd" id="1_y25gk"]
+[ext_resource type="Script" uid="uid://b0ah5jdiysjuf" path="res://scenes/scripts/bullet.gd" id="1_51yvh"]
+[ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="2_ckyvv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y25gk"]
-atlas = ExtResource("1_mkf8s")
+atlas = ExtResource("2_ckyvv")
 region = Rect2(0, 72, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
-atlas = ExtResource("1_mkf8s")
+atlas = ExtResource("2_ckyvv")
 region = Rect2(16, 72, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
-atlas = ExtResource("1_mkf8s")
+atlas = ExtResource("2_ckyvv")
 region = Rect2(32, 72, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qncy5"]
-atlas = ExtResource("1_mkf8s")
+atlas = ExtResource("2_ckyvv")
 region = Rect2(48, 72, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
-atlas = ExtResource("1_mkf8s")
+atlas = ExtResource("2_ckyvv")
 region = Rect2(0, 0, 16, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_26lx3"]
@@ -54,8 +54,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mkf8s"]
 size = Vector2(10, 7)
 
-[node name="Bullet" type="Node2D"]
-script = ExtResource("1_y25gk")
+[node name="RegularBullet" type="Node2D"]
+script = ExtResource("1_51yvh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_26lx3")
