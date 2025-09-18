@@ -32,7 +32,7 @@ func _ready() -> void:
 	#position = manager.cell_to_world(self.current_cell)
 	#manager.occupy_cell(self.current_cell)
 	current_cell = GridManager.world_to_cell(global_position)
-	GridManager.occupy_cell(current_cell)
+	GridManager.occupy_cell(current_cell, GridManager.EntityType.Player)
 	GridManager.set_player(self)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -45,7 +45,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			
 			if raycast.is_colliding():
 				return
-			
+
 			move(dir)
 			animate(dir)
 
@@ -56,7 +56,7 @@ func _process(delta: float) -> void:
 
 func move(dir) -> void:
 	moving = true
-	await GridManager.move_enemy(self, current_cell + inputs[dir])
+	await GridManager.move_entity(self, GridManager.EntityType.Player, current_cell + inputs[dir])
 	GridManager.move_enemies()
 	moving = false
 	anim.animation = "idle"
@@ -82,6 +82,9 @@ func jump_animation(px_height: int) -> void:
 	var jump_tween = create_tween()
 	jump_tween.tween_property(anim, "position:y", -px_height, (1.0 / animation_speed) / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	jump_tween.tween_property(anim, "position:y", 0, (1.0 / animation_speed) / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	await jump_tween.finished
+	TurnManager.next_turn(TurnManager.TurnState.Enemies)
+	emit_signal("turn_change")
 
 func update_raycast(dir) -> void:
 	raycast.target_position = inputs[dir] * TILE_SIZE / 2
