@@ -32,7 +32,7 @@ func _ready() -> void:
 	#position = manager.cell_to_world(self.current_cell)
 	#manager.occupy_cell(self.current_cell)
 	current_cell = GridManager.world_to_cell(global_position)
-	GridManager.occupy_cell(current_cell, GridManager.EntityType.Player)
+	GridManager.occupy_cell(current_cell, GridManager.EntityType.Player, self)
 	GridManager.set_player(self)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -104,6 +104,6 @@ func shoot(dir: Vector2) -> void:
 	
 	# Create and launch the bullet
 	var bullet_instance = Bullet.instantiate()
-	bullet_instance.position = position + dir * (TILE_SIZE / 2)
+	bullet_instance.position = position + dir * (TILE_SIZE)
 	bullet_instance.set_direction(dir)
 	get_parent().add_child(bullet_instance)

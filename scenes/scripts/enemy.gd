@@ -25,3 +25,7 @@ func _choose_direction(target_position : Vector2) -> Vector2:
 	if abs(dir.x) <= abs(dir.y):
 		dir.x = 0
 	return dir.normalized()
+
+func take_damage(amount: int) -> void:
+	var health = $HealthComponent
+	health.take_damage(amount)

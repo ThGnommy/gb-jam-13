@@ -14,11 +14,12 @@ var player : Player
 
 var CellData := {
 	"occupied": false,
-	"entity": EntityType.Unknown
+	"entityType": EntityType.Unknown,
+	"entity" : Node2D
 }
 
 const CELL_SIZE = 24
-@export var occupancy_map : Array = []
+var occupancy_map : Array = []
 
 func _init() -> void:
 	map_matrix_init()
@@ -41,19 +42,41 @@ func map_matrix_init():
 		for y in range(grid_size.y):
 			var data: Dictionary
 			data["occupied"] = false
-			data["entity"] = EntityType.Unknown
+			data["entityType"] = EntityType.Unknown
+			data["entity"] = null
 			occupancy_map[x][y] = data
 
 func is_cell_free(cell: Vector2i) -> bool:
+	assert(is_cell_outside_bounds(cell) == false)
 	return not occupancy_map[cell.x][cell.y]["occupied"]
 
-func occupy_cell(cell: Vector2i, entity: EntityType):
+func is_cell_outside_bounds(cell: Vector2i) -> bool:
+	return cell.x < 0 or cell.y < 0 or cell.x >= grid_size.x or cell.y >= grid_size.y
+
+func get_entity_at_cell(cell: Vector2i) -> Node2D:
+	assert(cell.x >= 0 and cell.y >= 0 and cell.x < grid_size.x and cell.y < grid_size.y)
+	assert(occupancy_map[cell.x][cell.y]["occupied"])
+	return occupancy_map[cell.x][cell.y]["entity"]
+
+func occupy_cell(cell: Vector2i, entityType: EntityType, entity: Node2D):
 	occupancy_map[cell.x][cell.y]["occupied"] = true
+	occupancy_map[cell.x][cell.y]["entityType"] = entityType
 	occupancy_map[cell.x][cell.y]["entity"] = entity
-	
+
 func free_cell(cell: Vector2i):
 	occupancy_map[cell.x][cell.y]["occupied"] = false
-	occupancy_map[cell.x][cell.y]["entity"] = EntityType.Unknown
+	occupancy_map[cell.x][cell.y]["entityType"] = EntityType.Unknown
+	occupancy_map[cell.x][cell.y]["entity"] = null
+
+func cleanup_cell(cell: Vector2i):
+	# Cleanup enemy array if an enemy is being removed	
+	if(occupancy_map[cell.x][cell.y]["entityType"] == EntityType.Enemy):
+		for enemy in enemy_array:
+			if enemy.current_cell == cell:
+				enemy_array.erase(enemy)
+				break
+	
+	free_cell(cell)
 
 func move_entity(entity: Node2D, entity_type: EntityType, target_cell: Vector2i, animation_speed: float = 4.0) -> bool:
 	# Out-of-bounds check
@@ -62,7 +85,7 @@ func move_entity(entity: Node2D, entity_type: EntityType, target_cell: Vector2i,
 	# Check if the target cell is free
 	if is_cell_free(target_cell):
 		free_cell(entity.current_cell)
-		occupy_cell(target_cell, entity_type)
+		occupy_cell(target_cell, entity_type, entity)
 		entity.current_cell = target_cell
 		
 		var start_pos: Vector2 = entity.global_position
