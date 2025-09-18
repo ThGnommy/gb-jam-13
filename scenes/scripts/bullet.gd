@@ -4,6 +4,7 @@ var direction : Vector2 = Vector2.RIGHT
 var last_cell_visited = Vector2.ZERO
 var current_cell = Vector2.ZERO
 var healthComponentPath = "HealthComponent.tscn"
+var should_stop = false
 
 func set_direction(dir : Vector2) -> void:
 	direction = dir.normalized()
@@ -18,6 +19,8 @@ func set_direction(dir : Vector2) -> void:
 			$AnimatedSprite2D.rotation_degrees = 90
 
 func _process(delta: float) -> void:
+	if should_stop:
+		return
 	position += direction * 200 * delta
 	current_cell = GridManager.world_to_cell(position)
 	
@@ -27,6 +30,13 @@ func _process(delta: float) -> void:
 	
 	if(!GridManager.is_cell_free(current_cell)):
 		var hitEntity = GridManager.get_entity_at_cell(current_cell)
-		if hitEntity.has_method("take_damage"):
-			hitEntity.take_damage(1)
-		queue_free()
+		var healthComp = hitEntity.get_node_or_null("HealthComponent")
+		if healthComp:
+			healthComp.take_damage(1)
+		hit_something()
+
+func hit_something() -> void:
+	should_stop = true
+	$AnimatedSprite2D.play("explode")
+	await $AnimatedSprite2D.animation_finished
+	queue_free()

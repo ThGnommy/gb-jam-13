@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var currentHealth : int = 0
-@export var maxHealth : int = 0
+@export var currentHealth : int = 1
+@export var maxHealth : int = 1
 
 func init(health: int):
 	maxHealth = health

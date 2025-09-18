@@ -7,5 +7,7 @@ func _ready() -> void:
 	GridManager.occupy_cell(current_cell, GridManager.EntityType.Environment, self)
 
 func die():
-	print("Object destroyed")
+	GridManager.cleanup_cell(current_cell)
+	$AnimatedSprite2D.animation = "destroy"
+	await $AnimatedSprite2D.animation_finished
 	queue_free()
