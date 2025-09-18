@@ -1,6 +1,9 @@
 extends Node2D
 
 var direction : Vector2 = Vector2.RIGHT
+var last_cell_visited = Vector2.ZERO
+var current_cell = Vector2.ZERO
+var healthComponentPath = "HealthComponent.tscn"
 
 func set_direction(dir : Vector2) -> void:
 	direction = dir.normalized()
@@ -15,4 +18,15 @@ func set_direction(dir : Vector2) -> void:
 			$AnimatedSprite2D.rotation_degrees = 90
 
 func _process(delta: float) -> void:
-	position += direction * 400 * delta
+	position += direction * 200 * delta
+	current_cell = GridManager.world_to_cell(position)
+	
+	if GridManager.is_cell_outside_bounds(current_cell):
+		queue_free()
+		return
+	
+	if(!GridManager.is_cell_free(current_cell)):
+		var hitEntity = GridManager.get_entity_at_cell(current_cell)
+		if hitEntity.has_method("take_damage"):
+			hitEntity.take_damage(1)
+		queue_free()
