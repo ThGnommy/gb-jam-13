@@ -61,18 +61,17 @@ func move_entity(entity: Node2D, entity_type: EntityType, target_cell: Vector2i,
 		return false
 	# Check if the target cell is free
 	if is_cell_free(target_cell):
-		# Reserve the cell immediately so no other enemy moves into it
+		free_cell(entity.current_cell)
 		occupy_cell(target_cell, entity_type)
+		entity.current_cell = target_cell
+		
 		var start_pos: Vector2 = entity.global_position
 		var target_pos: Vector2 = cell_to_world(target_cell)
-		# Create tween
+
 		var tween = entity.create_tween()
 		tween.tween_property(entity, "global_position", target_pos, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
-		# Wait until the tween finishes
+
 		await tween.finished
-		# Update occupancy: free old cell after movement
-		free_cell(entity.current_cell)
-		entity.current_cell = target_cell
 		return true
 	return false
 
