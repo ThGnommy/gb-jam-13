@@ -2,16 +2,15 @@ class_name Slime
 extends Enemy
 
 var current_cell: Vector2
-@export var manager: Node
 
 func _ready() -> void:
 	super._ready()
-	current_cell = manager.world_to_cell(global_position)
-	manager.occupy_cell(current_cell, GridManager.EntityType.Enemy)
+	current_cell = GridManager.world_to_cell(global_position)
+	GridManager.occupy_cell(current_cell, GridManager.EntityType.Enemy)
 
 func do_action(target: Vector2) -> void:
 	var dir = _choose_direction(target)
-	await manager.move_entity(self, GridManager.EntityType.Enemy, current_cell + dir)
+	await GridManager.move_entity(self, GridManager.EntityType.Enemy, current_cell + dir)
 	
 	#raycast.target_position = dir * TILE_SIZE / 2
 	#raycast.force_raycast_update()

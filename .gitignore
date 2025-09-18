@@ -2,3 +2,10 @@
 .godot/
 /android/
 .vscode
+.nomedia
+
+# Godot-specific ignores
+.import/
+export.cfg
+export_credentials.cfg
+*.tmp
