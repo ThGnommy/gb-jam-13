@@ -1,7 +1,7 @@
-extends Node
+extends Node2D
 
-var currentHealth : int = 0
-var maxHealth : int = 0
+@export var currentHealth : int = 0
+@export var maxHealth : int = 0
 
 func init(health: int):
 	maxHealth = health
@@ -26,8 +26,5 @@ func take_damage(damage: int):
 		currentHealth -= damage
 	
 func handle_death():
-	if get_parent().has_method("die"):
-		get_parent().die()
-
-	# Is it risky to call queue_free anyway?
-	queue_free()
+	assert(get_parent().has_method("die"))
+	get_parent().die()

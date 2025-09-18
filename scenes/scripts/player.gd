@@ -32,7 +32,7 @@ func _ready() -> void:
 	#position = manager.cell_to_world(self.current_cell)
 	#manager.occupy_cell(self.current_cell)
 	current_cell = GridManager.world_to_cell(global_position)
-	GridManager.occupy_cell(current_cell, GridManager.EntityType.Player)
+	GridManager.occupy_cell(current_cell, GridManager.EntityType.Player, self)
 	GridManager.set_player(self)
 
 func _unhandled_input(event: InputEvent) -> void:

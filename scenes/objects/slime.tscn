@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbjeql1p5x66x"]
+[gd_scene load_steps=8 format=3 uid="uid://bbjeql1p5x66x"]
 
 [ext_resource type="Script" uid="uid://pt31v6o02cc7" path="res://scenes/scripts/slime.gd" id="1_82kmp"]
 [ext_resource type="Texture2D" uid="uid://ds0wjj48ohst4" path="res://assets/sprites/Enemies/Slime-Sheet.png" id="2_lp353"]
+[ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="3_q2f8i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82kmp"]
 atlas = ExtResource("2_lp353")
@@ -33,7 +34,6 @@ collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_82kmp")
 animation_speed = 2
-metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q574h")
@@ -50,3 +50,7 @@ target_position = Vector2(0, 12)
 collision_mask = 3
 collide_with_areas = true
 metadata/_edit_group_ = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_q2f8i")]
+currentHealth = 2
+maxHealth = 2
