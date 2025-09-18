@@ -5,19 +5,19 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y25gk"]
 atlas = ExtResource("1_mkf8s")
-region = Rect2(0, 16, 16, 16)
+region = Rect2(0, 72, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
 atlas = ExtResource("1_mkf8s")
-region = Rect2(16, 16, 16, 16)
+region = Rect2(16, 72, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
 atlas = ExtResource("1_mkf8s")
-region = Rect2(32, 16, 16, 16)
+region = Rect2(32, 72, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qncy5"]
 atlas = ExtResource("1_mkf8s")
-region = Rect2(48, 16, 16, 16)
+region = Rect2(48, 72, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
 atlas = ExtResource("1_mkf8s")
@@ -38,7 +38,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qncy5")
 }],
-"loop": true,
+"loop": false,
 "name": &"explode",
 "speed": 5.0
 }, {
@@ -59,8 +59,8 @@ script = ExtResource("1_y25gk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_26lx3")
-animation = &"fly"
-frame_progress = 0.437932
+animation = &"explode"
+autoplay = "fly"
 
 [node name="Area2D" type="Area2D" parent="."]
 
