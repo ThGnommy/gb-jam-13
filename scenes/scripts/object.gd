@@ -1,10 +1,10 @@
 extends Area2D
 
-const TILE_SIZE = 24
+var current_cell: Vector2
 
 func _ready() -> void:
-	position = position.snapped(Vector2.ONE * TILE_SIZE)
-	position += Vector2.ONE * TILE_SIZE / 2
+	current_cell = GridManager.world_to_cell(global_position)
+	GridManager.occupy_cell(current_cell, GridManager.EntityType.Environment)
 
 func die():
 	print("Object destroyed")
