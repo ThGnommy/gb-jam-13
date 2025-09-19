@@ -27,19 +27,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2147m"]
-size = Vector2(24, 24)
+size = Vector2(16, 16)
 
 [node name="Slime" type="Area2D"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_82kmp")
 animation_speed = 2
+metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_q574h")
 animation = &"idle"
 autoplay = "idle"
 frame_progress = 0.360026
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_2147m")

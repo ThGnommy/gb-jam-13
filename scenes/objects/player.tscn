@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cwnorjh1oblav" path="res://assets/sprites/Player/Player-Sheet.png" id="2_2147m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2147m"]
-size = Vector2(24, 24)
+size = Vector2(16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2147m"]
 atlas = ExtResource("2_2147m")

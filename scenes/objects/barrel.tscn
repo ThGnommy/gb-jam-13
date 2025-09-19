@@ -54,7 +54,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6obf0"]
-size = Vector2(24, 24)
+size = Vector2(16, 16)
 
 [node name="Barrel" type="Node2D"]
 script = ExtResource("1_1kn84")
