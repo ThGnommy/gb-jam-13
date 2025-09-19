@@ -18,7 +18,7 @@ var CellData := {
 	"entity" : Node2D
 }
 
-const CELL_SIZE : int = 24
+const CELL_SIZE : int = 16
 var occupancy_map : Array = []
 
 func _init() -> void:
