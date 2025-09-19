@@ -78,7 +78,7 @@ func cleanup_cell(cell: Vector2i):
 	
 	free_cell(cell)
 
-func move_entity(entity: Node2D, entity_type: EntityType, target_cell: Vector2i, animation_speed: float = 4.0) -> bool:
+func move_entity(entity: Node2D, entity_type: EntityType, target_cell: Vector2i) -> bool:
 	# Out-of-bounds check
 	if target_cell.x < 0 or target_cell.y < 0 or target_cell.x >= grid_size.x or target_cell.y >= grid_size.y:
 		return false
@@ -92,7 +92,7 @@ func move_entity(entity: Node2D, entity_type: EntityType, target_cell: Vector2i,
 		var target_pos: Vector2 = cell_to_world(target_cell)
 
 		var tween = entity.create_tween()
-		tween.tween_property(entity, "global_position", target_pos, 1.0 / animation_speed).set_trans(Tween.TRANS_SINE)
+		tween.tween_property(entity, "global_position", target_pos, 1.0 / entity.animation_speed).set_trans(Tween.TRANS_SINE)
 
 		await tween.finished
 		return true
