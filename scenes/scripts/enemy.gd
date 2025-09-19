@@ -5,12 +5,9 @@ extends Area2D
 @export var animation_speed = 1
 @onready var raycast = $RayCast2D
 
-const TILE_SIZE = 24
 var moving: bool = false
 
 func _ready() -> void:
-	#position = position.snapped(Vector2.ONE * TILE_SIZE)
-	#position += Vector2.ONE * TILE_SIZE / 2
 	GridManager.add_enemy(self)
 
 func do_action(target:Vector2) -> void:
