@@ -46,7 +46,6 @@ size = Vector2(24, 24)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_82b1i")
-animation_speed = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_82b1i")

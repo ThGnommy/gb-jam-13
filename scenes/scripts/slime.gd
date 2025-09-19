@@ -3,8 +3,6 @@ extends Enemy
 
 func _ready() -> void:
 	super._ready()
-	current_cell = GridManager.world_to_cell(global_position)
-	GridManager.occupy_cell(current_cell, GridManager.EntityType.Enemy, self)
 
 func die() -> void:
 	GridManager.cleanup_cell(current_cell)
@@ -21,10 +19,10 @@ func do_action(target: Vector2) -> void:
 		print(dir)
 		await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( current_cell.x + dir.x, current_cell.y + dir.y))
 
-func _attack(target):
+func _attack(target: Vector2):
 	print("attack on: ", target)
 
-func _is_in_range(target : Vector2):
+func _is_in_range(target : Vector2)-> bool:
 
 	var world_target = position + _choose_direction(target) * GridManager.CELL_SIZE
 	var target_cell = GridManager.world_to_cell(world_target)
