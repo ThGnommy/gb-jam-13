@@ -13,7 +13,6 @@ var current_cell: Vector2i
 
 signal player_moved
 
-const TILE_SIZE = 24
 var moving: bool = false
 
 var inputs: Dictionary = {
@@ -89,7 +88,7 @@ func jump_animation(px_height: int) -> void:
 	TurnManager.next_turn(TurnManager.TurnState.Enemies)
 
 func update_raycast(dir) -> void:
-	raycast.target_position = inputs[dir] * TILE_SIZE / 2
+	raycast.target_position = inputs[dir] * GridManager.CELL_SIZE / 2
 	raycast.force_raycast_update()
 
 func shoot(dir: Vector2) -> void:
@@ -118,7 +117,7 @@ func shoot(dir: Vector2) -> void:
 
 	# Create and shoot the bullet
 	var bullet_instance = BulletFactory.create_bullet(bullet_type)
-	bullet_instance.position = position + dir * (TILE_SIZE)
+	bullet_instance.position = position + dir * GridManager.CELL_SIZE
 	bullet_instance.set_direction(dir)
 	get_parent().add_child(bullet_instance)
 

@@ -18,7 +18,7 @@ var CellData := {
 	"entity" : Node2D
 }
 
-const CELL_SIZE : int = 24
+const CELL_SIZE : int = 16
 var occupancy_map : Array = []
 
 func _init() -> void:
@@ -105,12 +105,13 @@ func world_to_cell(pos: Vector2) -> Vector2i:
 	return Vector2i(roundi(pos.x / CELL_SIZE), roundi(pos.y / CELL_SIZE))
 
 func _draw():
+	var half_cell : float = float(CELL_SIZE) * 0.5
 	for x in range(grid_size.x):
-		var start = Vector2i(x * CELL_SIZE, 0)
-		var end = Vector2i(x * CELL_SIZE, grid_size.y * CELL_SIZE)
+		var start = Vector2(x * CELL_SIZE - half_cell, 0)
+		var end = Vector2(x * CELL_SIZE - half_cell, grid_size.y * CELL_SIZE)
 		draw_line(start, end, Color.DARK_GOLDENROD, 1.0)
 
 	for y in range(grid_size.y):
-		var start = Vector2i(0, y * CELL_SIZE)
-		var end = Vector2i(grid_size.x * CELL_SIZE, y * CELL_SIZE)
+		var start = Vector2(0, y * CELL_SIZE - half_cell)
+		var end = Vector2(grid_size.x * CELL_SIZE - half_cell, y * CELL_SIZE - half_cell)
 		draw_line(start, end, Color.DARK_GOLDENROD, 1.0)

@@ -17,7 +17,7 @@ shader_parameter/target_palette = ExtResource("5_b6bv0")
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_72ix8")]
-position = Vector2(48, 24)
+position = Vector2(48, 16)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(72, 72)
@@ -35,16 +35,16 @@ metadata/_edit_lock_ = true
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="Barrel" parent="Objects" instance=ExtResource("6_vkq25")]
-position = Vector2(120, 24)
+position = Vector2(128, 32)
 
 [node name="Barrel2" parent="Objects" instance=ExtResource("6_vkq25")]
-position = Vector2(24, 72)
+position = Vector2(16, 64)
 
 [node name="Barrel3" parent="Objects" instance=ExtResource("6_vkq25")]
-position = Vector2(120, 96)
+position = Vector2(112, 96)
 
 [node name="Barrel4" parent="Objects" instance=ExtResource("6_vkq25")]
-position = Vector2(133, -12)
+position = Vector2(32, 112)
 
 [node name="Control" type="Control" parent="."]
 visible = false
@@ -72,7 +72,7 @@ grow_vertical = 2
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Slime" parent="Enemies" instance=ExtResource("5_vkq25")]
-position = Vector2(24, 24)
+position = Vector2(16, 16)
 
 [node name="Slime2" parent="Enemies" instance=ExtResource("5_vkq25")]
-position = Vector2(48, 72)
+position = Vector2(48, 80)
