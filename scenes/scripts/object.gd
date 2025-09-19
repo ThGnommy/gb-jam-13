@@ -1,6 +1,6 @@
 extends Node2D
 
-var current_cell: Vector2
+var current_cell: Vector2i
 
 func _ready() -> void:
 	current_cell = GridManager.world_to_cell(global_position)
