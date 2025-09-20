@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=3 uid="uid://bkvp68d4ytd4k"]
+
+[ext_resource type="Script" uid="uid://d3p26fxnqdjdy" path="res://scenes/scripts/dynamite_bullet.gd" id="1_pxm5y"]
+[ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="2_gg3b4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxm5y"]
+atlas = ExtResource("2_gg3b4")
+region = Rect2(32, 24, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qkmrh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxm5y")
+}],
+"loop": true,
+"name": &"explode",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7nyo1"]
+size = Vector2(10, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvv4k"]
+atlas = ExtResource("2_gg3b4")
+region = Rect2(0, 48, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uy6ga"]
+atlas = ExtResource("2_gg3b4")
+region = Rect2(16, 48, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqdwt"]
+atlas = ExtResource("2_gg3b4")
+region = Rect2(32, 48, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_diusv"]
+atlas = ExtResource("2_gg3b4")
+region = Rect2(48, 48, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnwde"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvv4k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uy6ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqdwt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_diusv")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_pxm5y")
+
+[node name="FlySprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_qkmrh")
+animation = &"explode"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_7nyo1")
+disabled = true
+
+[node name="ExplosionSprites" type="Node2D" parent="."]
+
+[node name="ExplosionSprite" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_rnwde")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="ExplosionSprite2" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_rnwde")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="ExplosionSprite3" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_rnwde")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="ExplosionSprite4" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_rnwde")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="ExplosionSprite5" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_rnwde")
+animation = &"explode"
+autoplay = "explode"
+frame = 3
+frame_progress = 1.0
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

@@ -31,6 +31,8 @@ func add_enemy(enemy: Enemy) -> void:
 	enemy_array.append(enemy)
 
 func move_enemies() -> void:
+	if enemy_array.is_empty():
+		TurnManager.try_update_to_next_turn()
 	for enemy in enemy_array:
 		enemy.do_action(player.position)
 
