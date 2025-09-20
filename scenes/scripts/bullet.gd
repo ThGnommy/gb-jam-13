@@ -2,7 +2,6 @@ extends Node2D
 
 class_name Bullet
 
-
 signal bullet_destroyed
 
 var direction : Vector2 = Vector2.RIGHT
@@ -15,6 +14,7 @@ var damage = 1
 
 func _ready() -> void:
 	TurnManager.add_entity_from_current_turn(self)
+	$ExplosionSprite.hide()
 
 func set_direction(dir : Vector2) -> void:
 	direction = dir.normalized()
@@ -47,12 +47,14 @@ func hit_something(cell: Vector2) -> void:
 	var healthComp = hitEntity.get_node_or_null("HealthComponent")
 	if healthComp:
 		healthComp.take_damage(damage)
-	##queue_free()
+	play_hit_animation_and_free()
 
-func play_hit_animation_and_wait() -> void:
-	$AnimatedSprite2D.play("explode")
-	await $AnimatedSprite2D.animation_finished
-
+func play_hit_animation_and_free() -> void:
+	$ExplosionSprite.show()
+	$ExplosionSprite.play("explode")
+	$FlySprite.hide()
+	await $ExplosionSprite.animation_finished
+	queue_free()
 
 func _on_tree_exited() -> void:
 	TurnManager.remove_entity_from_current_turn(self)
