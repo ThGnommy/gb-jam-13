@@ -72,18 +72,18 @@ func animate() -> void:
 	match player_direction:
 		Vector2i.RIGHT:
 			jump_animation(10)
-			anim.animation = "jump_side"
+			anim.play("jump_side")
 			anim.flip_h = false
 		Vector2i.LEFT:
 			jump_animation(10)
-			anim.animation = "jump_side"
+			anim.play("jump_side")
 			anim.flip_h = true
 		Vector2i.UP:
 			jump_animation(5)
-			anim.animation = "jump_top"
+			anim.play("jump_top")
 		Vector2i.DOWN:
 			jump_animation(5)
-			anim.animation = "jump_down"
+			anim.play("jump_down")
 
 func set_idle_animation():
 	match player_direction:
@@ -115,30 +115,33 @@ func shoot() -> void:
 	if remaining_bullets.size() == 0:
 		reload()
 		$ReloadAudioStream.play()
-		anim.animation = "reload"
+		anim.play("reload")
 		await anim.animation_finished
 		set_idle_animation()
 		return
-
 	match player_direction:
 		Vector2i.RIGHT:
 			anim.flip_h = false
-			anim.animation = "shootRight"
+			anim.play("aimRight")
 			await anim.animation_finished
-			set_idle_animation()
+			$ShootAudioStream.play()
+			anim.play("shootRight")
 		Vector2i.LEFT:
 			anim.flip_h = true
-			anim.animation = "shootRight"
+			anim.play("aimRight")
 			await anim.animation_finished
-			set_idle_animation()
+			$ShootAudioStream.play()
+			anim.play("shootRight")
 		Vector2i.UP:
-			anim.animation = "shootUp"
+			anim.play("aimUp")
 			await anim.animation_finished
-			set_idle_animation()
+			$ShootAudioStream.play()
+			anim.play("shootUp")
 		Vector2i.DOWN:
-			anim.animation = "shootDown"
+			anim.play("aimDown")
 			await anim.animation_finished
-			set_idle_animation()
+			$ShootAudioStream.play()
+			anim.play("shootDown")
 
 	# Choose a random bullet from the remaining bullets
 	var random_chamber = randi() % remaining_bullets.size()
@@ -152,7 +155,8 @@ func shoot() -> void:
 	bullet_instance.position = position + player_direction * (GridManager.CELL_SIZE * BulletFactory.bullet_offset_mult(bullet_type))
 	get_parent().add_child(bullet_instance)
 	bullet_instance.set_direction(player_direction)
-	$ShootAudioStream.play()
+	await anim.animation_finished
+	set_idle_animation()
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
 

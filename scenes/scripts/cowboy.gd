@@ -11,6 +11,7 @@ func do_action(target:Vector2) -> void:
 		_attack(target)
 		return
 	var dir = _choose_direction(target)
+	$JumpAudioStream.play()
 	await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( current_cell.x + dir.x, current_cell.y + dir.y))
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
@@ -33,4 +34,5 @@ func _attack(target: Vector2):
 	bullet_instance.position = position + dir * GridManager.CELL_SIZE
 	bullet_instance.set_direction(dir)
 	get_parent().add_child(bullet_instance)
+	$ShootAudioStream.play()
 	print("Cowboy attack: ", target)
