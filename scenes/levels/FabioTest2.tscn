@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cqw3p3q7i45l6"]
+[gd_scene load_steps=13 format=4 uid="uid://b15v3h2apb3my"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_fne5y"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_if0w5"]
@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="6_labad"]
 [ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="7_winb3"]
 [ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="8_gf0b3"]
-[ext_resource type="PackedScene" path="res://scenes/objects/light.tscn" id="10_if0w5"]
+[ext_resource type="PackedScene" uid="uid://d21n4d65t35t8" path="res://scenes/objects/light.tscn" id="10_if0w5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
 shader = ExtResource("5_b2lim")
