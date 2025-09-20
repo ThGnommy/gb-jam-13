@@ -43,6 +43,7 @@ func hit_something(cell: Vector2) -> void:
 		explosionSprite.global_position = world_pos_of_cell
 		explosionSprite.show()
 		explosionSprite.play("explode")
+		$AudioStreamPlayer.play()
 	
 	var explosion_animation : AnimatedSprite2D = $ExplosionSprites.get_children()[0]
 	await explosion_animation.animation_finished

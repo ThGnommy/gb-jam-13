@@ -3,10 +3,12 @@ class_name Player
 extends Area2D
 
 signal player_health_change(value)
+signal belt_changed(value)
 
 @export var animation_speed: float = 1.0
 @onready var raycast = $RayCast2D
 @onready var anim = $SpritesRoot/AnimatedSprite2D
+
 var player_direction: Vector2i
 
 #@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
@@ -60,6 +62,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func move() -> void:
 	if TurnManager.is_turn_of(TurnManager.TurnState.Player):
+		$JumpAudioStream.play()
 		moving = true
 		await GridManager.move_entity(self, GridManager.EntityType.Player, current_cell + player_direction)
 		moving = false
@@ -116,6 +119,10 @@ func shoot() -> void:
 
 	if remaining_bullets.size() == 0:
 		reload()
+		$ReloadAudioStream.play()
+		anim.animation = "reload"
+		await anim.animation_finished
+		set_idle_animation()
 		return
 
 	match player_direction:
@@ -150,6 +157,7 @@ func shoot() -> void:
 	bullet_instance.position = position + player_direction * (GridManager.CELL_SIZE * BulletFactory.bullet_offset_mult(bullet_type))
 	get_parent().add_child(bullet_instance)
 	bullet_instance.set_direction(player_direction)
+	$ShootAudioStream.play()
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
 
@@ -190,5 +198,6 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 			var index = randi_range(0, belt.size())
 			belt.remove_at(index)
 			belt.append(pickup_name)
+			belt_changed.emit(pickup_name)
 			reload()
 			

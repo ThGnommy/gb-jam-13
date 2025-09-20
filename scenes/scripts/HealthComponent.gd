@@ -18,7 +18,7 @@ func heal(healAmount : int):
 	if currentHealth + healAmount > maxHealth:
 		currentHealth = maxHealth
 	else:
-		currentHealth += maxHealth
+		currentHealth += healAmount
 	health_change.emit()
 
 func take_damage(damage: int):
