@@ -159,10 +159,10 @@ func shoot() -> void:
 	bullet_instance.position = position + player_direction * (GridManager.CELL_SIZE * BulletFactory.bullet_offset_mult(bullet_type))
 	get_parent().add_child(bullet_instance)
 	bullet_instance.set_direction(player_direction)
+	bullet_instance.bullet_destroyed.connect(_pass_turn)
 	await anim.animation_finished
 	set_idle_animation()
 	$ShootAudioStream.play()
-	bullet_instance.bullet_destroyed.connect(_pass_turn)
 
 
 func _pass_turn():

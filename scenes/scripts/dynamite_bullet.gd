@@ -46,5 +46,5 @@ func hit_something(cell: Vector2) -> void:
 	$AudioStreamPlayer.play()
 	var explosion_animation : AnimatedSprite2D = $ExplosionSprites.get_children()[0]
 	await explosion_animation.animation_finished
-	queue_free()
+	destroy()
 
