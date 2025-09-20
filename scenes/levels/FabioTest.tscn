@@ -454,7 +454,8 @@ offset_bottom = 23.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BulletBelt" parent="CanvasLayer" instance=ExtResource("11_7gwfg")]
+[node name="BulletBelt" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("11_7gwfg")]
+player = NodePath("../../Player")
 
 [node name="HealthUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("2_trxt2")]
 player = NodePath("../../Player")

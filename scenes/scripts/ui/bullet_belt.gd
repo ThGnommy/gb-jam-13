@@ -1,0 +1,18 @@
+extends Control
+
+@export var player: Player
+@onready var ui_belt = $Belt
+
+var bullet_map: Dictionary = {
+	"Regular": "res://assets/sprites/Player/ShotgunBullet.png",
+	"Dynamite": "res://assets/sprites/Player/DynamiteBullet.png",
+	"Mortar": "res://assets/sprites/Player/MortarBullet.png",
+	"Shotgun": "res://assets/sprites/Player/ShotgunBullet.png"
+}
+
+func _ready() -> void:
+	var bullet_belt = player.belt
+	
+	for i in ui_belt.get_children().size():
+		var rect: TextureRect = ui_belt.get_child(i)
+		rect.texture = load(bullet_map[bullet_belt[i]])
