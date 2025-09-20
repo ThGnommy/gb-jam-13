@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://w6mcrux13v7k" path="res://scenes/scripts/player.gd" id="1_2147m"]
 [ext_resource type="Texture2D" uid="uid://cwnorjh1oblav" path="res://assets/sprites/Player/Player-Sheet.png" id="2_2147m"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="3_h5uus"]
-[ext_resource type="Shader" path="res://shaders/2d_shadow.gdshader" id="4_q8hb4"]
+[ext_resource type="Shader" uid="uid://daa147mjlexqi" path="res://shaders/2d_shadow.gdshader" id="4_q8hb4"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="5_ksjmp"]
 [ext_resource type="AudioStream" uid="uid://b1ggs22phqd3u" path="res://assets/audio/SFX/Jump.wav" id="6_2rlf8"]
 [ext_resource type="AudioStream" uid="uid://dkjhota1tcd00" path="res://assets/audio/SFX/Shoot.wav" id="7_0ay4w"]
@@ -230,7 +230,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 6.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -247,7 +247,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_down",
-"speed": 6.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -264,7 +264,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_top",
-"speed": 6.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -278,7 +278,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump_down",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -292,7 +292,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump_side",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -306,7 +306,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump_top",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -390,7 +390,7 @@ region_rect = Rect2(0.110302, 214.6, 16.0805, 25.5397)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
 sprite_frames = SubResource("SpriteFrames_2147m")
-animation = &"aimUp"
+animation = &"jump_top"
 autoplay = "idle"
 
 [node name="JumpAudioStream" type="AudioStreamPlayer" parent="."]

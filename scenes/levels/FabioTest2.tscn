@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://cqw3p3q7i45l6"]
+[gd_scene load_steps=14 format=4 uid="uid://b15v3h2apb3my"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_fne5y"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_if0w5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/barrel.tscn" id="4_j2qi1"]
 [ext_resource type="Shader" uid="uid://ce3l41fe36x0c" path="res://shaders/palette_swap.gdshader" id="5_b2lim"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="6_labad"]
+[ext_resource type="PackedScene" uid="uid://cf7nmojtvmslc" path="res://scenes/objects/cowboy.tscn" id="7_if0w5"]
 [ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="7_winb3"]
 [ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="8_gf0b3"]
 [ext_resource type="PackedScene" path="res://scenes/objects/light.tscn" id="10_if0w5"]
@@ -357,7 +358,7 @@ texture = ExtResource("2_if0w5")
 
 [node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("enemy_array")]
 script = ExtResource("3_dyh3c")
-enemy_array = [NodePath("../Level/Enemies/Slime"), NodePath("../Level/Enemies/Slime2")]
+enemy_array = [NodePath("../Level/Enemies/Slime"), NodePath("../Level/Enemies/Slime2"), NodePath("../Level/Enemies/Cowboy")]
 metadata/_edit_lock_ = true
 
 [node name="Control" type="Control" parent="."]
@@ -406,12 +407,13 @@ metadata/_edit_lock_ = true
 position = Vector2(96, 176)
 
 [node name="Slime" parent="Level/Enemies" instance=ExtResource("7_winb3")]
-position = Vector2(384, 64)
-animation_speed = 3.0
+position = Vector2(352, 48)
 
 [node name="Slime2" parent="Level/Enemies" instance=ExtResource("7_winb3")]
 position = Vector2(352, 16)
-animation_speed = 3.0
+
+[node name="Cowboy" parent="Level/Enemies" instance=ExtResource("7_if0w5")]
+position = Vector2(384, 48)
 
 [node name="Objects" type="Node2D" parent="Level"]
 position = Vector2(368, 224)
