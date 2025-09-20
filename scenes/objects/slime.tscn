@@ -1,8 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbjeql1p5x66x"]
+[gd_scene load_steps=11 format=3 uid="uid://bbjeql1p5x66x"]
 
 [ext_resource type="Script" uid="uid://pt31v6o02cc7" path="res://scenes/scripts/slime.gd" id="1_82kmp"]
 [ext_resource type="Texture2D" uid="uid://ds0wjj48ohst4" path="res://assets/sprites/Enemies/Slime-Sheet.png" id="2_lp353"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="3_q2f8i"]
+[ext_resource type="Shader" uid="uid://daa147mjlexqi" path="res://shaders/2d_shadow.gdshader" id="3_sxr25"]
+[ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="4_unfyt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2147m"]
+size = Vector2(16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ds0xf"]
+shader = ExtResource("3_sxr25")
+shader_parameter/source_palette = ExtResource("4_unfyt")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82kmp"]
 atlas = ExtResource("2_lp353")
@@ -26,20 +35,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2147m"]
-size = Vector2(16, 16)
-
 [node name="Slime" type="Area2D"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_82kmp")
-metadata/_edit_group_ = true
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_q574h")
-animation = &"idle"
-autoplay = "idle"
-frame_progress = 0.360026
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -55,3 +54,19 @@ metadata/_edit_group_ = true
 [node name="HealthComponent" parent="." instance=ExtResource("3_q2f8i")]
 currentHealth = 2
 maxHealth = 2
+
+[node name="SpritesRoot" type="Node2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="Shadow" type="Sprite2D" parent="SpritesRoot"]
+material = SubResource("ShaderMaterial_ds0xf")
+texture = ExtResource("2_lp353")
+region_enabled = true
+region_rect = Rect2(0, 288, 32, 32)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
+sprite_frames = SubResource("SpriteFrames_q574h")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.360026
+metadata/_edit_group_ = true
