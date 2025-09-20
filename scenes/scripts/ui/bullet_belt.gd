@@ -11,8 +11,14 @@ var bullet_map: Dictionary = {
 }
 
 func _ready() -> void:
+	update_belt()
+
+func update_belt() -> void:
 	var bullet_belt = player.belt
 	
 	for i in ui_belt.get_children().size():
 		var rect: TextureRect = ui_belt.get_child(i)
 		rect.texture = load(bullet_map[bullet_belt[i]])
+
+func _on_player_belt_changed(value: Variant) -> void:
+	update_belt()

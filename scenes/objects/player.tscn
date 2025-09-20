@@ -116,6 +116,18 @@ region = Rect2(16, 192, 16, 24)
 atlas = ExtResource("2_2147m")
 region = Rect2(32, 192, 16, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_yoew3"]
+atlas = ExtResource("2_2147m")
+region = Rect2(0, 312, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpwpc"]
+atlas = ExtResource("2_2147m")
+region = Rect2(16, 312, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mbqu"]
+atlas = ExtResource("2_2147m")
+region = Rect2(32, 312, 16, 24)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2iaiu"]
 atlas = ExtResource("2_2147m")
 region = Rect2(0, 72, 16, 24)
@@ -261,6 +273,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_yoew3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpwpc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mbqu")
+}],
+"loop": false,
+"name": &"reload",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_2iaiu")
 }, {
 "duration": 1.0,
@@ -343,7 +369,7 @@ position = Vector2(0, -4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
 sprite_frames = SubResource("SpriteFrames_2147m")
-animation = &"shootDown"
+animation = &"reload"
 autoplay = "idle"
 
 [node name="Shadow" type="Sprite2D" parent="SpritesRoot"]

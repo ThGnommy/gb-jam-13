@@ -3,6 +3,7 @@ class_name Player
 extends Area2D
 
 signal player_health_change(value)
+signal belt_changed(value)
 
 @export var animation_speed: float = 1.0
 @onready var raycast = $RayCast2D
@@ -114,6 +115,9 @@ func shoot() -> void:
 	if remaining_bullets.size() == 0:
 		reload()
 		$ReloadAudioStream.play()
+		anim.animation = "reload"
+		await anim.animation_finished
+		set_idle_animation()
 		return
 
 	$ShootAudioStream.play()
@@ -156,7 +160,7 @@ func reload() -> void:
 	remaining_bullets.clear()
 	remaining_bullets = belt.duplicate()
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
-
+	
 func die():
 	return
 	queue_free()
@@ -180,5 +184,6 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 			var index = randi_range(0, belt.size())
 			belt.remove_at(index)
 			belt.append(pickup_name)
+			belt_changed.emit(pickup_name)
 			reload()
 			
