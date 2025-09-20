@@ -1,9 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://cf7nmojtvmslc"]
+[gd_scene load_steps=14 format=3 uid="uid://cf7nmojtvmslc"]
 
 [ext_resource type="Script" uid="uid://dwnv72mh1hp0s" path="res://scenes/scripts/cowboy.gd" id="1_82b1i"]
 [ext_resource type="Texture2D" uid="uid://cbcup720qa3wd" path="res://assets/sprites/Enemies/Cowboy-Sheet.png" id="1_awf0c"]
-[ext_resource type="AudioStream" uid="uid://dkjhota1tcd00" path="res://assets/audio/SFX/Shoot.wav" id="3_8s8x2"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="3_8s8x2"]
+[ext_resource type="Shader" uid="uid://daa147mjlexqi" path="res://shaders/2d_shadow.gdshader" id="3_fjs6v"]
+[ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="4_5j0ne"]
+[ext_resource type="Texture2D" uid="uid://cwnorjh1oblav" path="res://assets/sprites/Player/Player-Sheet.png" id="5_qmwv1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s8x2"]
+size = Vector2(24, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_81wja"]
+shader = ExtResource("3_fjs6v")
+shader_parameter/source_palette = ExtResource("4_5j0ne")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82b1i"]
 atlas = ExtResource("1_awf0c")
@@ -41,18 +50,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s8x2"]
-size = Vector2(24, 24)
-
 [node name="Cowboy" type="Area2D"]
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("1_82b1i")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_82b1i")
-animation = &"idle"
-autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8s8x2")
@@ -65,8 +66,22 @@ collide_with_areas = true
 metadata/_edit_group_ = true
 
 [node name="JumpAudioStream" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_8s8x2")
 
 [node name="ShootAudioStream" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_8s8x2")
+
 [node name="HealthComponent" parent="." instance=ExtResource("3_8s8x2")]
+
+[node name="SpritesRoot" type="Node2D" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="SpritesRoot"]
+material = SubResource("ShaderMaterial_81wja")
+position = Vector2(0, -4)
+texture = ExtResource("5_qmwv1")
+region_enabled = true
+region_rect = Rect2(0.110302, 214.6, 16.0805, 25.5397)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
+position = Vector2(0, -4)
+sprite_frames = SubResource("SpriteFrames_82b1i")
+animation = &"idle"
+autoplay = "idle"
