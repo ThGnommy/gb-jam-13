@@ -1,8 +1,21 @@
 class_name Slime
 extends Enemy
 
+var tilemap_layer: TileMapLayer = null
+
+var pathfinding : AStarGrid2D = AStarGrid2D.new()
+
 func _ready() -> void:
+	tilemap_layer = %WallsLayer 
 	super._ready()
+	pathfinding.region = tilemap_layer.get_used_rect()
+	pathfinding.cell_size = Vector2(16,16)
+	pathfinding.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER
+	pathfinding.update()
+
+	for cell in tilemap_layer.get_used_cells():
+		pathfinding.set_point_solid(cell, true)
+
 
 func die() -> void:
 	GridManager.cleanup_cell(current_cell)
@@ -17,9 +30,16 @@ func do_action(target: Vector2) -> void:
 		if _is_in_range(target):
 			_attack(target)
 		else:
-			var dir = _choose_direction(target)
-			print(dir)
-			await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( current_cell.x + dir.x, current_cell.y + dir.y))
+			print(position, target)
+			
+
+			print(current_cell, GridManager.world_to_cell(target))
+
+			var path_to_player = pathfinding.get_point_path(position / 16, target / 16)
+			path_to_player.remove_at(0)
+			if not path_to_player.is_empty():
+				print(path_to_player[0]/16)
+				await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( path_to_player[0]/16 ))
 	
 	if TurnManager.is_turn_of(TurnManager.TurnState.Enemies):
 	

@@ -1,17 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://di4djxggbiuil"]
+[gd_scene load_steps=14 format=3 uid="uid://di4djxggbiuil"]
 
-[ext_resource type="Script" uid="uid://viygja2mg24h" path="res://scenes/scripts/mortar_bullet.gd" id="1_sonqj"]
-[ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="2_ibs3r"]
+[ext_resource type="Script" uid="uid://viygja2mg24h" path="res://scenes/scripts/mortar_bullet.gd" id="1_7dpk6"]
+[ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="2_0ol4g"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sonqj"]
-atlas = ExtResource("2_ibs3r")
-region = Rect2(48, 24, 16, 24)
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dpk6"]
+atlas = ExtResource("2_0ol4g")
+region = Rect2(72, 24, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_26lx3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sonqj")
+"texture": SubResource("AtlasTexture_7dpk6")
 }],
 "loop": true,
 "name": &"fly",
@@ -22,20 +22,32 @@ animations = [{
 size = Vector2(10, 7)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibs3r"]
-atlas = ExtResource("2_ibs3r")
-region = Rect2(0, 48, 16, 24)
+atlas = ExtResource("2_0ol4g")
+region = Rect2(0, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o25ea"]
-atlas = ExtResource("2_ibs3r")
-region = Rect2(16, 48, 16, 24)
+atlas = ExtResource("2_0ol4g")
+region = Rect2(24, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x2byj"]
-atlas = ExtResource("2_ibs3r")
-region = Rect2(32, 48, 16, 24)
+atlas = ExtResource("2_0ol4g")
+region = Rect2(48, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vhtca"]
-atlas = ExtResource("2_ibs3r")
-region = Rect2(48, 48, 16, 24)
+atlas = ExtResource("2_0ol4g")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06rdp"]
+atlas = ExtResource("2_0ol4g")
+region = Rect2(96, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3noek"]
+atlas = ExtResource("2_0ol4g")
+region = Rect2(120, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8tyl"]
+atlas = ExtResource("2_0ol4g")
+region = Rect2(144, 48, 24, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_06rdp"]
 animations = [{
@@ -51,14 +63,23 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vhtca")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06rdp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3noek")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8tyl")
 }],
 "loop": false,
 "name": &"explode",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="MortarBullet" type="Node2D"]
-script = ExtResource("1_sonqj")
+script = ExtResource("1_7dpk6")
 
 [node name="FlySprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_26lx3")

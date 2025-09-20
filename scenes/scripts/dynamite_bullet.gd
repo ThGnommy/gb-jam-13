@@ -8,6 +8,8 @@ func _ready() -> void:
 	TurnManager.add_entity_from_current_turn(self)
 	velocity = 150
 	damage = 2
+	range = 2 
+	start_cell = GridManager.world_to_cell(global_position)
 
 	# Hide all explosion sprites initially
 	for explosionSprite in $ExplosionSprites.get_children():
@@ -40,7 +42,7 @@ func hit_something(cell: Vector2) -> void:
 		# Move the explosion sprite to the correct position and play the animation
 		explosionSprite.global_position = world_pos_of_cell
 		explosionSprite.show()
-		explosionSprite.animation = "explode"
+		explosionSprite.play("explode")
 	
 	var explosion_animation : AnimatedSprite2D = $ExplosionSprites.get_children()[0]
 	await explosion_animation.animation_finished

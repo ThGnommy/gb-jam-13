@@ -5,13 +5,14 @@ extends Area2D
 @export var animation_speed: float = 1.0
 @onready var raycast = $RayCast2D
 @onready var anim = $AnimatedSprite2D
+var player_direction: Vector2i
 
-@onready var belt : Array = ["Regular", "Mortar", "Dynamite", "Regular", "Dynamite", "Mortar"]
+#@onready var belt : Array = ["Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun"]
+@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
+
 var remaining_bullets : Array
 
 var current_cell: Vector2i
-
-signal player_moved
 
 var moving: bool = false
 
@@ -22,14 +23,8 @@ var inputs: Dictionary = {
 	"down": Vector2i.DOWN
 }
 
-var shootInputs: Dictionary = {
-	"shootRight" : Vector2.RIGHT,
-	"shootLeft" : Vector2.LEFT,
-	"shootUp" : Vector2.UP,
-	"shootDown" : Vector2.DOWN
-}
-
 func _ready() -> void:
+	player_direction = Vector2.RIGHT
 	TurnManager.add_entity_from_current_turn(self)
 	current_cell = GridManager.world_to_cell(global_position)
 	GridManager.occupy_cell(current_cell, GridManager.EntityType.Player, self)
@@ -42,26 +37,29 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	for dir in inputs.keys():
 		if event.is_action_pressed(dir):
-			move(dir)
-			animate(dir)
+			set_player_direction(dir)
+			set_idle_animation()
 
-func _process(delta: float) -> void:
-	for dir in shootInputs.keys():
-		if Input.is_action_just_pressed(dir):
-			shoot(shootInputs[dir])
+	if event.is_action_pressed("fire"):
+		shoot()
 
-func move(dir) -> void:
+	if event.is_action_pressed("move"):
+		if not TurnManager.is_turn_of(TurnManager.TurnState.Player):
+			return
+		move()
+		animate()
+		set_idle_animation()
+
+func move() -> void:
 	if TurnManager.is_turn_of(TurnManager.TurnState.Player):
 		moving = true
-		await GridManager.move_entity(self, GridManager.EntityType.Player, current_cell + inputs[dir])
+		await GridManager.move_entity(self, GridManager.EntityType.Player, current_cell + player_direction)
 		moving = false
-		anim.animation = "idle"
 		TurnManager.remove_entity_from_current_turn(self)
 		TurnManager.try_update_to_next_turn()
 
-
-func animate(dir) -> void:
-	match inputs[dir]:
+func animate() -> void:
+	match player_direction:
 		Vector2i.RIGHT:
 			jump_animation(10)
 			anim.animation = "jump_side"
@@ -77,6 +75,19 @@ func animate(dir) -> void:
 			jump_animation(5)
 			anim.animation = "jump_down"
 
+func set_idle_animation():
+	match player_direction:
+		Vector2i.RIGHT:
+			anim.play("idle")
+			anim.flip_h = false
+		Vector2i.LEFT:
+			anim.play("idle")
+			anim.flip_h = true
+		Vector2i.UP:
+			anim.play("idle_top")
+		Vector2i.DOWN:
+			anim.play("idle_down")
+
 func jump_animation(px_height: int) -> void:
 	var jump_tween = create_tween()
 	jump_tween.tween_property(anim, "position:y", -px_height, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
@@ -87,7 +98,7 @@ func update_raycast(dir) -> void:
 	raycast.target_position = inputs[dir] * GridManager.CELL_SIZE / 2
 	raycast.force_raycast_update()
 
-func shoot(dir: Vector2) -> void:
+func shoot() -> void:
 	if TurnManager.is_turn_of(TurnManager.TurnState.Enemies):
 		return
 
@@ -95,18 +106,26 @@ func shoot(dir: Vector2) -> void:
 		reload()
 		return
 
-	match dir:
-		Vector2.RIGHT:
+	match player_direction:
+		Vector2i.RIGHT:
 			anim.flip_h = false
 			anim.animation = "shootRight"
-		Vector2.LEFT:
+			await anim.animation_finished
+			set_idle_animation()
+		Vector2i.LEFT:
 			anim.flip_h = true
 			anim.animation = "shootRight"
-		Vector2.UP:
+			await anim.animation_finished
+			set_idle_animation()
+		Vector2i.UP:
 			anim.animation = "shootUp"
-		Vector2.DOWN:
+			await anim.animation_finished
+			set_idle_animation()
+		Vector2i.DOWN:
 			anim.animation = "shootDown"
-		
+			await anim.animation_finished
+			set_idle_animation()
+
 	# Choose a random bullet from the remaining bullets
 	var random_chamber = randi() % remaining_bullets.size()
 	var bullet_type = remaining_bullets[random_chamber]
@@ -116,8 +135,8 @@ func shoot(dir: Vector2) -> void:
 
 	# Create and shoot the bullet
 	var bullet_instance : Bullet = BulletFactory.create_bullet(bullet_type)
-	bullet_instance.position = position + dir * GridManager.CELL_SIZE
-	bullet_instance.set_direction(dir)
+	bullet_instance.position = position + player_direction * (GridManager.CELL_SIZE * BulletFactory.bullet_offset_mult(bullet_type))
+	bullet_instance.set_direction(player_direction)
 	get_parent().add_child(bullet_instance)
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
@@ -127,4 +146,8 @@ func reload() -> void:
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
 
 func die():
+	return
 	queue_free()
+
+func set_player_direction(dir) -> void:
+	player_direction = inputs[dir]

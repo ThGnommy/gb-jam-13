@@ -10,6 +10,7 @@ enum EntityType {
 
 @export var enemy_array : Array[Enemy] = []
 @export var grid_size = Vector2i(128, 128)
+
 var player : Player
 
 var CellData := {
@@ -21,8 +22,12 @@ var CellData := {
 const CELL_SIZE : int = 16
 var occupancy_map : Array = []
 
+
 func _init() -> void:
 	map_matrix_init()
+	
+func _ready() -> void:
+	fill_matrix_with_walls()
 
 func set_player(p: Player) -> void:
 	player = p
@@ -106,8 +111,17 @@ func cell_to_world(cell: Vector2i) -> Vector2i:
 func world_to_cell(pos: Vector2) -> Vector2i:
 	return Vector2i(roundi(pos.x / CELL_SIZE), roundi(pos.y / CELL_SIZE))
 
+func fill_matrix_with_walls():
+	var tilemap_walls: TileMapLayer = %WallsLayer
+	
+	if tilemap_walls:
+		var used_cells = tilemap_walls.get_used_cells()
+		
+		for cell in used_cells:
+			GridManager.occupy_cell(cell, GridManager.EntityType.Environment, Node2D.new())
+
+####### debug grid ######
 func _draw():
-	return
 	var half_cell : float = float(CELL_SIZE) * 0.5
 	for x in range(grid_size.x):
 		var start = Vector2(x * CELL_SIZE - half_cell, 0)

@@ -11,9 +11,14 @@ var healthComponentPath = "HealthComponent.tscn"
 var should_stop = false
 var velocity = 200
 var damage = 1
+var start_cell = Vector2i.ZERO
+
+# Maximum distance the bullet can travel before exploding
+var range = 10
 
 func _ready() -> void:
 	TurnManager.add_entity_from_current_turn(self)
+	start_cell = GridManager.world_to_cell(global_position)
 	$ExplosionSprite.hide()
 
 func set_direction(dir : Vector2) -> void:
@@ -43,9 +48,13 @@ func _process(delta: float) -> void:
 		hit_something(current_cell)
 
 func verify_hit(cell: Vector2) -> bool:
-	return !GridManager.is_cell_free(cell)
+	return !GridManager.is_cell_free(cell) or cell.distance_to(start_cell) >= range 
 
 func hit_something(cell: Vector2) -> void:
+	if GridManager.is_cell_free(cell):
+		play_hit_animation_and_free()
+		return
+
 	var hitEntity = GridManager.get_entity_at_cell(cell)
 	var healthComp = hitEntity.get_node_or_null("HealthComponent")
 	if healthComp:

@@ -348,7 +348,7 @@ terrain_set_0/terrain_0/name = "Walls0"
 terrain_set_0/terrain_0/color = Color(0.31132, 0.274208, 0.840594, 1)
 sources/0 = SubResource("TileSetAtlasSource_7lrji")
 
-[node name="Main" type="Node2D"]
+[node name="Main2" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_72ix8")]
 position = Vector2(80, 80)

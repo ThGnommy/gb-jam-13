@@ -1,15 +1,15 @@
 extends DynamiteBullet
 
-@export var animation_speed: float = 1.7
-var start_cell: Vector2i
-var mortar_range: int = 4
+@export var animation_speed: float = 1
 
 func _ready() -> void:
 	super._ready()
 	damage = 1
 	velocity = 100
-	$FlySprite.z_index = 1
+	range = 5 
 	start_cell = GridManager.world_to_cell(global_position)
+
+	$FlySprite.z_index = 1
 
 	# Mortar bullet explodes in a 9-cell area (the target cell and the 8 surrounding cells)
 	other_cells_modifier = [Vector2(0, -1), Vector2(0, 1), Vector2(1, 0), Vector2(-1, 0),Vector2(1, 1), Vector2(1, -1), Vector2(-1, 1), Vector2(-1, -1)]
@@ -23,7 +23,7 @@ func fly_animation(px_height: int) -> void:
 func verify_hit(cell: Vector2) -> bool:
 	# Mortar bullets only explode when they their target cell, regardless of whether it's free or not
 	var distance_from_start = cell.distance_to(start_cell)
-	return distance_from_start == mortar_range
+	return distance_from_start == range
 
 func set_direction(dir : Vector2) -> void:
 	super.set_direction(dir)
