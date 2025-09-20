@@ -32,6 +32,34 @@ _data = {
 &"jump": SubResource("Animation_2147m")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2rlf8"]
+shader = ExtResource("4_q8hb4")
+shader_parameter/source_palette = ExtResource("5_ksjmp")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2iaiu"]
+atlas = ExtResource("2_2147m")
+region = Rect2(0, 72, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae4o8"]
+atlas = ExtResource("2_2147m")
+region = Rect2(16, 72, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37b34"]
+atlas = ExtResource("2_2147m")
+region = Rect2(0, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfdn7"]
+atlas = ExtResource("2_2147m")
+region = Rect2(16, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kyf6x"]
+atlas = ExtResource("2_2147m")
+region = Rect2(0, 120, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dywr"]
+atlas = ExtResource("2_2147m")
+region = Rect2(16, 120, 16, 24)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2147m"]
 atlas = ExtResource("2_2147m")
 region = Rect2(0, 0, 16, 24)
@@ -128,14 +156,6 @@ region = Rect2(16, 312, 16, 24)
 atlas = ExtResource("2_2147m")
 region = Rect2(32, 312, 16, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2iaiu"]
-atlas = ExtResource("2_2147m")
-region = Rect2(0, 72, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ae4o8"]
-atlas = ExtResource("2_2147m")
-region = Rect2(16, 72, 16, 24)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4pvk"]
 atlas = ExtResource("2_2147m")
 region = Rect2(32, 72, 16, 24)
@@ -144,14 +164,6 @@ region = Rect2(32, 72, 16, 24)
 atlas = ExtResource("2_2147m")
 region = Rect2(48, 72, 16, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_37b34"]
-atlas = ExtResource("2_2147m")
-region = Rect2(0, 24, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jfdn7"]
-atlas = ExtResource("2_2147m")
-region = Rect2(16, 24, 16, 24)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_xeqme"]
 atlas = ExtResource("2_2147m")
 region = Rect2(32, 24, 16, 24)
@@ -159,14 +171,6 @@ region = Rect2(32, 24, 16, 24)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x3mv4"]
 atlas = ExtResource("2_2147m")
 region = Rect2(48, 24, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kyf6x"]
-atlas = ExtResource("2_2147m")
-region = Rect2(0, 120, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6dywr"]
-atlas = ExtResource("2_2147m")
-region = Rect2(16, 120, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_befyu"]
 atlas = ExtResource("2_2147m")
@@ -178,6 +182,39 @@ region = Rect2(48, 120, 16, 24)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2147m"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2iaiu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae4o8")
+}],
+"loop": false,
+"name": &"aimDown",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37b34")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfdn7")
+}],
+"loop": false,
+"name": &"aimRight",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kyf6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dywr")
+}],
+"loop": false,
+"name": &"aimUp",
+"speed": 8.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2147m")
@@ -287,12 +324,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2iaiu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ae4o8")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_g4pvk")
 }, {
 "duration": 1.0,
@@ -303,12 +334,6 @@ animations = [{
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_37b34")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jfdn7")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_xeqme")
 }, {
@@ -321,12 +346,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kyf6x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6dywr")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_befyu")
 }, {
 "duration": 1.0,
@@ -336,10 +355,6 @@ animations = [{
 "name": &"shootUp",
 "speed": 8.0
 }]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2rlf8"]
-shader = ExtResource("4_q8hb4")
-shader_parameter/source_palette = ExtResource("5_ksjmp")
 
 [node name="Player" type="Area2D"]
 collision_mask = 2
@@ -367,16 +382,16 @@ maxHealth = 5
 [node name="SpritesRoot" type="Node2D" parent="."]
 position = Vector2(0, -4)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
-sprite_frames = SubResource("SpriteFrames_2147m")
-animation = &"reload"
-autoplay = "idle"
-
 [node name="Shadow" type="Sprite2D" parent="SpritesRoot"]
 material = SubResource("ShaderMaterial_2rlf8")
 texture = ExtResource("2_2147m")
 region_enabled = true
 region_rect = Rect2(0.110302, 214.6, 16.0805, 25.5397)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
+sprite_frames = SubResource("SpriteFrames_2147m")
+animation = &"aimUp"
+autoplay = "idle"
 
 [node name="JumpAudioStream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_2rlf8")

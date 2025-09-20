@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cf7nmojtvmslc"]
+[gd_scene load_steps=10 format=3 uid="uid://cf7nmojtvmslc"]
 
 [ext_resource type="Script" uid="uid://dwnv72mh1hp0s" path="res://scenes/scripts/cowboy.gd" id="1_82b1i"]
 [ext_resource type="Texture2D" uid="uid://cbcup720qa3wd" path="res://assets/sprites/Enemies/Cowboy-Sheet.png" id="1_awf0c"]
+[ext_resource type="AudioStream" uid="uid://dkjhota1tcd00" path="res://assets/audio/SFX/Shoot.wav" id="3_8s8x2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82b1i"]
 atlas = ExtResource("1_awf0c")
@@ -61,3 +62,9 @@ target_position = Vector2(0, 12)
 collision_mask = 3
 collide_with_areas = true
 metadata/_edit_group_ = true
+
+[node name="JumpAudioStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8s8x2")
+
+[node name="ShootAudioStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_8s8x2")
