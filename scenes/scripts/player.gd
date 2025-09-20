@@ -9,9 +9,11 @@ signal player_health_change(value)
 @onready var anim = $SpritesRoot/AnimatedSprite2D
 var player_direction: Vector2i
 
+#@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
 #@onready var belt : Array = ["Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun"]
 @onready var belt : Array = ["Dynamite", "Dynamite", "Dynamite", "Dynamite", "Dynamite"]
-
+# @onready var belt : Array = ["Regular", "Mortar", "Dynamite", "Regular", "Dynamite", "Mortar"]
+#
 var remaining_bullets : Array
 
 var current_cell: Vector2i
@@ -144,6 +146,7 @@ func shoot() -> void:
 	TurnManager.try_update_to_next_turn()
 
 func reload() -> void:
+	remaining_bullets.clear()
 	remaining_bullets = belt.duplicate()
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
 
@@ -156,3 +159,17 @@ func set_player_direction(dir) -> void:
 
 func _on_health_component_health_change() -> void:
 	player_health_change.emit($HealthComponent.currentHealth)
+
+func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	var parent = area.get_parent()
+	if parent is PickUp:
+		var pickup_name = parent.pickup()
+		parent.delete()
+		if pickup_name == "Lucky":
+			print("Win")
+		else:
+			var index = randi_range(0, belt.size())
+			belt.remove_at(index)
+			belt.append(pickup_name)
+			reload()
+			

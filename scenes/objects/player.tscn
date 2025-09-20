@@ -350,3 +350,5 @@ material = SubResource("ShaderMaterial_2rlf8")
 texture = ExtResource("2_2147m")
 region_enabled = true
 region_rect = Rect2(0.11030197, 214.60016, 16.080528, 25.539673)
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
