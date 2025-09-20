@@ -19,6 +19,7 @@ var range = 10
 func _ready() -> void:
 	TurnManager.add_entity_from_current_turn(self)
 	start_cell = GridManager.world_to_cell(global_position)
+	current_cell = start_cell
 	$ExplosionSprite.hide()
 
 func set_direction(dir : Vector2) -> void:
@@ -63,8 +64,8 @@ func hit_something(cell: Vector2) -> void:
 
 func play_hit_animation_and_free() -> void:
 	$ExplosionSprite.show()
-	$ExplosionSprite.play("explode")
 	$FlySprite.hide()
+	$ExplosionSprite.play("explode")
 	await $ExplosionSprite.animation_finished
 	queue_free()
 

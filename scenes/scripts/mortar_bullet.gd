@@ -1,13 +1,14 @@
 extends DynamiteBullet
 
-@export var animation_speed: float = 1
+var target_distance : float = 0
 
 func _ready() -> void:
 	super._ready()
-	damage = 1
-	velocity = 100
-	range = 5 
+	damage = 2
+	velocity = 150
+	range = 4 
 	start_cell = GridManager.world_to_cell(global_position)
+	target_distance = float(range * GridManager.CELL_SIZE) + float(GridManager.CELL_SIZE * 0.5)
 
 	$FlySprite.z_index = 1
 
@@ -16,15 +17,23 @@ func _ready() -> void:
 
 func fly_animation(px_height: int) -> void:
 	var jump_tween = create_tween()
-	jump_tween.tween_property($FlySprite, "position:y", -px_height, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	jump_tween.tween_property($FlySprite, "position:y", 0, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+
+	var animation_duration = (target_distance/ velocity)
+
+	jump_tween.tween_property($FlySprite, "position:y", -px_height, animation_duration/2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	jump_tween.tween_property($FlySprite, "position:y", 0, animation_duration/2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await jump_tween.finished
 
 func verify_hit(cell: Vector2) -> bool:
 	# Mortar bullets only explode when they their target cell, regardless of whether it's free or not
-	var distance_from_start = cell.distance_to(start_cell)
-	return distance_from_start == range
+	var start_position = GridManager.cell_to_world(start_cell)
+	var distance_from_start : float = global_position.distance_to(start_position)
+	return distance_from_start >= target_distance - GridManager.CELL_SIZE * 0.5
 
 func set_direction(dir : Vector2) -> void:
 	super.set_direction(dir)
 	fly_animation(20)
+
+func hit_something(cell: Vector2) -> void:
+	super.hit_something(cell)
+	$ShadowSprite.hide()
