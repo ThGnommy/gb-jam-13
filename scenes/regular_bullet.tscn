@@ -1,7 +1,25 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4ng3uy1wbhyj"]
+[gd_scene load_steps=11 format=3 uid="uid://c4ng3uy1wbhyj"]
 
 [ext_resource type="Script" uid="uid://b0ah5jdiysjuf" path="res://scenes/scripts/bullet.gd" id="1_51yvh"]
 [ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="2_ckyvv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
+atlas = ExtResource("2_ckyvv")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26lx3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tamys")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkf8s"]
+size = Vector2(10, 7)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_51yvh"]
 atlas = ExtResource("2_ckyvv")
@@ -19,11 +37,7 @@ region = Rect2(32, 48, 16, 24)
 atlas = ExtResource("2_ckyvv")
 region = Rect2(48, 48, 16, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
-atlas = ExtResource("2_ckyvv")
-region = Rect2(0, 0, 16, 24)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_26lx3"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_v7j8y"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -41,25 +55,14 @@ animations = [{
 "loop": false,
 "name": &"explode",
 "speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_tamys")
-}],
-"loop": true,
-"name": &"fly",
-"speed": 5.0
 }]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkf8s"]
-size = Vector2(10, 7)
 
 [node name="RegularBullet" type="Node2D"]
 script = ExtResource("1_51yvh")
 
 [node name="FlySprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_26lx3")
-animation = &"explode"
+animation = &"fly"
 autoplay = "fly"
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -67,5 +70,9 @@ autoplay = "fly"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_mkf8s")
 disabled = true
+
+[node name="ExplosionSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_v7j8y")
+animation = &"explode"
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

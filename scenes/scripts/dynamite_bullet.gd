@@ -1,5 +1,9 @@
 extends Bullet
 
+class_name DynamiteBullet
+
+var other_cells_modifier : Array = [Vector2(0, -1), Vector2(0, 1), Vector2(1, 0), Vector2(-1, 0)]
+
 func _ready() -> void:
 	TurnManager.add_entity_from_current_turn(self)
 	velocity = 150
@@ -14,11 +18,11 @@ func _process(delta: float) -> void:
 
 func hit_something(cell: Vector2) -> void:
 	$FlySprite.hide()
-	var north_cell = cell + Vector2(0, -1)
-	var south_cell = cell + Vector2(0, 1)
-	var east_cell = cell + Vector2(1, 0)
-	var west_cell = cell + Vector2(-1, 0)
-	var hit_cells = [cell, north_cell, south_cell, east_cell, west_cell]
+
+	var hit_cells = [cell]
+
+	for modifier in other_cells_modifier:
+		hit_cells.append(cell + modifier)
 
 	for hit_cell in hit_cells:
 		if GridManager.is_cell_outside_bounds(hit_cell):
@@ -31,6 +35,7 @@ func hit_something(cell: Vector2) -> void:
 
 		var world_pos_of_cell = GridManager.cell_to_world(hit_cell)
 		var explosionSprite : AnimatedSprite2D = $ExplosionSprites.get_children()[hit_cells.find(hit_cell)]
+		
 		# Move the explosion sprite to the correct position and play the animation
 		explosionSprite.global_position = world_pos_of_cell
 		explosionSprite.show()
@@ -39,9 +44,6 @@ func hit_something(cell: Vector2) -> void:
 	var explosion_animation : AnimatedSprite2D = $ExplosionSprites.get_children()[0]
 	await explosion_animation.animation_finished
 	queue_free()
-
-func play_hit_animation_and_wait() -> void:
-	pass
 
 func _on_tree_exited() -> void:
 	TurnManager.remove_entity_from_current_turn(self)

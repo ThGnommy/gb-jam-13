@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://di4djxggbiuil"]
+
+[ext_resource type="Script" uid="uid://viygja2mg24h" path="res://scenes/scripts/mortar_bullet.gd" id="1_sonqj"]
+[ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="2_ibs3r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sonqj"]
+atlas = ExtResource("2_ibs3r")
+region = Rect2(48, 24, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_26lx3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sonqj")
+}],
+"loop": true,
+"name": &"fly",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mkf8s"]
+size = Vector2(10, 7)
+
+[node name="MortarBullet" type="Node2D"]
+script = ExtResource("1_sonqj")
+
+[node name="FlySprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_26lx3")
+animation = &"fly"
+autoplay = "fly"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_mkf8s")
+disabled = true
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
