@@ -83,6 +83,6 @@ theme = ExtResource("2_e2p27")
 text = "Quit"
 flat = true
 
-[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_reload_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_reload_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
