@@ -19,6 +19,7 @@ func heal(healAmount : int):
 		currentHealth = maxHealth
 	else:
 		currentHealth += maxHealth
+	health_change.emit()
 
 func take_damage(damage: int):
 	assert(damage >= 0)

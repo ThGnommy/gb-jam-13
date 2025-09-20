@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://sbgjlu5t4a8c"]
+[gd_scene load_steps=19 format=4 uid="uid://sbgjlu5t4a8c"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_du1ks"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_hyrkl"]
@@ -11,6 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="8_jtsux"]
 [ext_resource type="Script" uid="uid://dwcde8tcd6suj" path="res://scenes/scripts/debug_turn_ui.gd" id="9_55r75"]
 [ext_resource type="PackedScene" uid="uid://d1s0l4yeb3yqe" path="res://scenes/UI/bullet_belt.tscn" id="11_7gwfg"]
+[ext_resource type="PackedScene" path="res://scenes/levels/dynamite-pickup.tscn" id="12_tr5mw"]
+[ext_resource type="PackedScene" path="res://scenes/levels/shotgun-pickup.tscn" id="13_cssd7"]
+[ext_resource type="PackedScene" path="res://scenes/levels/Beer-pickup.tscn" id="14_oumif"]
+[ext_resource type="PackedScene" path="res://scenes/levels/lucky-pickup.tscn" id="15_fsg2e"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
 shader = ExtResource("5_bux3u")
@@ -364,9 +368,8 @@ visible = false
 scale = Vector2(10, 10)
 texture = ExtResource("2_hyrkl")
 
-[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("enemy_array")]
+[node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("3_ecnhu")
-enemy_array = [NodePath("../Enemies/Slime"), NodePath("../Enemies/Slime2")]
 metadata/_edit_lock_ = true
 
 [node name="Objects" type="Node2D" parent="."]
@@ -454,7 +457,29 @@ offset_bottom = 23.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BulletBelt" parent="CanvasLayer" instance=ExtResource("11_7gwfg")]
+[node name="BulletBelt" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("11_7gwfg")]
+player = NodePath("../../Player")
 
 [node name="HealthUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("2_trxt2")]
 player = NodePath("../../Player")
+
+[node name="Dynamite-Pickup" parent="." instance=ExtResource("12_tr5mw")]
+position = Vector2(256, 32)
+
+[node name="Dynamite-Pickup2" parent="." instance=ExtResource("12_tr5mw")]
+position = Vector2(272, 32)
+
+[node name="Dynamite-Pickup3" parent="." instance=ExtResource("12_tr5mw")]
+position = Vector2(256, 16)
+
+[node name="Dynamite-Pickup4" parent="." instance=ExtResource("12_tr5mw")]
+position = Vector2(272, 16)
+
+[node name="Shotgun-pickup" parent="." instance=ExtResource("13_cssd7")]
+position = Vector2(256, 64)
+
+[node name="Shotgun-pickup2" parent="." instance=ExtResource("14_oumif")]
+position = Vector2(304, 112)
+
+[node name="Lucky-Pickup" parent="." instance=ExtResource("15_fsg2e")]
+position = Vector2(368, 80)

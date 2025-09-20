@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://t8pwpswdo6ef"]
+
+[ext_resource type="Script" uid="uid://f6343bibjii1" path="res://scenes/scripts/pick_up.gd" id="1_g5gnn"]
+[ext_resource type="Texture2D" uid="uid://d2m13fddmqhpn" path="res://assets/sprites/Player/ShotgunBullet.png" id="2_g5gnn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1b0v7"]
+atlas = ExtResource("2_g5gnn")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvi6x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1b0v7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3t5ot"]
+radius = 4.0
+
+[node name="Shotgun-pickup" type="Node2D"]
+script = ExtResource("1_g5gnn")
+type = "Shotgun"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wvi6x")
+frame_progress = 0.3286557
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_3t5ot")

@@ -4,7 +4,7 @@ extends Node2D
 
 var current_cell: Vector2i
 
-@export_enum("Dynamite", "Mortar", "Shotgun", "Lucky") var type: String
+@export_enum("Dynamite", "Mortar", "Shotgun", "Lucky", "Beer") var type: String
 
 
 
