@@ -30,8 +30,8 @@ func do_action(target: Vector2) -> void:
 			_attack(target)
 		else:
 			var path_to_player = pathfinding.get_point_path(position / 16, target / 16)
-			path_to_player.remove_at(0)
 			if not path_to_player.is_empty():
+				path_to_player.remove_at(0)
 				await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( path_to_player[0]/16 ))
 	
 	if TurnManager.is_turn_of(TurnManager.TurnState.Enemies):

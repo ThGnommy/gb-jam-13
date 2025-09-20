@@ -5,7 +5,8 @@ enum EntityType {
 	Player,
 	Enemy,
 	Projectile,
-	Environment
+	Environment,
+	Pickup
 }
 
 @export var enemy_array : Array[Enemy] = []

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://w6mcrux13v7k" path="res://scenes/scripts/player.gd" id="1_2147m"]
 [ext_resource type="Texture2D" uid="uid://cwnorjh1oblav" path="res://assets/sprites/Player/Player-Sheet.png" id="2_2147m"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="3_h5uus"]
-[ext_resource type="Shader" uid="uid://daa147mjlexqi" path="res://shaders/2d_shadow.gdshader" id="4_q8hb4"]
+[ext_resource type="Shader" path="res://shaders/2d_shadow.gdshader" id="4_q8hb4"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="5_ksjmp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2147m"]
@@ -335,8 +335,6 @@ libraries = {
 currentHealth = 5
 maxHealth = 5
 
-[connection signal="health_change" from="HealthComponent" to="." method="_on_health_component_health_change"]
-
 [node name="SpritesRoot" type="Node2D" parent="."]
 position = Vector2(0, -4)
 
@@ -349,4 +347,7 @@ autoplay = "idle"
 material = SubResource("ShaderMaterial_2rlf8")
 texture = ExtResource("2_2147m")
 region_enabled = true
-region_rect = Rect2(0.11030197, 214.60016, 16.080528, 25.539673)
+region_rect = Rect2(0.110302, 214.6, 16.0805, 25.5397)
+
+[connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
+[connection signal="health_change" from="HealthComponent" to="." method="_on_health_component_health_change"]

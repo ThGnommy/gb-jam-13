@@ -9,8 +9,12 @@ signal player_health_change(value)
 @onready var anim = $SpritesRoot/AnimatedSprite2D
 var player_direction: Vector2i
 
+#@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
 #@onready var belt : Array = ["Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun"]
-@onready var belt : Array = ["Dynamite", "Dynamite", "Dynamite", "Dynamite", "Dynamite"]
+#@onready var belt : Array = ["Dynamite", "Dynamite", "Dynamite", "Dynamite", "Dynamite"]
+# @onready var belt : Array = ["Regular", "Mortar", "Dynamite", "Regular", "Dynamite", "Mortar"]
+@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
+#@onready var belt : Array = ["Mortar"]
 
 var remaining_bullets : Array
 
@@ -29,6 +33,7 @@ func _ready() -> void:
 	player_direction = Vector2.RIGHT
 	TurnManager.add_entity_from_current_turn(self)
 	current_cell = GridManager.world_to_cell(global_position)
+	print("Player current cell, ", current_cell)
 	GridManager.occupy_cell(current_cell, GridManager.EntityType.Player, self)
 	GridManager.set_player(self)
 	reload()
@@ -138,12 +143,13 @@ func shoot() -> void:
 	# Create and shoot the bullet
 	var bullet_instance : Bullet = BulletFactory.create_bullet(bullet_type)
 	bullet_instance.position = position + player_direction * (GridManager.CELL_SIZE * BulletFactory.bullet_offset_mult(bullet_type))
-	bullet_instance.set_direction(player_direction)
 	get_parent().add_child(bullet_instance)
+	bullet_instance.set_direction(player_direction)
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
 
 func reload() -> void:
+	remaining_bullets.clear()
 	remaining_bullets = belt.duplicate()
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
 
@@ -156,3 +162,19 @@ func set_player_direction(dir) -> void:
 
 func _on_health_component_health_change() -> void:
 	player_health_change.emit($HealthComponent.currentHealth)
+
+func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, local_shape_index: int) -> void:
+	var parent = area.get_parent()
+	if parent is PickUp:
+		var pickup_name = parent.pickup()
+		parent.delete()
+		if pickup_name == "Lucky":
+			print("Win")
+		elif pickup_name =="Beer":
+			$HealthComponent.heal(2)
+		else:
+			var index = randi_range(0, belt.size())
+			belt.remove_at(index)
+			belt.append(pickup_name)
+			reload()
+			
