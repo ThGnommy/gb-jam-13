@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bkvp68d4ytd4k"]
+[gd_scene load_steps=15 format=3 uid="uid://bkvp68d4ytd4k"]
 
 [ext_resource type="Script" uid="uid://d3p26fxnqdjdy" path="res://scenes/scripts/dynamite_bullet.gd" id="1_px50o"]
 [ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="2_318tb"]
+[ext_resource type="AudioStream" uid="uid://bj5jhqs85d3if" path="res://assets/audio/SFX/Explosion.wav" id="3_318tb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_px50o"]
 atlas = ExtResource("2_318tb")
@@ -118,5 +119,8 @@ sprite_frames = SubResource("SpriteFrames_rnwde")
 animation = &"explode"
 autoplay = "explode"
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_318tb")
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]
