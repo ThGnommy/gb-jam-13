@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbjeql1p5x66x"]
+[gd_scene load_steps=16 format=3 uid="uid://bbjeql1p5x66x"]
 
 [ext_resource type="Script" uid="uid://pt31v6o02cc7" path="res://scenes/scripts/slime.gd" id="1_82kmp"]
 [ext_resource type="Texture2D" uid="uid://ds0wjj48ohst4" path="res://assets/sprites/Enemies/Slime-Sheet.png" id="2_lp353"]
@@ -13,6 +13,26 @@ size = Vector2(16, 16)
 shader = ExtResource("3_sxr25")
 shader_parameter/source_palette = ExtResource("4_unfyt")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxr25"]
+atlas = ExtResource("2_lp353")
+region = Rect2(0, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unfyt"]
+atlas = ExtResource("2_lp353")
+region = Rect2(32, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ds0xf"]
+atlas = ExtResource("2_lp353")
+region = Rect2(64, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yu715"]
+atlas = ExtResource("2_lp353")
+region = Rect2(96, 128, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqwjw"]
+atlas = ExtResource("2_lp353")
+region = Rect2(128, 128, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_82kmp"]
 atlas = ExtResource("2_lp353")
 region = Rect2(0, 0, 32, 32)
@@ -23,6 +43,26 @@ region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_q574h"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sxr25")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_unfyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ds0xf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yu715")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aqwjw")
+}],
+"loop": true,
+"name": &"Attack",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_82kmp")
@@ -66,7 +106,6 @@ region_rect = Rect2(0, 288, 32, 32)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
 sprite_frames = SubResource("SpriteFrames_q574h")
-animation = &"idle"
+animation = &"Attack"
 autoplay = "idle"
-frame_progress = 0.360026
 metadata/_edit_group_ = true

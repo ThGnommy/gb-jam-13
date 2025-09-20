@@ -17,7 +17,6 @@ var start_cell = Vector2i.ZERO
 var range = 10
 
 func _ready() -> void:
-	TurnManager.add_entity_from_current_turn(self)
 	start_cell = GridManager.world_to_cell(global_position)
 	current_cell = start_cell
 	$ExplosionSprite.hide()
@@ -64,12 +63,9 @@ func hit_something(cell: Vector2) -> void:
 	play_hit_animation_and_free()
 
 func play_hit_animation_and_free() -> void:
+	bullet_destroyed.emit()
 	$ExplosionSprite.show()
 	$FlySprite.hide()
 	$ExplosionSprite.play("explode")
 	await $ExplosionSprite.animation_finished
 	queue_free()
-
-func _on_tree_exited() -> void:
-	TurnManager.remove_entity_from_current_turn(self)
-	TurnManager.try_update_to_next_turn()

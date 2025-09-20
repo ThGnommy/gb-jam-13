@@ -5,7 +5,6 @@ class_name DynamiteBullet
 var other_cells_modifier : Array = [Vector2(0, -1), Vector2(0, 1), Vector2(1, 0), Vector2(-1, 0)]
 
 func _ready() -> void:
-	TurnManager.add_entity_from_current_turn(self)
 	velocity = 150
 	damage = 2
 	range = 2 
@@ -49,6 +48,3 @@ func hit_something(cell: Vector2) -> void:
 	await explosion_animation.animation_finished
 	queue_free()
 
-func _on_tree_exited() -> void:
-	TurnManager.remove_entity_from_current_turn(self)
-	TurnManager.try_update_to_next_turn()

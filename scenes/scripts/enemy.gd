@@ -37,6 +37,8 @@ func _is_in_range(target : Vector2) ->bool:
 	print("need to be implemented")
 	return false
 
-func _on_tree_exited() -> void:
+func die() -> void:
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
+	GridManager.cleanup_cell(current_cell)
+	queue_free()
