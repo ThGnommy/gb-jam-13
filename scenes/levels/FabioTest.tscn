@@ -11,10 +11,17 @@
 [ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="8_jtsux"]
 [ext_resource type="Script" uid="uid://dwcde8tcd6suj" path="res://scenes/scripts/debug_turn_ui.gd" id="9_55r75"]
 [ext_resource type="PackedScene" uid="uid://d1s0l4yeb3yqe" path="res://scenes/UI/bullet_belt.tscn" id="11_7gwfg"]
+<<<<<<< HEAD
+[ext_resource type="PackedScene" uid="uid://eiaj63fvnny5" path="res://scenes/levels/dynamite-pickup.tscn" id="12_tr5mw"]
+[ext_resource type="PackedScene" uid="uid://t8pwpswdo6ef" path="res://scenes/levels/shotgun-pickup.tscn" id="13_cssd7"]
+[ext_resource type="PackedScene" uid="uid://cq4v1p1n4sxwi" path="res://scenes/levels/Beer-pickup.tscn" id="14_oumif"]
+[ext_resource type="PackedScene" uid="uid://c7sxae77oiyev" path="res://scenes/levels/lucky-pickup.tscn" id="15_fsg2e"]
+=======
 [ext_resource type="PackedScene" path="res://scenes/levels/dynamite-pickup.tscn" id="12_tr5mw"]
 [ext_resource type="PackedScene" uid="uid://t8pwpswdo6ef" path="res://scenes/levels/shotgun-pickup.tscn" id="13_cssd7"]
 [ext_resource type="PackedScene" path="res://scenes/levels/Beer-pickup.tscn" id="14_oumif"]
 [ext_resource type="PackedScene" path="res://scenes/levels/lucky-pickup.tscn" id="15_fsg2e"]
+>>>>>>> a3518ddf0db4d0c1d5e08d2031771259f49726a0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
 shader = ExtResource("5_bux3u")

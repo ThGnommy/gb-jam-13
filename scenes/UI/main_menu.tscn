@@ -1,0 +1,88 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc3uogl047tm3"]
+
+[ext_resource type="Script" uid="uid://bqpp3xyqh04hc" path="res://scenes/scripts/ui/main_menu.gd" id="1_5jstl"]
+[ext_resource type="Theme" uid="uid://bfocqed0xdxmf" path="res://ui_theme.tres" id="2_e2p27"]
+[ext_resource type="FontFile" uid="uid://b8eif6kg2ita4" path="res://ui/fonts/AGoblinAppears-o2aV.ttf" id="3_ngj32"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njkqv"]
+bg_color = Color(0.25098, 0.223529, 0.184314, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.780392, 0.611765, 0.337255, 1)
+anti_aliasing = false
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5jstl")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Panel" type="Panel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_njkqv")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("2_e2p27")
+theme_override_colors/font_color = Color(1, 0.945098, 0.823529, 1)
+theme_override_fonts/font = ExtResource("3_ngj32")
+theme_override_font_sizes/font_size = 14
+text = "Bullet 
+Roulette"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Play" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("2_e2p27")
+text = "Play"
+flat = true
+
+[node name="Quit" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme = ExtResource("2_e2p27")
+text = "Quit"
+flat = true
+
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_reload_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
