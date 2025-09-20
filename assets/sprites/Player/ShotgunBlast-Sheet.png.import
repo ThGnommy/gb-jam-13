@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doaybsk03jlxj"
-path="res://.godot/imported/StandardBullet-Sheet.png-22a3db42cb16cd00ea00f88ada9e8421.ctex"
+uid="uid://bo6iuojp7jobu"
+path="res://.godot/imported/ShotgunBlast-Sheet.png-bb87ef3642c78594eb723fcf370954d8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Player/StandardBullet-Sheet.png"
-dest_files=["res://.godot/imported/StandardBullet-Sheet.png-22a3db42cb16cd00ea00f88ada9e8421.ctex"]
+source_file="res://assets/sprites/Player/ShotgunBlast-Sheet.png"
+dest_files=["res://.godot/imported/ShotgunBlast-Sheet.png-bb87ef3642c78594eb723fcf370954d8.ctex"]
 
 [params]
 

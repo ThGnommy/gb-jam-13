@@ -1,0 +1,119 @@
+[gd_scene load_steps=17 format=3 uid="uid://d21n4d65t35t8"]
+
+[ext_resource type="Shader" uid="uid://b66e5fcjdcspe" path="res://shaders/2d_light.gdshader" id="1_x45sk"]
+[ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="2_dypoi"]
+[ext_resource type="Texture2D" uid="uid://dpm1qs6isdadf" path="res://assets/sprites/Environment/Torch-Sheet.png" id="3_jrt8r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_therv"]
+shader = ExtResource("1_x45sk")
+shader_parameter/source_palette = ExtResource("2_dypoi")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtr2f"]
+atlas = ExtResource("3_jrt8r")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r57ov"]
+atlas = ExtResource("3_jrt8r")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0uxmq"]
+atlas = ExtResource("3_jrt8r")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucwls"]
+atlas = ExtResource("3_jrt8r")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1toe"]
+atlas = ExtResource("3_jrt8r")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j1sy1"]
+atlas = ExtResource("3_jrt8r")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qmpj4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtr2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r57ov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0uxmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucwls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1toe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j1sy1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x45sk"]
+atlas = ExtResource("3_jrt8r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dypoi"]
+atlas = ExtResource("3_jrt8r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrt8r"]
+atlas = ExtResource("3_jrt8r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_therv"]
+atlas = ExtResource("3_jrt8r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dtr2f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x45sk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dypoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrt8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_therv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Light" type="Node2D"]
+
+[node name="LightLight" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LightLight"]
+z_index = 1
+material = SubResource("ShaderMaterial_therv")
+sprite_frames = SubResource("SpriteFrames_qmpj4")
+autoplay = "default"
+frame_progress = 0.8070727
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LightLight"]
+root_node = NodePath("../..")
+
+[node name="Fire" type="Node2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Fire"]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_dtr2f")
+autoplay = "default"
+frame_progress = 0.5377249
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fire"]
