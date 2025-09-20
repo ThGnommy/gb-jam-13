@@ -60,6 +60,7 @@ func hit_something(cell: Vector2) -> void:
 	var healthComp = hitEntity.get_node_or_null("HealthComponent")
 	if healthComp:
 		healthComp.take_damage(damage)
+	$AudioStreamPlayer.play()
 	play_hit_animation_and_free()
 
 func play_hit_animation_and_free() -> void:
