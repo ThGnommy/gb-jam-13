@@ -167,6 +167,8 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 		parent.delete()
 		if pickup_name == "Lucky":
 			print("Win")
+		elif pickup_name =="Beer":
+			$HealthComponent.heal(2)
 		else:
 			var index = randi_range(0, belt.size())
 			belt.remove_at(index)
