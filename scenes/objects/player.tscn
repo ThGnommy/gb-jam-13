@@ -1,10 +1,13 @@
-[gd_scene load_steps=44 format=3 uid="uid://b8ebdasa41hb3"]
+[gd_scene load_steps=47 format=3 uid="uid://b8ebdasa41hb3"]
 
 [ext_resource type="Script" uid="uid://w6mcrux13v7k" path="res://scenes/scripts/player.gd" id="1_2147m"]
 [ext_resource type="Texture2D" uid="uid://cwnorjh1oblav" path="res://assets/sprites/Player/Player-Sheet.png" id="2_2147m"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="3_h5uus"]
-[ext_resource type="Shader" path="res://shaders/2d_shadow.gdshader" id="4_q8hb4"]
+[ext_resource type="Shader" uid="uid://daa147mjlexqi" path="res://shaders/2d_shadow.gdshader" id="4_q8hb4"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="5_ksjmp"]
+[ext_resource type="AudioStream" uid="uid://b1ggs22phqd3u" path="res://assets/audio/SFX/Jump.wav" id="6_2rlf8"]
+[ext_resource type="AudioStream" uid="uid://dkjhota1tcd00" path="res://assets/audio/SFX/Shoot.wav" id="7_0ay4w"]
+[ext_resource type="AudioStream" uid="uid://bpc5gssrj2oju" path="res://assets/audio/SFX/Reload.wav" id="8_0ay4w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2147m"]
 size = Vector2(16, 16)
@@ -348,6 +351,15 @@ material = SubResource("ShaderMaterial_2rlf8")
 texture = ExtResource("2_2147m")
 region_enabled = true
 region_rect = Rect2(0.110302, 214.6, 16.0805, 25.5397)
+
+[node name="JumpAudioStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_2rlf8")
+
+[node name="ShootAudioStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_0ay4w")
+
+[node name="ReloadAudioStream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0ay4w")
 
 [connection signal="area_shape_entered" from="." to="." method="_on_area_shape_entered"]
 [connection signal="health_change" from="HealthComponent" to="." method="_on_health_component_health_change"]

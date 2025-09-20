@@ -7,6 +7,7 @@ signal player_health_change(value)
 @export var animation_speed: float = 1.0
 @onready var raycast = $RayCast2D
 @onready var anim = $SpritesRoot/AnimatedSprite2D
+
 var player_direction: Vector2i
 
 #@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
@@ -59,6 +60,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func move() -> void:
 	if TurnManager.is_turn_of(TurnManager.TurnState.Player):
+		$JumpAudioStream.play()
 		moving = true
 		await GridManager.move_entity(self, GridManager.EntityType.Player, current_cell + player_direction)
 		moving = false
@@ -111,8 +113,10 @@ func shoot() -> void:
 
 	if remaining_bullets.size() == 0:
 		reload()
+		$ReloadAudioStream.play()
 		return
 
+	$ShootAudioStream.play()
 	match player_direction:
 		Vector2i.RIGHT:
 			anim.flip_h = false
