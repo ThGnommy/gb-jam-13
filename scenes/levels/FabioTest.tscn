@@ -478,8 +478,20 @@ position = Vector2(272, 16)
 [node name="Shotgun-pickup" parent="." instance=ExtResource("13_cssd7")]
 position = Vector2(256, 64)
 
+[node name="Shotgun-pickup3" parent="." instance=ExtResource("14_oumif")]
+position = Vector2(608, 224)
+
 [node name="Shotgun-pickup2" parent="." instance=ExtResource("14_oumif")]
-position = Vector2(304, 112)
+position = Vector2(304, 96)
 
 [node name="Lucky-Pickup" parent="." instance=ExtResource("15_fsg2e")]
 position = Vector2(368, 80)
+
+[node name="Shotgun-pickup4" parent="." instance=ExtResource("14_oumif")]
+position = Vector2(288, 96)
+
+[node name="Shotgun-pickup5" parent="." instance=ExtResource("14_oumif")]
+position = Vector2(288, 112)
+
+[node name="Shotgun-pickup6" parent="." instance=ExtResource("14_oumif")]
+position = Vector2(304, 112)
