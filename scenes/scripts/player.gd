@@ -120,7 +120,6 @@ func shoot() -> void:
 		set_idle_animation()
 		return
 
-	$ShootAudioStream.play()
 	match player_direction:
 		Vector2i.RIGHT:
 			anim.flip_h = false
@@ -153,6 +152,7 @@ func shoot() -> void:
 	bullet_instance.position = position + player_direction * (GridManager.CELL_SIZE * BulletFactory.bullet_offset_mult(bullet_type))
 	get_parent().add_child(bullet_instance)
 	bullet_instance.set_direction(player_direction)
+	$ShootAudioStream.play()
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
 
