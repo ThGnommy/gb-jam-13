@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://di4djxggbiuil"]
+[gd_scene load_steps=17 format=3 uid="uid://di4djxggbiuil"]
 
 [ext_resource type="Script" uid="uid://viygja2mg24h" path="res://scenes/scripts/mortar_bullet.gd" id="1_7dpk6"]
 [ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="2_0ol4g"]
+[ext_resource type="AudioStream" uid="uid://bj5jhqs85d3if" path="res://assets/audio/SFX/Explosion.wav" id="3_0ol4g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7dpk6"]
 atlas = ExtResource("2_0ol4g")
@@ -157,5 +158,8 @@ autoplay = "explode"
 
 [node name="ShadowSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7dpk6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_0ol4g")
 
 [connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

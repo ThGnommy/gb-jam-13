@@ -14,8 +14,8 @@ var player_direction: Vector2i
 #@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
 #@onready var belt : Array = ["Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun"]
 #@onready var belt : Array = ["Dynamite", "Dynamite", "Dynamite", "Dynamite", "Dynamite"]
-# @onready var belt : Array = ["Regular", "Mortar", "Dynamite", "Regular", "Dynamite", "Mortar"]
-@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
+@onready var belt : Array = ["Regular", "Mortar", "Dynamite", "Regular", "Dynamite", "Mortar"]
+#@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
 #@onready var belt : Array = ["Mortar"]
 
 var remaining_bullets : Array
@@ -66,8 +66,7 @@ func move() -> void:
 		moving = true
 		await GridManager.move_entity(self, GridManager.EntityType.Player, current_cell + player_direction)
 		moving = false
-		TurnManager.remove_entity_from_current_turn(self)
-		TurnManager.try_update_to_next_turn()
+		_pass_turn()
 
 func animate() -> void:
 	match player_direction:
@@ -162,6 +161,11 @@ func shoot() -> void:
 	bullet_instance.set_direction(player_direction)
 	await anim.animation_finished
 	set_idle_animation()
+	$ShootAudioStream.play()
+	bullet_instance.bullet_destroyed.connect(_pass_turn)
+
+
+func _pass_turn():
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
 
@@ -169,8 +173,7 @@ func reload() -> void:
 	remaining_bullets.clear()
 	remaining_bullets = belt.duplicate()
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
-	TurnManager.remove_entity_from_current_turn(self)
-	TurnManager.try_update_to_next_turn()
+	_pass_turn()
 
 
 func die():

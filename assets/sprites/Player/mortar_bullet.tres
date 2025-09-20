@@ -1,0 +1,25 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://dml40iae5mrfi"]
+
+[ext_resource type="Texture2D" uid="uid://d4gvrpwmiibup" path="res://assets/sprites/Enemies/Cannon-Sheet.png" id="1_sobqh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj3n3"]
+atlas = ExtResource("1_sobqh")
+region = Rect2(0, 48, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_08ui8"]
+atlas = ExtResource("1_sobqh")
+region = Rect2(16, 48, 16, 24)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj3n3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_08ui8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]

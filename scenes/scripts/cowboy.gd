@@ -2,11 +2,14 @@ class_name Cowboy
 
 extends Enemy
 
+
+
 func _ready() -> void:
 	super._ready()
-	#TurnManager.add_entity_from_current_turn(self)
 
 func do_action(target:Vector2) -> void:
+
+	assert(TurnManager.TurnState.Enemies == TurnManager.current_turn)
 	if _is_in_range(target):
 		_attack(target)
 		return
@@ -30,9 +33,14 @@ func _is_in_range(target: Vector2):
 func _attack(target: Vector2):
 	var dir = (target - position).normalized()
 	# Create and shoot the bullet
-	var bullet_instance = BulletFactory.create_bullet("Regular")
+	var bullet_instance :Bullet = BulletFactory.create_bullet("Regular")
 	bullet_instance.position = position + dir * GridManager.CELL_SIZE
 	bullet_instance.set_direction(dir)
 	get_parent().add_child(bullet_instance)
 	$ShootAudioStream.play()
-	print("Cowboy attack: ", target)
+	bullet_instance.bullet_destroyed.connect(pass_turn)
+
+func pass_turn():
+	print("Cowboy pass turn")
+	TurnManager.remove_entity_from_current_turn(self)
+	TurnManager.try_update_to_next_turn()
