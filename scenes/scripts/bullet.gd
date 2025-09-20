@@ -8,6 +8,9 @@ var current_cell = Vector2.ZERO
 var healthComponentPath = "HealthComponent.tscn"
 var should_stop = false
 
+func _ready() -> void:
+	TurnManager.add_entity_from_current_turn(self)
+
 func set_direction(dir : Vector2) -> void:
 	direction = dir.normalized()
 	match(dir):
@@ -42,3 +45,7 @@ func hit_something() -> void:
 	$AnimatedSprite2D.play("explode")
 	await $AnimatedSprite2D.animation_finished
 	queue_free()
+
+
+func _on_tree_exited() -> void:
+	TurnManager.remove_entity_from_current_turn(self)

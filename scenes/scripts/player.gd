@@ -30,6 +30,7 @@ var shootInputs: Dictionary = {
 }
 
 func _ready() -> void:
+	TurnManager.add_entity_from_current_turn(self)
 	current_cell = GridManager.world_to_cell(global_position)
 	GridManager.occupy_cell(current_cell, GridManager.EntityType.Player, self)
 	GridManager.set_player(self)
@@ -41,11 +42,6 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	for dir in inputs.keys():
 		if event.is_action_pressed(dir):
-			update_raycast(dir)
-			
-			if raycast.is_colliding():
-				return
-
 			move(dir)
 			animate(dir)
 
@@ -60,6 +56,9 @@ func move(dir) -> void:
 	GridManager.move_enemies()
 	moving = false
 	anim.animation = "idle"
+	if TurnManager.is_turn_of(TurnManager.TurnState.Player):
+		TurnManager.remove_entity_from_current_turn(self)
+		TurnManager.try_update_to_next_turn()
 
 func animate(dir) -> void:
 	match inputs[dir]:
@@ -83,7 +82,6 @@ func jump_animation(px_height: int) -> void:
 	jump_tween.tween_property(anim, "position:y", -px_height, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	jump_tween.tween_property(anim, "position:y", 0, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await jump_tween.finished
-	TurnManager.next_turn(TurnManager.TurnState.Enemies)
 
 func update_raycast(dir) -> void:
 	raycast.target_position = inputs[dir] * GridManager.CELL_SIZE / 2

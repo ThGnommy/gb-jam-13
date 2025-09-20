@@ -67,3 +67,5 @@ autoplay = "fly"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_mkf8s")
 disabled = true
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

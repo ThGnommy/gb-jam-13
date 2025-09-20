@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://bkvp68d4ytd4k"]
 
 [ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="1_gg3b4"]
-[ext_resource type="Script" uid="uid://cfhe3lph6l5u4" path="res://scenes/barrel_bullet.gd" id="1_pxm5y"]
+[ext_resource type="Script" uid="uid://cfhe3lph6l5u4" path="res://scenes/scripts/barrel_bullet.gd" id="1_pxm5y"]
 [ext_resource type="Texture2D" uid="uid://14owcfhpdnx4" path="res://assets/sprites/Environment/Barrel.png" id="2_pxm5y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y25gk"]
@@ -68,3 +68,5 @@ autoplay = "fly"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_7nyo1")
 disabled = true
+
+[connection signal="tree_exited" from="." to="." method="_on_tree_exited"]

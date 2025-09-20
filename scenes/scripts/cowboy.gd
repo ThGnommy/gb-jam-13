@@ -2,12 +2,18 @@ class_name Cowboy
 
 extends Enemy
 
+func _ready() -> void:
+	super._ready()
+	#TurnManager.add_entity_from_current_turn(self)
+
 func do_action(target:Vector2) -> void:
 	if _is_in_range(target):
 		_attack(target)
 		return
 	var dir = _choose_direction(target)
 	await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( current_cell.x + dir.x, current_cell.y + dir.y))
+	TurnManager.remove_entity_from_current_turn(self)
+	TurnManager.try_update_to_next_turn()
 
 
 func _choose_direction(target_position : Vector2) -> Vector2:
@@ -16,12 +22,9 @@ func _choose_direction(target_position : Vector2) -> Vector2:
 		return Vector2(direction.x, 0).normalized()
 	return Vector2(0, direction.y).normalized()
 
-func _is_in_range(target : Vector2):
-
+func _is_in_range(target: Vector2):
 	var target_cell = GridManager.world_to_cell(target)
-
 	return target_cell.x == current_cell.x || target_cell.y == current_cell.y
-
 
 func _attack(target: Vector2):
 	var dir = (target - position).normalized()
