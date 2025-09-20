@@ -4,7 +4,7 @@ extends Control
 @onready var ui_belt = $Belt
 
 var bullet_map: Dictionary = {
-	"Regular": "res://assets/sprites/Player/ShotgunBullet.png",
+	"Regular": "res://assets/sprites/Player/StandardBullet.png",
 	"Dynamite": "res://assets/sprites/Player/DynamiteBullet.png",
 	"Mortar": "res://assets/sprites/Player/MortarBullet.png",
 	"Shotgun": "res://assets/sprites/Player/ShotgunBullet.png"

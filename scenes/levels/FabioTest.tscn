@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://bcxprgultfrn3"]
+[gd_scene load_steps=19 format=4 uid="uid://sbgjlu5t4a8c"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_du1ks"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_hyrkl"]
@@ -12,7 +12,7 @@
 [ext_resource type="Script" uid="uid://dwcde8tcd6suj" path="res://scenes/scripts/debug_turn_ui.gd" id="9_55r75"]
 [ext_resource type="PackedScene" uid="uid://d1s0l4yeb3yqe" path="res://scenes/UI/bullet_belt.tscn" id="11_7gwfg"]
 [ext_resource type="PackedScene" path="res://scenes/levels/dynamite-pickup.tscn" id="12_tr5mw"]
-[ext_resource type="PackedScene" path="res://scenes/levels/shotgun-pickup.tscn" id="13_cssd7"]
+[ext_resource type="PackedScene" uid="uid://t8pwpswdo6ef" path="res://scenes/levels/shotgun-pickup.tscn" id="13_cssd7"]
 [ext_resource type="PackedScene" path="res://scenes/levels/Beer-pickup.tscn" id="14_oumif"]
 [ext_resource type="PackedScene" path="res://scenes/levels/lucky-pickup.tscn" id="15_fsg2e"]
 
@@ -495,3 +495,5 @@ position = Vector2(288, 112)
 
 [node name="Shotgun-pickup6" parent="." instance=ExtResource("14_oumif")]
 position = Vector2(304, 112)
+
+[connection signal="belt_changed" from="Player" to="CanvasLayer/BulletBelt" method="_on_player_belt_changed"]
