@@ -1,4 +1,8 @@
-[gd_scene load_steps=14 format=4 uid="uid://b15v3h2apb3my"]
+<<<<<<< Updated upstream
+[gd_scene load_steps=15 format=4 uid="uid://b15v3h2apb3my"]
+=======
+[gd_scene load_steps=14 format=4 uid="uid://cqw3p3q7i45l6"]
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_fne5y"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_if0w5"]
@@ -9,7 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://cf7nmojtvmslc" path="res://scenes/objects/cowboy.tscn" id="7_if0w5"]
 [ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="7_winb3"]
 [ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="8_gf0b3"]
-[ext_resource type="PackedScene" path="res://scenes/objects/light.tscn" id="10_if0w5"]
+[ext_resource type="PackedScene" uid="uid://d21n4d65t35t8" path="res://scenes/objects/light.tscn" id="10_if0w5"]
+[ext_resource type="AudioStream" uid="uid://dwexdh8skf0hv" path="res://assets/audio/BGM/MainTheme.ogg" id="11_dyh3c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
 shader = ExtResource("5_b2lim")
@@ -471,9 +476,13 @@ position = Vector2(720, -51)
 position = Vector2(736, 61)
 
 [node name="Player" parent="Level" instance=ExtResource("1_fne5y")]
-z_index = 1
 position = Vector2(368, 224)
 animation_speed = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="Level/Player"]
 metadata/_edit_lock_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Level"]
+stream = ExtResource("11_dyh3c")
+volume_db = -4.09
+autoplay = true

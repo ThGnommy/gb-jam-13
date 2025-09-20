@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cu0f2pfxdch1s"]
+[gd_scene load_steps=11 format=3 uid="uid://b1lerf1vvmfnh"]
 
 [ext_resource type="Script" uid="uid://viygja2mg24h" path="res://scenes/scripts/mortar_bullet.gd" id="1_sonqj"]
 [ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="2_ibs3r"]
