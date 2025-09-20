@@ -1,5 +1,10 @@
 extends Control
 
+@onready var play = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play
+
+func _ready() -> void:
+	play.grab_focus()
+
 func _on_quit_pressed() -> void:
 	get_tree().quit()
 
