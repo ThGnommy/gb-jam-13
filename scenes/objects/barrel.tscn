@@ -5,21 +5,21 @@
 [ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="3_kldud"]
 [ext_resource type="Texture2D" uid="uid://14owcfhpdnx4" path="res://assets/sprites/Environment/Barrel.png" id="3_tw3it"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_kldud"]
+atlas = ExtResource("3_kldud")
+region = Rect2(0, 48, 16, 24)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tw3it"]
 atlas = ExtResource("3_kldud")
-region = Rect2(0, 72, 16, 24)
+region = Rect2(16, 48, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khl11"]
 atlas = ExtResource("3_kldud")
-region = Rect2(16, 72, 16, 24)
+region = Rect2(32, 48, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_31y17"]
 atlas = ExtResource("3_kldud")
-region = Rect2(32, 72, 16, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_01jgp"]
-atlas = ExtResource("3_kldud")
-region = Rect2(48, 72, 16, 24)
+region = Rect2(48, 48, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82isu"]
 atlas = ExtResource("3_tw3it")
@@ -29,6 +29,9 @@ region = Rect2(0, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_kldud")
+}, {
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_tw3it")
 }, {
 "duration": 1.0,
@@ -36,9 +39,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_31y17")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_01jgp")
 }],
 "loop": false,
 "name": &"destroy",

@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://b8ebdasa41hb3"]
+[gd_scene load_steps=33 format=3 uid="uid://b8ebdasa41hb3"]
 
 [ext_resource type="Script" uid="uid://w6mcrux13v7k" path="res://scenes/scripts/player.gd" id="1_2147m"]
 [ext_resource type="Texture2D" uid="uid://cwnorjh1oblav" path="res://assets/sprites/Player/Player-Sheet.png" id="2_2147m"]
+[ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="3_h5uus"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2147m"]
 size = Vector2(16, 16)
@@ -262,3 +263,5 @@ autoplay = "idle"
 libraries = {
 &"": SubResource("AnimationLibrary_h5uus")
 }
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_h5uus")]

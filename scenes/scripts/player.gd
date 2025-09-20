@@ -6,7 +6,7 @@ extends Area2D
 @onready var raycast = $RayCast2D
 @onready var anim = $AnimatedSprite2D
 
-@onready var belt : Array = ["Regular", "Barrel", "Regular", "Barrel", "Regular", "Regular"]
+@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Dynamite"]
 var remaining_bullets : Array
 
 var current_cell: Vector2i
@@ -125,3 +125,6 @@ func shoot(dir: Vector2) -> void:
 func reload() -> void:
 	remaining_bullets = belt.duplicate()
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
+
+func die():
+	queue_free()

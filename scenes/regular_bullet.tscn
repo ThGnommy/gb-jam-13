@@ -3,21 +3,21 @@
 [ext_resource type="Script" uid="uid://b0ah5jdiysjuf" path="res://scenes/scripts/bullet.gd" id="1_51yvh"]
 [ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="2_ckyvv"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_y25gk"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_51yvh"]
 atlas = ExtResource("2_ckyvv")
-region = Rect2(0, 72, 16, 24)
+region = Rect2(0, 48, 16, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5glv"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckyvv"]
 atlas = ExtResource("2_ckyvv")
-region = Rect2(16, 72, 16, 24)
+region = Rect2(16, 48, 16, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_eoqba"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_wa36j"]
 atlas = ExtResource("2_ckyvv")
-region = Rect2(32, 72, 16, 24)
+region = Rect2(32, 48, 16, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qncy5"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_sxicm"]
 atlas = ExtResource("2_ckyvv")
-region = Rect2(48, 72, 16, 24)
+region = Rect2(48, 48, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tamys"]
 atlas = ExtResource("2_ckyvv")
@@ -27,16 +27,16 @@ region = Rect2(0, 0, 16, 24)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y25gk")
+"texture": SubResource("AtlasTexture_51yvh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l5glv")
+"texture": SubResource("AtlasTexture_ckyvv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_eoqba")
+"texture": SubResource("AtlasTexture_wa36j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_qncy5")
+"texture": SubResource("AtlasTexture_sxicm")
 }],
 "loop": false,
 "name": &"explode",
@@ -57,7 +57,7 @@ size = Vector2(10, 7)
 [node name="RegularBullet" type="Node2D"]
 script = ExtResource("1_51yvh")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="FlySprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_26lx3")
 animation = &"explode"
 autoplay = "fly"

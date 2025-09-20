@@ -11,7 +11,7 @@ func create_bullet(bullet_type: String) -> Node2D:
 	match bullet_type:
 		"Regular":
 			return regular_bullet_scene.instantiate()
-		"Barrel":
+		"Dynamite":
 			return barrel_bullet_scene.instantiate()
 		_:
 			return null
