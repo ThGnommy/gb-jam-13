@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="GBJam13"
-run/main_scene="uid://bcxprgultfrn3"
-config/features=PackedStringArray("4.5", "Mobile")
+run/main_scene="uid://6er53p8dim3l"
+config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=2000
