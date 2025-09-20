@@ -105,6 +105,7 @@ func world_to_cell(pos: Vector2) -> Vector2i:
 	return Vector2i(roundi(pos.x / CELL_SIZE), roundi(pos.y / CELL_SIZE))
 
 func _draw():
+	return
 	var half_cell : float = float(CELL_SIZE) * 0.5
 	for x in range(grid_size.x):
 		var start = Vector2(x * CELL_SIZE - half_cell, 0)
