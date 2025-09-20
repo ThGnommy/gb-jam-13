@@ -14,8 +14,8 @@ var player_direction: Vector2i
 #@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
 #@onready var belt : Array = ["Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun"]
 #@onready var belt : Array = ["Dynamite", "Dynamite", "Dynamite", "Dynamite", "Dynamite"]
-# @onready var belt : Array = ["Regular", "Mortar", "Dynamite", "Regular", "Dynamite", "Mortar"]
-@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
+@onready var belt : Array = ["Regular", "Mortar", "Dynamite", "Regular", "Dynamite", "Mortar"]
+#@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
 #@onready var belt : Array = ["Mortar"]
 
 var remaining_bullets : Array
