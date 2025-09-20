@@ -11,6 +11,7 @@ func _ready() -> void:
 
 	# Hide all explosion sprites initially
 	for explosionSprite in $ExplosionSprites.get_children():
+		explosionSprite.z_index = 1
 		explosionSprite.hide()
 
 func _process(delta: float) -> void:
