@@ -2,6 +2,9 @@ extends Node2D
 
 class_name Bullet
 
+
+signal bullet_destroyed
+
 var direction : Vector2 = Vector2.RIGHT
 var last_cell_visited = Vector2.ZERO
 var current_cell = Vector2.ZERO
@@ -49,3 +52,4 @@ func hit_something() -> void:
 
 func _on_tree_exited() -> void:
 	TurnManager.remove_entity_from_current_turn(self)
+	TurnManager.try_update_to_next_turn()

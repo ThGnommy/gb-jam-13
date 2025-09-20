@@ -36,3 +36,7 @@ func _attack(target: Vector2):
 func _is_in_range(target : Vector2) ->bool:
 	print("need to be implemented")
 	return false
+
+func _on_tree_exited() -> void:
+	TurnManager.remove_entity_from_current_turn(self)
+	TurnManager.try_update_to_next_turn()

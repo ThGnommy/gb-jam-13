@@ -16,10 +16,10 @@ func do_action(target: Vector2) -> void:
 	for i in 2:
 		if _is_in_range(target):
 			_attack(target)
-			return
-		var dir = _choose_direction(target)
-		print(dir)
-		await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( current_cell.x + dir.x, current_cell.y + dir.y))
+		else:
+			var dir = _choose_direction(target)
+			print(dir)
+			await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( current_cell.x + dir.x, current_cell.y + dir.y))
 	
 	if TurnManager.is_turn_of(TurnManager.TurnState.Enemies):
 	

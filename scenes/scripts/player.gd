@@ -51,14 +51,14 @@ func _process(delta: float) -> void:
 			shoot(shootInputs[dir])
 
 func move(dir) -> void:
-	moving = true
-	await GridManager.move_entity(self, GridManager.EntityType.Player, current_cell + inputs[dir])
-	GridManager.move_enemies()
-	moving = false
-	anim.animation = "idle"
 	if TurnManager.is_turn_of(TurnManager.TurnState.Player):
+		moving = true
+		await GridManager.move_entity(self, GridManager.EntityType.Player, current_cell + inputs[dir])
+		moving = false
+		anim.animation = "idle"
 		TurnManager.remove_entity_from_current_turn(self)
 		TurnManager.try_update_to_next_turn()
+
 
 func animate(dir) -> void:
 	match inputs[dir]:
@@ -88,6 +88,9 @@ func update_raycast(dir) -> void:
 	raycast.force_raycast_update()
 
 func shoot(dir: Vector2) -> void:
+	if TurnManager.is_turn_of(TurnManager.TurnState.Enemies):
+		return
+
 	if remaining_bullets.size() == 0:
 		reload()
 		return
@@ -112,10 +115,12 @@ func shoot(dir: Vector2) -> void:
 	remaining_bullets.remove_at(random_chamber)
 
 	# Create and shoot the bullet
-	var bullet_instance = BulletFactory.create_bullet(bullet_type)
+	var bullet_instance : Bullet = BulletFactory.create_bullet(bullet_type)
 	bullet_instance.position = position + dir * GridManager.CELL_SIZE
 	bullet_instance.set_direction(dir)
 	get_parent().add_child(bullet_instance)
+	TurnManager.remove_entity_from_current_turn(self)
+	TurnManager.try_update_to_next_turn()
 
 func reload() -> void:
 	remaining_bullets = belt.duplicate()
