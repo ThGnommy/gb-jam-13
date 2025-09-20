@@ -21,7 +21,7 @@ void fragment() {
 		}
 	}
 
-	int target_swatch = clamp(nearest_swatch + 1, 0, pal_size.x -1);
+	int target_swatch = clamp(nearest_swatch - 1, 0, pal_size.x -1);
 
 	COLOR = texelFetch(source_palette, ivec2(target_swatch, 0), 0);
 }
