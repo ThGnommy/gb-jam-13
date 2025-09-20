@@ -197,8 +197,8 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 			print($HealthComponent.currentHealth)
 		else:
 			var index = randi_range(0, belt.size())
+			var random_pos = randi() % belt.size()
 			belt.remove_at(index)
-			belt.append(pickup_name)
+			belt.insert(random_pos, pickup_name)
 			belt_changed.emit(pickup_name)
 			reload()
-			
