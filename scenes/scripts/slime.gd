@@ -16,7 +16,6 @@ func _ready() -> void:
 	for cell in tilemap_layer.get_used_cells():
 		pathfinding.set_point_solid(cell, true)
 
-
 func die() -> void:
 	GridManager.cleanup_cell(current_cell)
 	queue_free()
@@ -30,15 +29,9 @@ func do_action(target: Vector2) -> void:
 		if _is_in_range(target):
 			_attack(target)
 		else:
-			print(position, target)
-			
-
-			print(current_cell, GridManager.world_to_cell(target))
-
 			var path_to_player = pathfinding.get_point_path(position / 16, target / 16)
 			path_to_player.remove_at(0)
 			if not path_to_player.is_empty():
-				print(path_to_player[0]/16)
 				await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( path_to_player[0]/16 ))
 	
 	if TurnManager.is_turn_of(TurnManager.TurnState.Enemies):

@@ -2,13 +2,15 @@ class_name Player
 
 extends Area2D
 
+signal player_health_change(value)
+
 @export var animation_speed: float = 1.0
 @onready var raycast = $RayCast2D
 @onready var anim = $SpritesRoot/AnimatedSprite2D
 var player_direction: Vector2i
 
 #@onready var belt : Array = ["Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun"]
-@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
+@onready var belt : Array = ["Dynamite", "Dynamite", "Dynamite", "Dynamite", "Dynamite"]
 
 var remaining_bullets : Array
 
@@ -151,3 +153,6 @@ func die():
 
 func set_player_direction(dir) -> void:
 	player_direction = inputs[dir]
+
+func _on_health_component_health_change() -> void:
+	player_health_change.emit($HealthComponent.currentHealth)

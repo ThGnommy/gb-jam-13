@@ -332,6 +332,10 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_h5uus")]
+currentHealth = 5
+maxHealth = 5
+
+[connection signal="health_change" from="HealthComponent" to="." method="_on_health_component_health_change"]
 
 [node name="SpritesRoot" type="Node2D" parent="."]
 position = Vector2(0, -4)

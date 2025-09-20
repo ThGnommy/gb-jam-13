@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=3 uid="uid://cf8sf0tirl3aj"]
+
+[ext_resource type="Script" uid="uid://b28050awkssfj" path="res://scenes/scripts/ui/health_ui.gd" id="1_4cxe6"]
+[ext_resource type="Texture2D" uid="uid://pnhxyqu7vp1r" path="res://assets/sprites/UI/LifeCounter-Sheet.png" id="1_55djp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4cxe6"]
+atlas = ExtResource("1_55djp")
+region = Rect2(0, 0, 72, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yui3x"]
+atlas = ExtResource("1_55djp")
+region = Rect2(72, 0, 72, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka11c"]
+atlas = ExtResource("1_55djp")
+region = Rect2(144, 0, 72, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nh6h"]
+atlas = ExtResource("1_55djp")
+region = Rect2(216, 0, 72, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hso0a"]
+atlas = ExtResource("1_55djp")
+region = Rect2(288, 0, 72, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfxvr"]
+atlas = ExtResource("1_55djp")
+region = Rect2(360, 0, 72, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ka11c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4cxe6")
+}],
+"loop": false,
+"name": &"0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yui3x")
+}],
+"loop": false,
+"name": &"1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka11c")
+}],
+"loop": false,
+"name": &"2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nh6h")
+}],
+"loop": false,
+"name": &"3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hso0a")
+}],
+"loop": false,
+"name": &"4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfxvr")
+}],
+"loop": false,
+"name": &"5",
+"speed": 5.0
+}]
+
+[node name="HealthUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4cxe6")
+
+[node name="Container" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Container"]
+position = Vector2(36, 6)
+sprite_frames = SubResource("SpriteFrames_ka11c")
+animation = &"5"
+autoplay = "5"
