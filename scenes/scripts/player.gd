@@ -112,6 +112,9 @@ func shoot() -> void:
 
 	if remaining_bullets.size() == 0:
 		reload()
+		anim.animation = "reload"
+		await anim.animation_finished
+		set_idle_animation()
 		return
 
 	match player_direction:
@@ -153,7 +156,7 @@ func reload() -> void:
 	remaining_bullets.clear()
 	remaining_bullets = belt.duplicate()
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
-
+	
 func die():
 	return
 	queue_free()
