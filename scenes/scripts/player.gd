@@ -105,21 +105,24 @@ func shoot() -> void:
 		return
 
 	match player_direction:
-		Vector2.RIGHT:
+		Vector2i.RIGHT:
 			anim.flip_h = false
-			anim.play("shootRight")
+			anim.animation = "shootRight"
 			await anim.animation_finished
 			set_idle_animation()
-		Vector2.LEFT:
+		Vector2i.LEFT:
 			anim.flip_h = true
-			anim.play("shootRight")
+			anim.animation = "shootRight"
 			await anim.animation_finished
-		Vector2.UP:
-			anim.play("shootUp")
+			set_idle_animation()
+		Vector2i.UP:
+			anim.animation = "shootUp"
 			await anim.animation_finished
-		Vector2.DOWN:
-			anim.play("shootDown")
+			set_idle_animation()
+		Vector2i.DOWN:
+			anim.animation = "shootDown"
 			await anim.animation_finished
+			set_idle_animation()
 
 	# Choose a random bullet from the remaining bullets
 	var random_chamber = randi() % remaining_bullets.size()

@@ -93,19 +93,19 @@ region = Rect2(32, 192, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2iaiu"]
 atlas = ExtResource("2_2147m")
-region = Rect2(0, 120, 16, 24)
+region = Rect2(0, 72, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ae4o8"]
 atlas = ExtResource("2_2147m")
-region = Rect2(16, 120, 16, 24)
+region = Rect2(16, 72, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g4pvk"]
 atlas = ExtResource("2_2147m")
-region = Rect2(32, 120, 16, 24)
+region = Rect2(32, 72, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcc4x"]
 atlas = ExtResource("2_2147m")
-region = Rect2(48, 120, 16, 24)
+region = Rect2(48, 72, 16, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_37b34"]
 atlas = ExtResource("2_2147m")
@@ -173,7 +173,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_down",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -190,7 +190,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_top",
-"speed": 8.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -322,7 +322,7 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_2147m")
-animation = &"idle_down"
+animation = &"shootDown"
 autoplay = "idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
