@@ -127,4 +127,5 @@ func reload() -> void:
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
 
 func die():
+	return
 	queue_free()

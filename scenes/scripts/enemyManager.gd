@@ -10,6 +10,8 @@ enum EntityType {
 
 @export var enemy_array : Array[Enemy] = []
 @export var grid_size = Vector2i(128, 128)
+@export var tile_map : TileMapLayer = null
+
 var player : Player
 
 var CellData := {
@@ -20,6 +22,7 @@ var CellData := {
 
 const CELL_SIZE : int = 16
 var occupancy_map : Array = []
+
 
 func _init() -> void:
 	map_matrix_init()
