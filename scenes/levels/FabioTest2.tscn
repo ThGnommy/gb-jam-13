@@ -350,13 +350,6 @@ sources/0 = SubResource("TileSetAtlasSource_7lrji")
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_fne5y")]
-position = Vector2(376, 200)
-animation_speed = 3.0
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-metadata/_edit_lock_ = true
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(10, 10)
@@ -441,6 +434,7 @@ position = Vector2(32, -64)
 position = Vector2(272, -3)
 
 [node name="Light2" parent="Level/Lights" instance=ExtResource("10_if0w5")]
+z_index = 2
 position = Vector2(272, 61)
 
 [node name="Light3" parent="Level/Lights" instance=ExtResource("10_if0w5")]
@@ -472,3 +466,11 @@ position = Vector2(720, -51)
 
 [node name="Light12" parent="Level/Lights" instance=ExtResource("10_if0w5")]
 position = Vector2(736, 61)
+
+[node name="Player" parent="Level" instance=ExtResource("1_fne5y")]
+z_index = 1
+position = Vector2(272, 48)
+animation_speed = 3.0
+
+[node name="Camera2D" type="Camera2D" parent="Level/Player"]
+metadata/_edit_lock_ = true

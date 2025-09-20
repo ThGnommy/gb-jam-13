@@ -4,7 +4,7 @@ extends Area2D
 
 @export var animation_speed: float = 1.0
 @onready var raycast = $RayCast2D
-@onready var anim = $AnimatedSprite2D
+@onready var anim = $SpritesRoot/AnimatedSprite2D
 var player_direction: Vector2i
 
 #@onready var belt : Array = ["Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun"]

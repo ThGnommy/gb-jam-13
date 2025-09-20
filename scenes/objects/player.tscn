@@ -1,11 +1,33 @@
-[gd_scene load_steps=41 format=3 uid="uid://b8ebdasa41hb3"]
+[gd_scene load_steps=44 format=3 uid="uid://b8ebdasa41hb3"]
 
 [ext_resource type="Script" uid="uid://w6mcrux13v7k" path="res://scenes/scripts/player.gd" id="1_2147m"]
 [ext_resource type="Texture2D" uid="uid://cwnorjh1oblav" path="res://assets/sprites/Player/Player-Sheet.png" id="2_2147m"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="3_h5uus"]
+[ext_resource type="Shader" uid="uid://daa147mjlexqi" path="res://shaders/2d_shadow.gdshader" id="4_q8hb4"]
+[ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="5_ksjmp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2147m"]
 size = Vector2(16, 16)
+
+[sub_resource type="Animation" id="Animation_2147m"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpritesRoot/AnimatedSprite2D:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 0,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5uus"]
+_data = {
+&"jump": SubResource("Animation_2147m")
+}
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2147m"]
 atlas = ExtResource("2_2147m")
@@ -286,25 +308,9 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="Animation" id="Animation_2147m"]
-resource_name = "jump"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D:position:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"update": 0,
-"values": []
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_h5uus"]
-_data = {
-&"jump": SubResource("Animation_2147m")
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2rlf8"]
+shader = ExtResource("4_q8hb4")
+shader_parameter/source_palette = ExtResource("5_ksjmp")
 
 [node name="Player" type="Area2D"]
 collision_mask = 2
@@ -320,14 +326,23 @@ collision_mask = 2
 collide_with_areas = true
 metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_2147m")
-animation = &"shootDown"
-autoplay = "idle"
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_h5uus")
 }
 
 [node name="HealthComponent" parent="." instance=ExtResource("3_h5uus")]
+
+[node name="SpritesRoot" type="Node2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
+sprite_frames = SubResource("SpriteFrames_2147m")
+animation = &"shootDown"
+autoplay = "idle"
+
+[node name="Shadow" type="Sprite2D" parent="SpritesRoot"]
+material = SubResource("ShaderMaterial_2rlf8")
+texture = ExtResource("2_2147m")
+region_enabled = true
+region_rect = Rect2(0.11030197, 214.60016, 16.080528, 25.539673)

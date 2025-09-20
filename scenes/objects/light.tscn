@@ -99,11 +99,11 @@ animations = [{
 [node name="LightLight" type="Node2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="LightLight"]
-z_index = 1
+z_index = 2
 material = SubResource("ShaderMaterial_therv")
 sprite_frames = SubResource("SpriteFrames_qmpj4")
 autoplay = "default"
-frame_progress = 0.8070727
+frame_progress = 0.27826917
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LightLight"]
 root_node = NodePath("../..")
@@ -114,6 +114,6 @@ root_node = NodePath("../..")
 z_index = 2
 sprite_frames = SubResource("SpriteFrames_dtr2f")
 autoplay = "default"
-frame_progress = 0.5377249
+frame_progress = 0.008921029
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Fire"]
