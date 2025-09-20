@@ -37,10 +37,13 @@ func _process(delta: float) -> void:
 	if GridManager.is_cell_outside_bounds(current_cell):
 		queue_free()
 		return
-	
-	if(!GridManager.is_cell_free(current_cell)):
+
+	if(verify_hit(current_cell)):
 		should_stop = true
 		hit_something(current_cell)
+
+func verify_hit(cell: Vector2) -> bool:
+	return !GridManager.is_cell_free(cell)
 
 func hit_something(cell: Vector2) -> void:
 	var hitEntity = GridManager.get_entity_at_cell(cell)

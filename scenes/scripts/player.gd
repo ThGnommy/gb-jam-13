@@ -6,7 +6,7 @@ extends Area2D
 @onready var raycast = $RayCast2D
 @onready var anim = $AnimatedSprite2D
 
-@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Dynamite"]
+@onready var belt : Array = ["Regular", "Mortar", "Dynamite", "Regular", "Dynamite", "Mortar"]
 var remaining_bullets : Array
 
 var current_cell: Vector2i
