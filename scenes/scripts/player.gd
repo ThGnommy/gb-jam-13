@@ -178,7 +178,6 @@ func reload() -> void:
 
 func die():
 	# todo player animation
-	
 	pass
 
 func player_turn():

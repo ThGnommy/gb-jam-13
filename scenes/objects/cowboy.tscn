@@ -1,9 +1,9 @@
 [gd_scene load_steps=14 format=3 uid="uid://cf7nmojtvmslc"]
 
-[ext_resource type="Script" uid="uid://dwnv72mh1hp0s" path="res://scenes/scripts/cowboy.gd" id="1_82b1i"]
 [ext_resource type="Texture2D" uid="uid://cbcup720qa3wd" path="res://assets/sprites/Enemies/Cowboy-Sheet.png" id="1_awf0c"]
+[ext_resource type="Script" uid="uid://bg5qylqhv2cdy" path="res://scenes/scripts/mortar.gd" id="1_fjs6v"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="3_8s8x2"]
-[ext_resource type="Shader" uid="uid://daa147mjlexqi" path="res://shaders/2d_shadow.gdshader" id="3_fjs6v"]
+[ext_resource type="Shader" path="res://shaders/2d_shadow.gdshader" id="3_fjs6v"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="4_5j0ne"]
 [ext_resource type="Texture2D" uid="uid://cwnorjh1oblav" path="res://assets/sprites/Player/Player-Sheet.png" id="5_qmwv1"]
 
@@ -53,7 +53,7 @@ animations = [{
 [node name="Cowboy" type="Area2D"]
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_82b1i")
+script = ExtResource("1_fjs6v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8s8x2")

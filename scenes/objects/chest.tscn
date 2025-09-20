@@ -1,0 +1,94 @@
+[gd_scene load_steps=15 format=3 uid="uid://c6echt6whwfxt"]
+
+[ext_resource type="Script" uid="uid://ckk3ajiu4q41c" path="res://scenes/scripts/object.gd" id="1_pev8c"]
+[ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="2_nj372"]
+[ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="3_5vikd"]
+[ext_resource type="Texture2D" uid="uid://wv3gjn5hbi04" path="res://assets/sprites/Environment/Chest-Sheet.png" id="4_pev8c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pev8c"]
+atlas = ExtResource("3_5vikd")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nj372"]
+atlas = ExtResource("3_5vikd")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vikd"]
+atlas = ExtResource("3_5vikd")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eiphe"]
+atlas = ExtResource("3_5vikd")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_or75c"]
+atlas = ExtResource("3_5vikd")
+region = Rect2(96, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so5va"]
+atlas = ExtResource("3_5vikd")
+region = Rect2(120, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekffs"]
+atlas = ExtResource("3_5vikd")
+region = Rect2(144, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mhowy"]
+atlas = ExtResource("4_pev8c")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7kndf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pev8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nj372")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vikd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eiphe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_or75c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so5va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekffs")
+}],
+"loop": false,
+"name": &"destroy",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mhowy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6obf0"]
+size = Vector2(16, 16)
+
+[node name="Chest" type="Node2D"]
+script = ExtResource("1_pev8c")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_nj372")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7kndf")
+animation = &"idle"
+autoplay = "idle"
+offset = Vector2(0, -1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_6obf0")

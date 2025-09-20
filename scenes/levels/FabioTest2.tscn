@@ -1,4 +1,8 @@
+<<<<<<< Updated upstream
 [gd_scene load_steps=15 format=4 uid="uid://b15v3h2apb3my"]
+=======
+[gd_scene load_steps=14 format=4 uid="uid://cqw3p3q7i45l6"]
+>>>>>>> Stashed changes
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_fne5y"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_if0w5"]

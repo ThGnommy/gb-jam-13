@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c5yswikogtdy6"]
+[gd_scene load_steps=15 format=3 uid="uid://c5yswikogtdy6"]
 
 [ext_resource type="Script" uid="uid://ckk3ajiu4q41c" path="res://scenes/scripts/object.gd" id="1_1kn84"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="2_kldud"]
@@ -7,19 +7,31 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kldud"]
 atlas = ExtResource("3_kldud")
-region = Rect2(0, 48, 16, 24)
+region = Rect2(0, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tw3it"]
 atlas = ExtResource("3_kldud")
-region = Rect2(16, 48, 16, 24)
+region = Rect2(24, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khl11"]
 atlas = ExtResource("3_kldud")
-region = Rect2(32, 48, 16, 24)
+region = Rect2(48, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_31y17"]
 atlas = ExtResource("3_kldud")
-region = Rect2(48, 48, 16, 24)
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01jgp"]
+atlas = ExtResource("3_kldud")
+region = Rect2(96, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahbg3"]
+atlas = ExtResource("3_kldud")
+region = Rect2(120, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kcvnm"]
+atlas = ExtResource("3_kldud")
+region = Rect2(144, 48, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82isu"]
 atlas = ExtResource("3_tw3it")
@@ -39,6 +51,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_31y17")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01jgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahbg3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kcvnm")
 }],
 "loop": false,
 "name": &"destroy",
