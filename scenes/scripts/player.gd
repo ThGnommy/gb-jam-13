@@ -144,6 +144,7 @@ func reload() -> void:
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
 
 func die():
+	return
 	queue_free()
 
 func set_player_direction(dir) -> void:
