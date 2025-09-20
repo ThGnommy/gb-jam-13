@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=4 uid="uid://sbgjlu5t4a8c"]
+[gd_scene load_steps=15 format=4 uid="uid://sbgjlu5t4a8c"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_du1ks"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_hyrkl"]
+[ext_resource type="PackedScene" uid="uid://cf8sf0tirl3aj" path="res://scenes/UI/health_ui.tscn" id="2_trxt2"]
 [ext_resource type="Script" uid="uid://dtk71t6jho560" path="res://scenes/scripts/enemyManager.gd" id="3_ecnhu"]
 [ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/barrel.tscn" id="4_wpknc"]
 [ext_resource type="Shader" uid="uid://ce3l41fe36x0c" path="res://shaders/palette_swap.gdshader" id="5_bux3u"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="7_iumyk"]
 [ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="8_jtsux"]
 [ext_resource type="Script" uid="uid://dwcde8tcd6suj" path="res://scenes/scripts/debug_turn_ui.gd" id="9_55r75"]
+[ext_resource type="PackedScene" uid="uid://d1s0l4yeb3yqe" path="res://scenes/UI/bullet_belt.tscn" id="11_7gwfg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
 shader = ExtResource("5_bux3u")
@@ -433,6 +435,7 @@ tile_set = SubResource("TileSet_rssyh")
 metadata/_edit_lock_ = true
 
 [node name="Debug" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 80.0
@@ -442,8 +445,16 @@ offset_bottom = 200.0
 script = ExtResource("9_55r75")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Debug"]
+visible = false
 
 [node name="Label" type="Label" parent="Debug/CanvasLayer"]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Ciao"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="BulletBelt" parent="CanvasLayer" instance=ExtResource("11_7gwfg")]
+
+[node name="HealthUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("2_trxt2")]
+player = NodePath("../../Player")
