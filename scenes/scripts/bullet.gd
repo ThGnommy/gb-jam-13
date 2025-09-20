@@ -63,9 +63,12 @@ func hit_something(cell: Vector2) -> void:
 	play_hit_animation_and_free()
 
 func play_hit_animation_and_free() -> void:
-	bullet_destroyed.emit()
 	$ExplosionSprite.show()
 	$FlySprite.hide()
 	$ExplosionSprite.play("explode")
 	await $ExplosionSprite.animation_finished
+	destroy()
+
+func destroy() -> void:
+	bullet_destroyed.emit()
 	queue_free()
