@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://cjica8bsjaigj"]
+
+[ext_resource type="Script" uid="uid://df32wexvnypc8" path="res://scenes/scripts/shotgun_bullet.gd" id="1_ehau3"]
+[ext_resource type="Texture2D" uid="uid://buqpkbwg280om" path="res://assets/sprites/Player/ShotgunBlast-Sheet.png" id="2_w8qm5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ehau3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjplf"]
+atlas = ExtResource("2_w8qm5")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e8hrv"]
+atlas = ExtResource("2_w8qm5")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0gtos"]
+atlas = ExtResource("2_w8qm5")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk8jg"]
+atlas = ExtResource("2_w8qm5")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_newj5"]
+atlas = ExtResource("2_w8qm5")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37b26"]
+atlas = ExtResource("2_w8qm5")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w8qm5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjplf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e8hrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0gtos")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk8jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_newj5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37b26")
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjplf"]
+size = Vector2(10, 7)
+
+[node name="ShotgunBullet" type="Node2D"]
+script = ExtResource("1_ehau3")
+
+[node name="FlySprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ehau3")
+
+[node name="ExplosionSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w8qm5")
+animation = &"explosion"
+frame_progress = 0.571317
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_fjplf")
+disabled = true

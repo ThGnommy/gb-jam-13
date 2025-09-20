@@ -7,7 +7,9 @@ extends Area2D
 @onready var anim = $AnimatedSprite2D
 var player_direction: Vector2i
 
-@onready var belt : Array = ["Regular", "Mortar", "Dynamite", "Regular", "Dynamite", "Mortar"]
+#@onready var belt : Array = ["Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun", "Shotgun"]
+@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
+
 var remaining_bullets : Array
 
 var current_cell: Vector2i
@@ -133,7 +135,7 @@ func shoot() -> void:
 
 	# Create and shoot the bullet
 	var bullet_instance : Bullet = BulletFactory.create_bullet(bullet_type)
-	bullet_instance.position = position + player_direction * float(GridManager.CELL_SIZE)
+	bullet_instance.position = position + player_direction * (GridManager.CELL_SIZE * BulletFactory.bullet_offset_mult(bullet_type))
 	bullet_instance.set_direction(player_direction)
 	get_parent().add_child(bullet_instance)
 	TurnManager.remove_entity_from_current_turn(self)
