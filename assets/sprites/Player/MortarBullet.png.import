@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://buqpkbwg280om"
-path="res://.godot/imported/ShotgunBlast-Sheet.png-bb87ef3642c78594eb723fcf370954d8.ctex"
+uid="uid://b5fus3jwoeylv"
+path="res://.godot/imported/MortarBullet.png-abba1fefe84b0342908abdae591436ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/Player/ShotgunBlast-Sheet.png"
-dest_files=["res://.godot/imported/ShotgunBlast-Sheet.png-bb87ef3642c78594eb723fcf370954d8.ctex"]
+source_file="res://assets/sprites/Player/MortarBullet.png"
+dest_files=["res://.godot/imported/MortarBullet.png-abba1fefe84b0342908abdae591436ee.ctex"]
 
 [params]
 
