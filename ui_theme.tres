@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=8 format=3 uid="uid://bfocqed0xdxmf"]
+
+[ext_resource type="FontFile" uid="uid://b8eif6kg2ita4" path="res://ui/fonts/AGoblinAppears-o2aV.ttf" id="1_touxu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_touxu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2pn01"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbeor"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mk0s6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5kxjo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g7fvb"]
+
+[resource]
+default_font = ExtResource("1_touxu")
+default_font_size = 16
+Button/colors/font_color = Color(0.780392, 0.611765, 0.337255, 1)
+Button/colors/font_focus_color = Color(1, 0.945098, 0.823529, 1)
+Button/colors/font_hover_color = Color(1, 0.945098, 0.823529, 1)
+Button/colors/font_pressed_color = Color(1, 0.945098, 0.823529, 1)
+Button/font_sizes/font_size = 12
+Button/fonts/font = ExtResource("1_touxu")
+Button/styles/disabled = SubResource("StyleBoxEmpty_touxu")
+Button/styles/focus = SubResource("StyleBoxEmpty_2pn01")
+Button/styles/hover = SubResource("StyleBoxEmpty_tbeor")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_mk0s6")
+Button/styles/normal = SubResource("StyleBoxEmpty_5kxjo")
+Button/styles/pressed = SubResource("StyleBoxEmpty_g7fvb")

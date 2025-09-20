@@ -10,12 +10,12 @@ func do_action(target:Vector2) -> void:
 	if _is_in_range(target):
 		_attack(target)
 		return
+
 	var dir = _choose_direction(target)
 	$JumpAudioStream.play()
 	await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( current_cell.x + dir.x, current_cell.y + dir.y))
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
-
 
 func _choose_direction(target_position : Vector2) -> Vector2:
 	var direction = target_position - position

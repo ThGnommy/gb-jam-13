@@ -23,6 +23,7 @@ var remaining_bullets : Array
 var current_cell: Vector2i
 
 var moving: bool = false
+var shooting: bool = false
 
 var inputs: Dictionary = {
 	"right": Vector2i.RIGHT,
@@ -109,8 +110,12 @@ func update_raycast(dir) -> void:
 	raycast.force_raycast_update()
 
 func shoot() -> void:
+	if shooting:
+		return
+
 	if TurnManager.is_turn_of(TurnManager.TurnState.Enemies):
 		return
+	shooting = true
 
 	if remaining_bullets.size() == 0:
 		reload()
@@ -164,10 +169,18 @@ func reload() -> void:
 	remaining_bullets.clear()
 	remaining_bullets = belt.duplicate()
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
-	
+	TurnManager.remove_entity_from_current_turn(self)
+	TurnManager.try_update_to_next_turn()
+
+
 func die():
-	return
-	queue_free()
+	# todo player animation
+	
+	pass
+
+func player_turn():
+	moving = false
+	shooting = false
 
 func set_player_direction(dir) -> void:
 	player_direction = inputs[dir]
@@ -183,7 +196,9 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 		if pickup_name == "Lucky":
 			print("Win")
 		elif pickup_name =="Beer":
+			print($HealthComponent.currentHealth)
 			$HealthComponent.heal(2)
+			print($HealthComponent.currentHealth)
 		else:
 			var index = randi_range(0, belt.size())
 			belt.remove_at(index)

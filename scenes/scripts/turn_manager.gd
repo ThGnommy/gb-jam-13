@@ -18,6 +18,8 @@ func try_update_to_next_turn() -> void:
 			GridManager.move_enemies()
 		TurnState.Enemies:
 			current_turn = TurnState.Player
+			GridManager.player.player_turn()
+			
 
 func get_current_turn() -> TurnState:
 	return current_turn
