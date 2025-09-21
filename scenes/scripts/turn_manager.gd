@@ -9,7 +9,6 @@ var current_turn_objects: Array[Node2D] = []
 var current_turn: TurnState = TurnState.Player
 
 func try_update_to_next_turn() -> void:
-	##print(current_turn, current_turn_objects)
 	if not current_turn_objects.is_empty():
 		return
 

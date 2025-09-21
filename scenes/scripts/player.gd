@@ -41,7 +41,6 @@ func _ready() -> void:
 	player_direction = Vector2.RIGHT
 	TurnManager.add_entity_from_current_turn(self)
 	current_cell = GridManager.world_to_cell(global_position)
-	print("Player current cell, ", current_cell)
 	GridManager.occupy_cell(current_cell, GridManager.EntityType.Player, self)
 	GridManager.set_player(self)
 	reload()
@@ -179,10 +178,7 @@ func reload() -> void:
 
 func die():
 	# todo player animation
-	print("PLAYER DIE")
-	var ui = game_over_ui.instantiate()
-	get_parent().get_node_or_null("UICanvasLayer").add_child(ui)
-	pass
+	game_over()
 
 func player_turn():
 	moving = false
