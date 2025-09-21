@@ -77,7 +77,7 @@ type = "Lucky"
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wvi6x")
 autoplay = "default"
-frame_progress = 0.3389312
+frame_progress = 0.338931
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

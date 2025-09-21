@@ -357,9 +357,8 @@ visible = false
 scale = Vector2(10, 10)
 texture = ExtResource("2_if0w5")
 
-[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("enemy_array")]
+[node name="GameManager" type="Node2D" parent="."]
 script = ExtResource("3_dyh3c")
-enemy_array = [NodePath("../Level/Enemies/Slime"), NodePath("../Level/Enemies/Slime2"), NodePath("../Level/Enemies/Cowboy")]
 metadata/_edit_lock_ = true
 
 [node name="Control" type="Control" parent="."]

@@ -8,6 +8,8 @@ signal belt_changed(value)
 @export var animation_speed: float = 1.0
 @onready var raycast = $RayCast2D
 @onready var anim = $SpritesRoot/AnimatedSprite2D
+
+var win_ui: PackedScene = preload("res://scenes/UI/win_ui.tscn")
 var game_over_ui: PackedScene = preload("res://scenes/UI/game_over.tscn")
 
 var player_direction: Vector2i
@@ -194,7 +196,7 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 		var pickup_name = parent.pickup()
 		parent.delete()
 		if pickup_name == "Lucky":
-			print("Win")
+			win()
 		elif pickup_name =="Beer":
 			print($HealthComponent.currentHealth)
 			$HealthComponent.heal(2)
@@ -206,3 +208,13 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 			belt.insert(random_pos, pickup_name)
 			belt_changed.emit(pickup_name)
 			reload()
+
+func game_over() -> void:
+	set_process_input(false)
+	var ui = game_over_ui.instantiate()
+	get_parent().get_node_or_null("UICanvasLayer").add_child(ui)
+
+func win() -> void:
+	set_process_input(false)
+	var ui = win_ui.instantiate()
+	get_parent().get_node_or_null("UICanvasLayer").add_child(ui)

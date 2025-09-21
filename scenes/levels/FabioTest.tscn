@@ -499,5 +499,3 @@ position = Vector2(288, 112)
 
 [node name="Shotgun-pickup6" parent="." instance=ExtResource("14_oumif")]
 position = Vector2(304, 112)
-
-[connection signal="belt_changed" from="Player" to="UICanvasLayer/BulletBelt" method="_on_player_belt_changed"]
