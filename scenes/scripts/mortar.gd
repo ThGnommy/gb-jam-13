@@ -16,6 +16,10 @@ var aiming : Vector2
 var target_marker_animation : AnimatedSprite2D
 
 func do_action(target):
+	if should_skip_turn():
+		_pass_turn()
+		return
+
 	match state:
 		0:
 			print("Mortar loading")
@@ -69,6 +73,7 @@ func create_target_marker() -> void:
 	# Add the target sprite to the main scene tree
 	get_tree().get_root().add_child(target_marker_animation)
 	$AnimatedSprite2D.play("loading")
+
 func _pass_turn():
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()

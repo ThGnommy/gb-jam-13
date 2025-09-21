@@ -8,6 +8,9 @@ func _ready() -> void:
 	super._ready()
 
 func do_action(target:Vector2) -> void:
+	if should_skip_turn():
+		pass_turn()
+		return
 
 	assert(TurnManager.TurnState.Enemies == TurnManager.current_turn)
 	if _is_in_range(target):
