@@ -1,9 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://bbjeql1p5x66x"]
+[gd_scene load_steps=28 format=3 uid="uid://bbjeql1p5x66x"]
 
 [ext_resource type="Script" uid="uid://pt31v6o02cc7" path="res://scenes/scripts/slime.gd" id="1_82kmp"]
 [ext_resource type="Texture2D" uid="uid://ds0wjj48ohst4" path="res://assets/sprites/Enemies/Slime-Sheet.png" id="2_lp353"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="3_q2f8i"]
-[ext_resource type="Shader" uid="uid://daa147mjlexqi" path="res://shaders/2d_shadow.gdshader" id="3_sxr25"]
+[ext_resource type="Shader" path="res://shaders/2d_shadow.gdshader" id="3_sxr25"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="4_unfyt"]
 [ext_resource type="AudioStream" uid="uid://dhx64b4djqk5e" path="res://assets/audio/SFX/SlimeAttack.wav" id="6_unfyt"]
 
@@ -82,6 +82,10 @@ region = Rect2(0, 0, 32, 32)
 atlas = ExtResource("2_lp353")
 region = Rect2(32, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dciie"]
+atlas = ExtResource("2_lp353")
+region = Rect2(0, 32, 32, 32)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_q574h"]
 animations = [{
 "frames": [{
@@ -155,9 +159,12 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dciie")
+}],
 "loop": true,
-"name": &"new_animation",
+"name": &"jump",
 "speed": 5.0
 }]
 
@@ -193,7 +200,7 @@ region_rect = Rect2(0, 288, 32, 32)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
 z_index = 1
 sprite_frames = SubResource("SpriteFrames_q574h")
-animation = &"AttackUp"
+animation = &"jump"
 autoplay = "idle"
 metadata/_edit_group_ = true
 

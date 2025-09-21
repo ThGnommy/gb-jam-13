@@ -49,7 +49,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.002279128
+rotation = -0.00227913
 texture = SubResource("AtlasTexture_olydj")
 
 [node name="Bullet2" type="TextureRect" parent="Belt"]
@@ -67,7 +67,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.002279128
+rotation = -0.00227913
 texture = SubResource("AtlasTexture_olydj")
 
 [node name="Bullet3" type="TextureRect" parent="Belt"]
@@ -85,7 +85,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.002279128
+rotation = -0.00227913
 texture = SubResource("AtlasTexture_olydj")
 
 [node name="Bullet4" type="TextureRect" parent="Belt"]
@@ -103,7 +103,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.002279128
+rotation = -0.00227913
 texture = SubResource("AtlasTexture_olydj")
 
 [node name="Bullet5" type="TextureRect" parent="Belt"]
@@ -121,7 +121,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.002279128
+rotation = -0.00227913
 texture = SubResource("AtlasTexture_olydj")
 
 [node name="Bullet6" type="TextureRect" parent="Belt"]
@@ -139,5 +139,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.002279128
+rotation = -0.00227913
 texture = SubResource("AtlasTexture_olydj")

@@ -39,7 +39,7 @@ var inputs: Dictionary = {
 }
 
 func _ready() -> void:
-	player_direction = Vector2.RIGHT
+	set_player_direction("right")
 	TurnManager.add_entity_from_current_turn(self)
 	current_cell = GridManager.world_to_cell(global_position)
 	GridManager.occupy_cell(current_cell, GridManager.EntityType.Player, self)
@@ -108,6 +108,7 @@ func jump_animation(px_height: int) -> void:
 	jump_tween.tween_property(anim, "position:y", -px_height, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	jump_tween.tween_property(anim, "position:y", 0, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await jump_tween.finished
+
 
 func update_raycast(dir) -> void:
 	raycast.target_position = inputs[dir] * GridManager.CELL_SIZE / 2
@@ -188,7 +189,7 @@ func player_turn():
 func set_player_direction(dir) -> void:
 	player_direction = inputs[dir]
 	camera.position = Vector2.ZERO
-	camera.position += Vector2(inputs[dir]) * 16
+	camera.position += Vector2(inputs[dir]) * 32
 
 func _on_health_component_health_change() -> void:
 	player_health_change.emit($HealthComponent.currentHealth)

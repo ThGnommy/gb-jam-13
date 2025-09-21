@@ -7,6 +7,11 @@ var current_cell: Vector2i
 
 @onready var raycast = $RayCast2D
 
+var is_active = false
+
+@export var x_activation_range : int = 96
+@export var y_activation_range : int = 80
+
 var moving: bool = false
 
 func _ready() -> void:
@@ -16,6 +21,22 @@ func _ready() -> void:
 
 func do_action(target:Vector2) -> void:
 	print("need to be implemented")
+
+func should_skip_turn()->bool:
+	var distance = GridManager.player.position - position
+	print("distance", distance)
+	print(is_active)
+	if is_active:
+		print("1")
+		return false
+
+	if  abs(distance.x) > x_activation_range || abs(distance.y) > y_activation_range:
+		return true
+
+	else:
+		is_active = true 
+		return false
+		
 
 func _choose_direction(target_position : Vector2) -> Vector2:
 	var dir = (target_position - position).normalized()

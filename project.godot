@@ -12,7 +12,7 @@ config_version=5
 
 config/name="GBJam13"
 run/main_scene="uid://dc3uogl047tm3"
-config/features=PackedStringArray("4.5", "Mobile")
+config/features=PackedStringArray("4.4", "Mobile")
 boot_splash/use_filter=false
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=2000
@@ -22,6 +22,7 @@ boot_splash/minimum_display_time=2000
 GridManager="*res://scenes/scripts/enemyManager.gd"
 TurnManager="*res://scenes/scripts/turn_manager.gd"
 BulletFactory="*res://scenes/scripts/bullet_factory.gd"
+BackgroundMusic="*res://scenes/audio/BackgroundMusic.tscn"
 
 [display]
 

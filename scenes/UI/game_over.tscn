@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bflrcp2ace1ch"]
+[gd_scene load_steps=5 format=3 uid="uid://bflrcp2ace1ch"]
 
 [ext_resource type="Script" uid="uid://b8p7qocd3rvxj" path="res://scenes/scripts/ui/game_over.gd" id="1_a2ham"]
 [ext_resource type="FontFile" uid="uid://b8eif6kg2ita4" path="res://ui/fonts/AGoblinAppears-o2aV.ttf" id="1_njkqv"]
 [ext_resource type="Theme" uid="uid://bfocqed0xdxmf" path="res://ui_theme.tres" id="1_vop4n"]
-[ext_resource type="Texture2D" uid="uid://b1p5a3ymmlfuy" path="res://assets/sprites/Player/StandardBullet.png" id="2_l48yu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njkqv"]
 bg_color = Color(0.25098, 0.223529, 0.184314, 1)
@@ -74,7 +73,6 @@ texture_filter = 1
 layout_mode = 2
 theme = ExtResource("1_vop4n")
 text = "Reload"
-icon = ExtResource("2_l48yu")
 flat = true
 
 [node name="Quit" type="Button" parent="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer"]
