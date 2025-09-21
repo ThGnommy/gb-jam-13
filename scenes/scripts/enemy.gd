@@ -9,8 +9,8 @@ var current_cell: Vector2i
 
 var is_active = false
 
-@export var x_activation_range : int = 96
-@export var y_activation_range : int = 80
+@export var x_activation_range : int = 112
+@export var y_activation_range : int = 96
 
 var moving: bool = false
 
