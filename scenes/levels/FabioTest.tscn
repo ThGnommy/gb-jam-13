@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://sbgjlu5t4a8c"]
+[gd_scene load_steps=20 format=4 uid="uid://sbgjlu5t4a8c"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_du1ks"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_hyrkl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dtk71t6jho560" path="res://scenes/scripts/enemyManager.gd" id="3_ecnhu"]
 [ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/barrel.tscn" id="4_wpknc"]
 [ext_resource type="Shader" uid="uid://ce3l41fe36x0c" path="res://shaders/palette_swap.gdshader" id="5_bux3u"]
+[ext_resource type="PackedScene" uid="uid://bn7cnddwruav2" path="res://scenes/objects/mortar.tscn" id="6_cssd7"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="6_ojt4a"]
 [ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="7_iumyk"]
 [ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="8_jtsux"]
@@ -432,6 +433,12 @@ animation_speed = 3.0
 position = Vector2(352, 16)
 animation_speed = 3.0
 
+[node name="Mortar" parent="Enemies" instance=ExtResource("6_cssd7")]
+position = Vector2(288, 80)
+
+[node name="Cowboy" parent="Enemies" instance=ExtResource("17_oumif")]
+position = Vector2(400, 32)
+
 [node name="WallsLayer" type="TileMapLayer" parent="."]
 unique_name_in_owner = true
 z_index = -2
@@ -492,8 +499,5 @@ position = Vector2(288, 112)
 
 [node name="Shotgun-pickup6" parent="." instance=ExtResource("14_oumif")]
 position = Vector2(304, 112)
-
-[node name="Cowboy" parent="." instance=ExtResource("17_oumif")]
-position = Vector2(400, 32)
 
 [connection signal="belt_changed" from="Player" to="CanvasLayer/BulletBelt" method="_on_player_belt_changed"]

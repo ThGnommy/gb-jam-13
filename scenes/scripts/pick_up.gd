@@ -13,4 +13,3 @@ func pickup():
 
 func delete():
 	queue_free()
-

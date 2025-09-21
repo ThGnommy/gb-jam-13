@@ -359,7 +359,7 @@ sources/0 = SubResource("TileSetAtlasSource_7lrji")
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5vibx")]
-position = Vector2(128, 208)
+position = Vector2(624, 240)
 animation_speed = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -606,6 +606,9 @@ parameters/looping = true
 
 [node name="Mortar" parent="." instance=ExtResource("17_1usdx")]
 position = Vector2(608, 208)
+
+[node name="Mortar4" parent="." instance=ExtResource("17_1usdx")]
+position = Vector2(176, 208)
 
 [node name="Mortar2" parent="." instance=ExtResource("17_1usdx")]
 position = Vector2(816, 176)

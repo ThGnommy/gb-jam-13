@@ -153,6 +153,11 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
 [node name="Slime" type="Area2D"]
@@ -186,7 +191,7 @@ region_rect = Rect2(0, 288, 32, 32)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
 sprite_frames = SubResource("SpriteFrames_q574h")
-animation = &"idle"
+animation = &"new_animation"
 autoplay = "idle"
 metadata/_edit_group_ = true
 

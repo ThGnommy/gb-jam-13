@@ -20,6 +20,16 @@ func _ready() -> void:
 		pathfinding.set_point_solid(cell, true)
 
 
+var cache_obstacles : Array[Vector2i]
+
+func add_obstacles(obstacles : Array[Vector2i]):
+
+	cache_obstacles.clear()
+	cache_obstacles = obstacles
+	for obst in obstacles:
+		pathfinding.set_point_solid(obst, true)
+
+
 func do_action(target: Vector2) -> void:
 	assert(TurnManager.TurnState.Enemies == TurnManager.current_turn)
 	# number of action (max 1 attack)
@@ -45,6 +55,9 @@ func do_action(target: Vector2) -> void:
 			if not path_to_player.is_empty():
 				path_to_player.remove_at(0)
 				await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( path_to_player[0]/16 ))
+
+	for obst in cache_obstacles:
+		pathfinding.set_point_solid(obst, false)
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
 
