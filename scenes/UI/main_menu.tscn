@@ -1,8 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dc3uogl047tm3"]
+[gd_scene load_steps=11 format=3 uid="uid://dc3uogl047tm3"]
 
 [ext_resource type="Script" uid="uid://bqpp3xyqh04hc" path="res://scenes/scripts/ui/main_menu.gd" id="1_5jstl"]
 [ext_resource type="Theme" uid="uid://bfocqed0xdxmf" path="res://ui_theme.tres" id="2_e2p27"]
 [ext_resource type="FontFile" uid="uid://b8eif6kg2ita4" path="res://ui/fonts/AGoblinAppears-o2aV.ttf" id="3_ngj32"]
+[ext_resource type="Texture2D" uid="uid://b1p5a3ymmlfuy" path="res://assets/sprites/Player/StandardBullet.png" id="4_ngj32"]
+[ext_resource type="Texture2D" uid="uid://d2m13fddmqhpn" path="res://assets/sprites/Player/ShotgunBullet.png" id="5_bm8t2"]
+[ext_resource type="Texture2D" uid="uid://dcs32bxd1o8ju" path="res://assets/sprites/Player/DynamiteBullet.png" id="6_5d4ag"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njkqv"]
 bg_color = Color(0.25098, 0.223529, 0.184314, 1)
@@ -12,6 +15,57 @@ border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0.780392, 0.611765, 0.337255, 1)
 anti_aliasing = false
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ngj32"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_5d4ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ngj32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bm8t2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bm8t2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ngj32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5d4ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bm8t2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5d4ag"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_bm8t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5d4ag")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ngj32")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -54,6 +108,7 @@ modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
+z_index = 2
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("2_e2p27")
@@ -85,6 +140,21 @@ theme_override_font_sizes/font_size = 14
 text = "Quit"
 flat = true
 
-[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_reload_pressed"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(80, 64)
+sprite_frames = SubResource("SpriteFrames_ngj32")
+autoplay = "default"
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(112, 64)
+sprite_frames = SubResource("SpriteFrames_bm8t2")
+autoplay = "default"
+
+[node name="AnimatedSprite2D3" type="AnimatedSprite2D" parent="."]
+position = Vector2(48, 64)
+sprite_frames = SubResource("SpriteFrames_5d4ag")
+autoplay = "default"
+
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_reload_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]

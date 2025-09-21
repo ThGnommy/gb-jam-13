@@ -39,7 +39,7 @@ var inputs: Dictionary = {
 }
 
 func _ready() -> void:
-	player_direction = Vector2.RIGHT
+	set_player_direction("right")
 	TurnManager.add_entity_from_current_turn(self)
 	current_cell = GridManager.world_to_cell(global_position)
 	GridManager.occupy_cell(current_cell, GridManager.EntityType.Player, self)
