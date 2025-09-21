@@ -27,6 +27,7 @@ func do_action(target):
 	if state == 1:
 		aiming = target
 		create_target_marker()
+		$AcquireTargetAudioStream.play()
 		_pass_turn()
 	elif state == 3:
 		if target_marker_animation:
