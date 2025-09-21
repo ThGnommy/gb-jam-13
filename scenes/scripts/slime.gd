@@ -40,14 +40,19 @@ func do_action(target: Vector2) -> void:
 				Vector2i.RIGHT:
 					anim.flip_h = false
 					anim.play("Attack")
+					await anim.animation_finished
 				Vector2i.UP:
 					anim.play("AttackUp")
+					await anim.animation_finished
 				Vector2i.LEFT:
 					print("attack", dir)
 					anim.flip_h = true
 					anim.play("Attack")
+					await anim.animation_finished
 				Vector2i.DOWN:
 					anim.play("AttackDown")
+					await anim.animation_finished
+					
 			_attack(target)
 			# anim.play("idle")
 		else:

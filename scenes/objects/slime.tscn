@@ -101,7 +101,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"Attack",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -121,7 +121,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"AttackDown",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -141,7 +141,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"AttackUp",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -191,7 +191,7 @@ region_rect = Rect2(0, 288, 32, 32)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
 sprite_frames = SubResource("SpriteFrames_q574h")
-animation = &"new_animation"
+animation = &"AttackUp"
 autoplay = "idle"
 metadata/_edit_group_ = true
 
