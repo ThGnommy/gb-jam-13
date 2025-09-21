@@ -19,6 +19,12 @@ func _ready() -> void:
 	for cell in tilemap_layer.get_used_cells():
 		pathfinding.set_point_solid(cell, true)
 
+func add_obstacles(obstacles : Array[Vector2i]):
+	cache_obstacles.clear()
+	cache_obstacles = obstacles
+	for obst in obstacles:
+		pathfinding.set_point_solid(obst, true)
+
 func do_action(target: Vector2) -> void:
 	if should_skip_turn():
 		pass_turn()

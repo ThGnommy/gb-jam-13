@@ -359,7 +359,7 @@ texture = ExtResource("2_if0w5")
 
 [node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("enemy_array", "tilemap_walls")]
 script = ExtResource("3_dyh3c")
-enemy_array = [NodePath("../Level/Enemies/Slime"), NodePath("../Level/Enemies/Slime2")]
+enemy_array = [NodePath("../Level/Enemies/Slime"), NodePath("../Level/Enemies/Slime2"), NodePath("../Level/Enemies/Cowboy")]
 tilemap_walls = NodePath("../Level/WallsLayer")
 metadata/_edit_lock_ = true
 
