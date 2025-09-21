@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://3xh3muars4tp"]
+
+[ext_resource type="AudioStream" uid="uid://dwexdh8skf0hv" path="res://assets/audio/BGM/MainTheme.ogg" id="1_kqpl0"]
+
+[node name="BackgroundMusic" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_kqpl0")
+volume_db = -5.0
+autoplay = true
