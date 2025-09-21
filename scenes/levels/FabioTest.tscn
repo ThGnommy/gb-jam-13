@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dtk71t6jho560" path="res://scenes/scripts/enemyManager.gd" id="3_ecnhu"]
 [ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/barrel.tscn" id="4_wpknc"]
 [ext_resource type="Shader" uid="uid://ce3l41fe36x0c" path="res://shaders/palette_swap.gdshader" id="5_bux3u"]
-[ext_resource type="PackedScene" uid="uid://bn7cnddwruav2" path="res://scenes/objects/mortar.tscn" id="6_cssd7"]
+[ext_resource type="PackedScene" path="res://scenes/objects/mortar.tscn" id="6_cssd7"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="6_ojt4a"]
 [ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="7_iumyk"]
 [ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="8_jtsux"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d1s0l4yeb3yqe" path="res://scenes/UI/bullet_belt.tscn" id="11_7gwfg"]
 [ext_resource type="PackedScene" uid="uid://cq4v1p1n4sxwi" path="res://scenes/objects/pickups/Beer-pickup.tscn" id="14_oumif"]
 [ext_resource type="PackedScene" uid="uid://c7sxae77oiyev" path="res://scenes/objects/pickups/lucky-pickup.tscn" id="15_fsg2e"]
-[ext_resource type="PackedScene" uid="uid://c6echt6whwfxt" path="res://scenes/objects/chest.tscn" id="16_cssd7"]
+[ext_resource type="PackedScene" path="res://scenes/objects/chest.tscn" id="16_cssd7"]
 [ext_resource type="PackedScene" uid="uid://cf7nmojtvmslc" path="res://scenes/objects/cowboy.tscn" id="17_oumif"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]

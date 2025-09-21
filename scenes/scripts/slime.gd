@@ -29,7 +29,6 @@ func add_obstacles(obstacles : Array[Vector2i]):
 	for obst in obstacles:
 		pathfinding.set_point_solid(obst, true)
 
-
 func do_action(target: Vector2) -> void:
 	assert(TurnManager.TurnState.Enemies == TurnManager.current_turn)
 	# number of action (max 1 attack)
@@ -61,8 +60,19 @@ func do_action(target: Vector2) -> void:
 			var path_to_player = pathfinding.get_point_path(position / 16, target / 16)
 			if not path_to_player.is_empty():
 				path_to_player.remove_at(0)
-				await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( path_to_player[0]/16 ))
+				jump_animation(10)
+				await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i(path_to_player[0]/16))
 		pass_turn()
+
+func jump_animation(px_height: int) -> void:
+	var jump_tween = create_tween()
+	$SpritesRoot/AnimatedSprite2D.animation = "jump"
+	jump_tween.tween_property(anim, "position:y", -px_height, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	jump_tween.tween_property(anim, "position:y", 0, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	jump_tween.tween_callback(play_idle_anim)
+
+func play_idle_anim() -> void:
+	$SpritesRoot/AnimatedSprite2D.animation = "idle"
 
 func pass_turn():
 	for obst in cache_obstacles:
