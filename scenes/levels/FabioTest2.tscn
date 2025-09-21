@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cf7nmojtvmslc" path="res://scenes/objects/cowboy.tscn" id="7_if0w5"]
 [ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="7_winb3"]
 [ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="8_gf0b3"]
-[ext_resource type="PackedScene" uid="uid://d21n4d65t35t8" path="res://scenes/objects/light.tscn" id="10_if0w5"]
+[ext_resource type="PackedScene" path="res://scenes/objects/light.tscn" id="10_if0w5"]
 [ext_resource type="AudioStream" uid="uid://dwexdh8skf0hv" path="res://assets/audio/BGM/MainTheme.ogg" id="11_dyh3c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
@@ -470,9 +470,10 @@ position = Vector2(720, -51)
 [node name="Light12" parent="Level/Lights" instance=ExtResource("10_if0w5")]
 position = Vector2(736, 61)
 
-[node name="Player" parent="Level" instance=ExtResource("1_fne5y")]
+[node name="Player" parent="Level" node_paths=PackedStringArray("camera") instance=ExtResource("1_fne5y")]
 position = Vector2(368, 224)
 animation_speed = 3.0
+camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Level/Player"]
 metadata/_edit_lock_ = true
