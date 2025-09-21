@@ -373,8 +373,9 @@ visible = false
 scale = Vector2(10, 10)
 texture = ExtResource("2_cn12u")
 
-[node name="GameManager" type="Node2D" parent="."]
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("tilemap_walls")]
 script = ExtResource("3_f0uld")
+tilemap_walls = NodePath("../WallsLayer")
 metadata/_edit_lock_ = true
 
 [node name="Objects" type="Node2D" parent="."]

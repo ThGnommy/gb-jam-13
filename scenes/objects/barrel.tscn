@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=3 uid="uid://c5yswikogtdy6"]
 
-[ext_resource type="Script" uid="uid://c2lv1tldc3xbd" path="res://scenes/scripts/barrel.gd" id="1_kldud"]
+[ext_resource type="Script" path="res://scenes/scripts/barrel.gd" id="1_kldud"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="2_kldud"]
 [ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="3_kldud"]
 [ext_resource type="Texture2D" uid="uid://14owcfhpdnx4" path="res://assets/sprites/Environment/Barrel.png" id="3_tw3it"]

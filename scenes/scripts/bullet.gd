@@ -20,6 +20,9 @@ func _ready() -> void:
 	start_cell = GridManager.world_to_cell(global_position)
 	current_cell = start_cell
 	$ExplosionSprite.hide()
+	if(verify_hit(current_cell)):
+		should_stop = true
+		hit_something(current_cell)
 
 func set_direction(dir : Vector2) -> void:
 	direction = dir.normalized()

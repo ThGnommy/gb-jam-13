@@ -23,7 +23,7 @@ shader_parameter/brightness = 4.75e-08
 shader_parameter/source_palette = ExtResource("2_hyrkl")
 shader_parameter/target_palette = ExtResource("6_ojt4a")
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7lrji"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cssd7"]
 texture = ExtResource("8_jtsux")
 0:0/0 = 0
 0:0/0/terrain_set = 0
@@ -353,12 +353,12 @@ physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Walls0"
 terrain_set_0/terrain_0/color = Color(0.31132, 0.274208, 0.840594, 1)
-sources/0 = SubResource("TileSetAtlasSource_7lrji")
+sources/0 = SubResource("TileSetAtlasSource_cssd7")
 
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_du1ks")]
-position = Vector2(96, 48)
+position = Vector2(272, 48)
 animation_speed = 3.0
 camera = NodePath("Camera2D")
 
@@ -372,8 +372,10 @@ visible = false
 scale = Vector2(10, 10)
 texture = ExtResource("2_hyrkl")
 
-[node name="GameManager" type="Node2D" parent="."]
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("enemy_array", "tilemap_walls")]
 script = ExtResource("3_ecnhu")
+enemy_array = [NodePath("../Enemies/Slime"), NodePath("../Enemies/Slime2"), NodePath("../Enemies/Cowboy"), NodePath("../Enemies/Mortar")]
+tilemap_walls = NodePath("../WallsLayer")
 metadata/_edit_lock_ = true
 
 [node name="Objects" type="Node2D" parent="."]

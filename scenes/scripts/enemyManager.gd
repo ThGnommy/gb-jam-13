@@ -11,7 +11,7 @@ enum EntityType {
 
 @export var enemy_array : Array[Enemy] = []
 @export var grid_size = Vector2i(128, 128)
-
+@export var tilemap_walls: TileMapLayer
 var player : Player
 
 var CellData := {
@@ -124,7 +124,6 @@ func world_to_cell(pos: Vector2) -> Vector2i:
 	return Vector2i(roundi(pos.x / CELL_SIZE), roundi(pos.y / CELL_SIZE))
 
 func fill_matrix_with_walls():
-	var tilemap_walls: TileMapLayer = %WallsLayer
 	
 	if tilemap_walls:
 		var used_cells = tilemap_walls.get_used_cells()
@@ -134,7 +133,6 @@ func fill_matrix_with_walls():
 
 ####### debug grid ######
 func _draw():
-	return
 	var half_cell : float = float(CELL_SIZE) * 0.5
 	for x in range(grid_size.x):
 		var start = Vector2(x * CELL_SIZE - half_cell, 0)
