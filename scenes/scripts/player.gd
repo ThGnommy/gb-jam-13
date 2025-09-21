@@ -62,7 +62,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			return
 		move()
 		animate()
-		set_idle_animation()
 
 func move() -> void:
 	if TurnManager.is_turn_of(TurnManager.TurnState.Player):
@@ -76,20 +75,15 @@ func animate() -> void:
 	match player_direction:
 		Vector2i.RIGHT:
 			jump_animation(10)
-			anim.play("jump_side")
-			anim.flip_h = false
 		Vector2i.LEFT:
 			jump_animation(10)
-			anim.play("jump_side")
-			anim.flip_h = true
 		Vector2i.UP:
 			jump_animation(5)
-			anim.play("jump_top")
 		Vector2i.DOWN:
 			jump_animation(5)
-			anim.play("jump_down")
 
 func set_idle_animation():
+	print("idle")
 	match player_direction:
 		Vector2i.RIGHT:
 			anim.play("idle")
@@ -103,10 +97,23 @@ func set_idle_animation():
 			anim.play("idle_down")
 
 func jump_animation(px_height: int) -> void:
+	match player_direction:
+		Vector2i.RIGHT:
+			anim.flip_h = false
+			anim.play("jump_side")
+		Vector2i.LEFT:
+			anim.flip_h = true
+			anim.play("jump_side")
+			print(anim.animation)
+		Vector2i.UP:
+			anim.play("jump_top")
+		Vector2i.DOWN:
+			anim.play("jump_down")
 	var jump_tween = create_tween()
 	jump_tween.tween_property(anim, "position:y", -px_height, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	jump_tween.tween_property(anim, "position:y", 0, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	await jump_tween.finished
+	set_idle_animation()
 
 
 func update_raycast(dir) -> void:
