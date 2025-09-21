@@ -27,7 +27,7 @@ func should_skip_turn()->bool:
 	if is_active:
 		return false
 
-	if  abs(distance.x) > x_activation_range || abs(distance.y) > y_activation_range:
+	if abs(distance.x) > x_activation_range || abs(distance.y) > y_activation_range:
 		return true
 
 	else:
