@@ -1,10 +1,12 @@
-[gd_scene load_steps=18 format=4 uid="uid://65s0naaddc23"]
+[gd_scene load_steps=20 format=4 uid="uid://65s0naaddc23"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_5vibx"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_cn12u"]
 [ext_resource type="Script" uid="uid://dtk71t6jho560" path="res://scenes/scripts/enemyManager.gd" id="3_f0uld"]
 [ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/barrel.tscn" id="4_qelpf"]
 [ext_resource type="Shader" uid="uid://ce3l41fe36x0c" path="res://shaders/palette_swap.gdshader" id="5_1usdx"]
+[ext_resource type="PackedScene" uid="uid://c7sxae77oiyev" path="res://scenes/objects/pickups/lucky-pickup.tscn" id="5_qelpf"]
+[ext_resource type="PackedScene" uid="uid://cq4v1p1n4sxwi" path="res://scenes/objects/pickups/Beer-pickup.tscn" id="6_1usdx"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="6_efck0"]
 [ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="7_0eg4s"]
 [ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="8_32hes"]
@@ -356,7 +358,7 @@ sources/0 = SubResource("TileSetAtlasSource_7lrji")
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_5vibx")]
-position = Vector2(176, 208)
+position = Vector2(128, 208)
 animation_speed = 3.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -374,17 +376,68 @@ metadata/_edit_lock_ = true
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2(272, 40)
 
-[node name="Barrel" parent="Objects" instance=ExtResource("4_qelpf")]
-position = Vector2(-112, 176)
+[node name="Barrel5" parent="Objects" instance=ExtResource("4_qelpf")]
+position = Vector2(96, 168)
+
+[node name="Barrel6" parent="Objects" instance=ExtResource("4_qelpf")]
+position = Vector2(192, 120)
+
+[node name="Barrel7" parent="Objects" instance=ExtResource("4_qelpf")]
+position = Vector2(192, 216)
+
+[node name="Barrel8" parent="Objects" instance=ExtResource("4_qelpf")]
+position = Vector2(464, 168)
+
+[node name="Barrel12" parent="Objects" instance=ExtResource("4_qelpf")]
+position = Vector2(464, 184)
+
+[node name="Barrel9" parent="Objects" instance=ExtResource("4_qelpf")]
+position = Vector2(576, 104)
+
+[node name="Barrel10" parent="Objects" instance=ExtResource("4_qelpf")]
+position = Vector2(528, 184)
+
+[node name="Barrel11" parent="Objects" instance=ExtResource("4_qelpf")]
+position = Vector2(464, 104)
 
 [node name="Barrel2" parent="Objects" instance=ExtResource("4_qelpf")]
-position = Vector2(-48, 184)
+position = Vector2(-64, 168)
 
 [node name="Barrel3" parent="Objects" instance=ExtResource("4_qelpf")]
-position = Vector2(-144, 152)
+position = Vector2(-80, 136)
 
 [node name="Barrel4" parent="Objects" instance=ExtResource("4_qelpf")]
-position = Vector2(-48, 104)
+position = Vector2(-112, 216)
+
+[node name="Lucky-Pickup" parent="Objects" instance=ExtResource("5_qelpf")]
+position = Vector2(720, 168)
+
+[node name="Shotgun-pickup" parent="Objects" instance=ExtResource("6_1usdx")]
+position = Vector2(112, 264)
+
+[node name="Shotgun-pickup3" parent="Objects" instance=ExtResource("6_1usdx")]
+position = Vector2(288, 184)
+
+[node name="Shotgun-pickup4" parent="Objects" instance=ExtResource("6_1usdx")]
+position = Vector2(112, 168)
+
+[node name="Shotgun-pickup5" parent="Objects" instance=ExtResource("6_1usdx")]
+position = Vector2(416, 56)
+
+[node name="Shotgun-pickup6" parent="Objects" instance=ExtResource("6_1usdx")]
+position = Vector2(608, 248)
+
+[node name="Shotgun-pickup7" parent="Objects" instance=ExtResource("6_1usdx")]
+position = Vector2(384, 248)
+
+[node name="Shotgun-pickup8" parent="Objects" instance=ExtResource("6_1usdx")]
+position = Vector2(384, 104)
+
+[node name="Shotgun-pickup9" parent="Objects" instance=ExtResource("6_1usdx")]
+position = Vector2(608, 56)
+
+[node name="Shotgun-pickup2" parent="Objects" instance=ExtResource("6_1usdx")]
+position = Vector2(128, 72)
 
 [node name="Control" type="Control" parent="."]
 visible = false
@@ -412,11 +465,7 @@ grow_vertical = 2
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Slime" parent="Enemies" instance=ExtResource("7_0eg4s")]
-position = Vector2(240, 192)
-animation_speed = 3.0
-
-[node name="Slime2" parent="Enemies" instance=ExtResource("7_0eg4s")]
-position = Vector2(208, 144)
+position = Vector2(240, 176)
 animation_speed = 3.0
 
 [node name="WallsLayer" type="TileMapLayer" parent="."]
@@ -465,8 +514,33 @@ player = NodePath("../../Player")
 [node name="Chest" parent="." instance=ExtResource("12_uy26i")]
 position = Vector2(288, 208)
 
+[node name="Chest2" parent="." instance=ExtResource("12_uy26i")]
+position = Vector2(384, 112)
+
+[node name="Chest3" parent="." instance=ExtResource("12_uy26i")]
+position = Vector2(400, 304)
+
+[node name="Chest4" parent="." instance=ExtResource("12_uy26i")]
+position = Vector2(448, 224)
+
+[node name="Chest6" parent="." instance=ExtResource("12_uy26i")]
+position = Vector2(544, 208)
+
+[node name="Chest7" parent="." instance=ExtResource("12_uy26i")]
+position = Vector2(528, 160)
+
+[node name="Chest8" parent="." instance=ExtResource("12_uy26i")]
+position = Vector2(656, 112)
+
+[node name="Chest9" parent="." instance=ExtResource("12_uy26i")]
+position = Vector2(624, 144)
+
+[node name="Chest5" parent="." instance=ExtResource("12_uy26i")]
+position = Vector2(448, 192)
+
 [node name="Cowboy" parent="." instance=ExtResource("13_dor7n")]
-position = Vector2(464, 208)
+position = Vector2(480, 208)
+animation_speed = 1.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("14_cn12u")
