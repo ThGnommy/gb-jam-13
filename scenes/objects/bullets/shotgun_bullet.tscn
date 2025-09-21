@@ -72,6 +72,7 @@ shape = SubResource("RectangleShape2D_fjplf")
 disabled = true
 
 [node name="ExplosionSprite" type="AnimatedSprite2D" parent="."]
+z_index = 2
 position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_w8qm5")
 animation = &"explode"

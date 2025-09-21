@@ -95,6 +95,7 @@ disabled = true
 [node name="ExplosionSprites" type="Node2D" parent="."]
 
 [node name="ExplosionSprite" type="AnimatedSprite2D" parent="ExplosionSprites"]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_rnwde")
 animation = &"explode"
 autoplay = "explode"
@@ -102,21 +103,25 @@ frame = 6
 frame_progress = 1.0
 
 [node name="ExplosionSprite2" type="AnimatedSprite2D" parent="ExplosionSprites"]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_rnwde")
 animation = &"explode"
 autoplay = "explode"
 
 [node name="ExplosionSprite3" type="AnimatedSprite2D" parent="ExplosionSprites"]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_rnwde")
 animation = &"explode"
 autoplay = "explode"
 
 [node name="ExplosionSprite4" type="AnimatedSprite2D" parent="ExplosionSprites"]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_rnwde")
 animation = &"explode"
 autoplay = "explode"
 
 [node name="ExplosionSprite5" type="AnimatedSprite2D" parent="ExplosionSprites"]
+z_index = 2
 sprite_frames = SubResource("SpriteFrames_rnwde")
 animation = &"explode"
 autoplay = "explode"

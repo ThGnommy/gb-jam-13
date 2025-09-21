@@ -389,6 +389,7 @@ region_enabled = true
 region_rect = Rect2(0.110302, 214.6, 16.0805, 25.5397)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_2147m")
 animation = &"jump_top"
 autoplay = "idle"

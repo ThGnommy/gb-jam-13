@@ -2,7 +2,7 @@ class_name Enemy
 
 extends Area2D
 
-@export var animation_speed: float = 1.0
+@export var animation_speed: float = 2.0
 var current_cell: Vector2i
 
 @onready var raycast = $RayCast2D
