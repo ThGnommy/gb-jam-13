@@ -8,6 +8,7 @@ signal belt_shot(index)
 signal reload_signal
 
 @export var animation_speed: float = 1.0
+@export var camera: Camera2D
 @onready var raycast = $RayCast2D
 @onready var anim = $SpritesRoot/AnimatedSprite2D
 
@@ -186,6 +187,8 @@ func player_turn():
 
 func set_player_direction(dir) -> void:
 	player_direction = inputs[dir]
+	camera.position = Vector2.ZERO
+	camera.position += Vector2(inputs[dir]) * 16
 
 func _on_health_component_health_change() -> void:
 	player_health_change.emit($HealthComponent.currentHealth)

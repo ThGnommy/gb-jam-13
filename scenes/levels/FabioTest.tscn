@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://sbgjlu5t4a8c"]
+[gd_scene load_steps=20 format=4 uid="uid://bcxprgultfrn3"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_du1ks"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_hyrkl"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://dtk71t6jho560" path="res://scenes/scripts/enemyManager.gd" id="3_ecnhu"]
 [ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/barrel.tscn" id="4_wpknc"]
 [ext_resource type="Shader" uid="uid://ce3l41fe36x0c" path="res://shaders/palette_swap.gdshader" id="5_bux3u"]
-[ext_resource type="PackedScene" uid="uid://bn7cnddwruav2" path="res://scenes/objects/mortar.tscn" id="6_cssd7"]
+[ext_resource type="PackedScene" path="res://scenes/objects/mortar.tscn" id="6_cssd7"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="6_ojt4a"]
 [ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="7_iumyk"]
 [ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="8_jtsux"]
@@ -357,11 +357,14 @@ sources/0 = SubResource("TileSetAtlasSource_7lrji")
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_du1ks")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_du1ks")]
 position = Vector2(288, 32)
 animation_speed = 3.0
+camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
