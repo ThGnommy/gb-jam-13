@@ -36,6 +36,9 @@ func do_action(target):
 			BulletFactory.shoot_bullet_at_range("Mortar", position, direction, target_range, self)
 			$ShootAudioStream.play()
 			destroy_target_marker()
+			$AnimatedSprite2D.animation = "shooting"
+			await $AnimatedSprite2D.animation_finished
+			$AnimatedSprite2D.animation = "idle"
 		else:
 			print("No target marker to shoot at!")
 			# Still pass the turn if there's no target marker
@@ -66,7 +69,7 @@ func create_target_marker() -> void:
 
 	# Add the target sprite to the main scene tree
 	get_tree().get_root().add_child(target_marker_animation)
-
+	$AnimatedSprite2D.animation = "loading"
 func _pass_turn():
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()

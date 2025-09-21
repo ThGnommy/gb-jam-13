@@ -13,9 +13,6 @@ func spawn_item():
 	# Spawn random projectile pickup if not already spawned
 	var pickup_type = BulletFactory.not_spawned_pickups[randi() % BulletFactory.not_spawned_pickups.size()]
 	var pickup = BulletFactory.create_bullet_pickup(pickup_type)
-
-	# Remove from not spawned pickups
-	BulletFactory.not_spawned_pickups.erase(pickup_type)
 	pickup.global_position = global_position
 	
 	# Add it to the scene
