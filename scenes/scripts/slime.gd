@@ -57,7 +57,7 @@ func do_action(target: Vector2) -> void:
 					anim.play("AttackDown")
 					await anim.animation_finished
 					
-			_attack(target)
+			await _attack(target)
 			pass_turn()
 			return
 			# anim.play("idle")
@@ -67,7 +67,8 @@ func do_action(target: Vector2) -> void:
 				path_to_player.remove_at(0)
 				jump_animation(10)
 				await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i(path_to_player[0]/16))
-		pass_turn()
+	pass_turn()
+
 
 func jump_animation(px_height: int) -> void:
 	var jump_tween = create_tween()
@@ -80,14 +81,14 @@ func play_idle_anim() -> void:
 	$SpritesRoot/AnimatedSprite2D.animation = "idle"
 
 func pass_turn():
+	print("slime pass")
 	for obst in cache_obstacles:
 		pathfinding.set_point_solid(obst, false)
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
 
 func _attack(target: Vector2):
-	$SpritesRoot/AnimatedSprite2D.play("attack")
-	$SlimeAttack.play()
+	print("slime attack")
 	var cell = GridManager.world_to_cell(target)
 	var hitEntity = GridManager.get_entity_at_cell(cell)
 	var healthComp = hitEntity.get_node_or_null("HealthComponent")
