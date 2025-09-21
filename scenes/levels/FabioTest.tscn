@@ -358,7 +358,7 @@ sources/0 = SubResource("TileSetAtlasSource_7lrji")
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_du1ks")]
-position = Vector2(288, 32)
+position = Vector2(96, 48)
 animation_speed = 3.0
 camera = NodePath("Camera2D")
 
@@ -502,3 +502,6 @@ position = Vector2(288, 112)
 
 [node name="Shotgun-pickup6" parent="." instance=ExtResource("14_oumif")]
 position = Vector2(304, 112)
+
+[node name="Cowboy" parent="." instance=ExtResource("17_oumif")]
+position = Vector2(128, 48)
