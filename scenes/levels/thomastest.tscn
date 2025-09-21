@@ -690,9 +690,10 @@ visible = false
 scale = Vector2(10, 10)
 texture = ExtResource("2_yes4t")
 
-[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("enemy_array")]
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("enemy_array", "tilemap_walls")]
 script = ExtResource("3_h4aov")
 enemy_array = [NodePath("../Slime"), NodePath("../Cowboy")]
+tilemap_walls = NodePath("../WallsLayer")
 metadata/_edit_lock_ = true
 
 [node name="WallsLayer" type="TileMapLayer" parent="."]
