@@ -11,7 +11,6 @@ var bullet_map: Dictionary = {
 }
 
 
-var already_shot : Array[int]
 func _ready() -> void:
 	player.belt_changed.connect(_on_player_belt_changed)
 	player.belt_shot.connect(_on_player_belt_shot)
@@ -33,14 +32,7 @@ func update_belt() -> void:
 
 
 func _on_player_belt_shot(index: Variant) -> void:
-	var offset = 0
-
-	for already in already_shot:
-		if index + offset>= already:
-			offset += 1
-	set_bullet_active(index + offset, false)
-	already_shot.append(index + offset)
-	already_shot.sort()
+	set_bullet_active(index, false)
 
 
 func set_bullet_active(index, active: bool):
@@ -58,7 +50,6 @@ func _on_player_belt_changed(value: Variant) -> void:
 func _on_player_reload_signal() -> void:
 	if not ui_belt:
 		return
-	already_shot.clear()
 	update_belt()
 	for i in ui_belt.get_children().size():
 		set_bullet_active(i, true)
