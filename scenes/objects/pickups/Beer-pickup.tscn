@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cq4v1p1n4sxwi"]
 
-[ext_resource type="Script" uid="uid://f6343bibjii1" path="res://scenes/scripts/pick_up.gd" id="1_idiqv"]
+[ext_resource type="Script" path="res://scenes/scripts/pick_up.gd" id="1_idiqv"]
 [ext_resource type="Texture2D" uid="uid://otykktof5ssy" path="res://assets/sprites/Environment/Beer-Sheet.png" id="2_idiqv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8loc2"]
@@ -27,7 +27,7 @@ type = "Beer"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wvi6x")
-frame_progress = 0.3286557
+frame_progress = 0.328656
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2
