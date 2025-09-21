@@ -6,7 +6,7 @@ var target_marker_animation : AnimatedSprite2D
 
 func _ready() -> void:
 	super._ready()
-	damage = 2
+	damage = 1
 	velocity = 150
 	range = 4 
 	start_cell = GridManager.world_to_cell(global_position)

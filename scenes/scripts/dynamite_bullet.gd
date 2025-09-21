@@ -6,7 +6,7 @@ var other_cells_modifier : Array = [Vector2(0, -1), Vector2(0, 1), Vector2(1, 0)
 
 func _ready() -> void:
 	velocity = 150
-	damage = 2
+	damage = 1
 	range = 2 
 	start_cell = GridManager.world_to_cell(global_position)
 
