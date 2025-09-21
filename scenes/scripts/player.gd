@@ -4,6 +4,8 @@ extends Area2D
 
 signal player_health_change(value)
 signal belt_changed(value)
+signal belt_shot(index)
+signal reload_signal
 
 @export var animation_speed: float = 1.0
 @onready var raycast = $RayCast2D
@@ -155,6 +157,7 @@ func shoot() -> void:
 
 	# Remove the bullet from the remaining bullets
 	remaining_bullets.remove_at(random_chamber)
+	belt_shot.emit(random_chamber)
 
 	# Create and shoot the bullet
 	BulletFactory.shoot_bullet(bullet_type, position, player_direction, self)
@@ -170,6 +173,7 @@ func reload() -> void:
 	remaining_bullets.clear()
 	remaining_bullets = belt.duplicate()
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
+	reload_signal.emit()
 	_pass_turn()
 
 func die():
