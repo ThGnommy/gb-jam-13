@@ -8,6 +8,7 @@ signal belt_changed(value)
 @export var animation_speed: float = 1.0
 @onready var raycast = $RayCast2D
 @onready var anim = $SpritesRoot/AnimatedSprite2D
+var game_over_ui: PackedScene = preload("res://scenes/UI/game_over.tscn")
 
 var player_direction: Vector2i
 
@@ -160,7 +161,6 @@ func shoot() -> void:
 	set_idle_animation()
 	$ShootAudioStream.play()
 
-
 func _pass_turn():
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
@@ -171,9 +171,11 @@ func reload() -> void:
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
 	_pass_turn()
 
-
 func die():
 	# todo player animation
+	print("PLAYER DIE")
+	var ui = game_over_ui.instantiate()
+	get_parent().get_node_or_null("UICanvasLayer").add_child(ui)
 	pass
 
 func player_turn():

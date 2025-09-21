@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cf7nmojtvmslc" path="res://scenes/objects/cowboy.tscn" id="7_if0w5"]
 [ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="7_winb3"]
 [ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="8_gf0b3"]
-[ext_resource type="PackedScene" path="res://scenes/objects/light.tscn" id="10_if0w5"]
+[ext_resource type="PackedScene" uid="uid://d21n4d65t35t8" path="res://scenes/objects/light.tscn" id="10_if0w5"]
 [ext_resource type="AudioStream" uid="uid://dwexdh8skf0hv" path="res://assets/audio/BGM/MainTheme.ogg" id="11_dyh3c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
@@ -415,7 +415,6 @@ position = Vector2(352, 16)
 
 [node name="Cowboy" parent="Level/Enemies" instance=ExtResource("7_if0w5")]
 position = Vector2(384, 48)
-animation_speed = 1.0
 
 [node name="Objects" type="Node2D" parent="Level"]
 position = Vector2(368, 224)
