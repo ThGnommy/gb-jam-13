@@ -7,6 +7,7 @@ var current_cell: Vector2i
 func _ready() -> void:
 	current_cell = GridManager.world_to_cell(global_position)
 	GridManager.occupy_cell(current_cell, GridManager.EntityType.Environment, self)
+	$AnimatedSprite2D.animation = "idle"
 
 func die():
 	GridManager.cleanup_cell(current_cell)

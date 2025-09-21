@@ -10,7 +10,6 @@ func _ready() -> void:
 	velocity = 150
 	range = 4 
 	start_cell = GridManager.world_to_cell(global_position)
-	target_distance = float(range * GridManager.CELL_SIZE) + float(GridManager.CELL_SIZE * 0.5)
 	$FlySprite.z_index = 1
 
 	# Mortar bullet explodes in a 9-cell area (the target cell and the 8 surrounding cells)
@@ -45,6 +44,7 @@ func verify_hit(cell: Vector2) -> bool:
 
 func set_direction(dir : Vector2) -> void:
 	super.set_direction(dir)
+	target_distance = float(range * GridManager.CELL_SIZE) + float(GridManager.CELL_SIZE * 0.5)
 	target_marker_cell = start_cell + Vector2i(direction) * range
 	create_target_marker()
 	fly_animation(20)
