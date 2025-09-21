@@ -6,6 +6,7 @@ var tilemap_layer: TileMapLayer = null
 var pathfinding : AStarGrid2D = AStarGrid2D.new()
 
 @export var damage = 1 
+@onready var anim = $SpritesRoot/AnimatedSprite2D
 
 func _ready() -> void:
 	tilemap_layer = %WallsLayer 
@@ -24,7 +25,21 @@ func do_action(target: Vector2) -> void:
 	# number of action (max 1 attack)
 	for i in 2:
 		if _is_in_range(target):
+			var dir = Vector2i(_choose_direction(target))
+			match dir:
+				Vector2i.RIGHT:
+					anim.flip_h = false
+					anim.play("Attack")
+				Vector2i.UP:
+					anim.play("AttackUp")
+				Vector2i.LEFT:
+					print("attack", dir)
+					anim.flip_h = true
+					anim.play("Attack")
+				Vector2i.DOWN:
+					anim.play("AttackDown")
 			_attack(target)
+			# anim.play("idle")
 		else:
 			var path_to_player = pathfinding.get_point_path(position / 16, target / 16)
 			if not path_to_player.is_empty():
@@ -47,3 +62,8 @@ func _is_in_range(target : Vector2)-> bool:
 	var target_cell = GridManager.world_to_cell(world_target)
 
 	return target_cell == GridManager.world_to_cell(target)
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if (anim.animation != "idle"):
+		anim.play("idle")
