@@ -34,10 +34,6 @@ func update_belt() -> void:
 
 func _on_player_belt_shot(index: Variant) -> void:
 	var offset = 0
-
-	for already in already_shot:
-		if index >= already:
-			offset += 1
 	
 	set_bullet_active(index + offset, false)
 	already_shot.append(index)
