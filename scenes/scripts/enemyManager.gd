@@ -23,7 +23,6 @@ var CellData := {
 const CELL_SIZE : int = 16
 var occupancy_map : Array = []
 
-
 func _init() -> void:
 	map_matrix_init()
 	
@@ -135,6 +134,7 @@ func fill_matrix_with_walls():
 
 ####### debug grid ######
 func _draw():
+	return
 	var half_cell : float = float(CELL_SIZE) * 0.5
 	for x in range(grid_size.x):
 		var start = Vector2(x * CELL_SIZE - half_cell, 0)

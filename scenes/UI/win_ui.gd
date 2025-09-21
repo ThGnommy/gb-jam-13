@@ -1,9 +1,9 @@
 extends Control
 
-@onready var reload = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Reload
+@onready var main_menu = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/ToMainMenu
 
 func _ready() -> void:
-	reload.grab_focus()
+	main_menu.grab_focus()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()
@@ -16,6 +16,6 @@ func reset_game_states() -> void:
 	TurnManager.current_turn_objects = []
 	TurnManager.current_turn = TurnManager.TurnState.Player
 
-func _on_reload_pressed() -> void:
+func _on_to_main_menu_pressed() -> void:
 	reset_game_states()
-	get_tree().change_scene_to_file("res://scenes/levels/FabioTest.tscn")
+	get_tree().change_scene_to_file("res://scenes/UI/main_menu.tscn")

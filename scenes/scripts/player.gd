@@ -4,10 +4,15 @@ extends Area2D
 
 signal player_health_change(value)
 signal belt_changed(value)
+signal belt_shot(index)
+signal reload_signal
 
 @export var animation_speed: float = 1.0
 @onready var raycast = $RayCast2D
 @onready var anim = $SpritesRoot/AnimatedSprite2D
+
+var win_ui: PackedScene = preload("res://scenes/UI/win_ui.tscn")
+var game_over_ui: PackedScene = preload("res://scenes/UI/game_over.tscn")
 
 var player_direction: Vector2i
 
@@ -153,13 +158,13 @@ func shoot() -> void:
 
 	# Remove the bullet from the remaining bullets
 	remaining_bullets.remove_at(random_chamber)
+	belt_shot.emit(random_chamber)
 
 	# Create and shoot the bullet
 	BulletFactory.shoot_bullet(bullet_type, position, player_direction, self)
 	await anim.animation_finished
 	set_idle_animation()
 	$ShootAudioStream.play()
-
 
 func _pass_turn():
 	TurnManager.remove_entity_from_current_turn(self)
@@ -169,11 +174,14 @@ func reload() -> void:
 	remaining_bullets.clear()
 	remaining_bullets = belt.duplicate()
 	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
+	reload_signal.emit()
 	_pass_turn()
-
 
 func die():
 	# todo player animation
+	print("PLAYER DIE")
+	var ui = game_over_ui.instantiate()
+	get_parent().get_node_or_null("UICanvasLayer").add_child(ui)
 	pass
 
 func player_turn():
@@ -192,7 +200,7 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 		var pickup_name = parent.pickup()
 		parent.delete()
 		if pickup_name == "Lucky":
-			print("Win")
+			win()
 		elif pickup_name =="Beer":
 			print($HealthComponent.currentHealth)
 			$HealthComponent.heal(2)
@@ -204,3 +212,13 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 			belt.insert(random_pos, pickup_name)
 			belt_changed.emit(pickup_name)
 			reload()
+
+func game_over() -> void:
+	set_process_input(false)
+	var ui = game_over_ui.instantiate()
+	get_parent().get_node_or_null("UICanvasLayer").add_child(ui)
+
+func win() -> void:
+	set_process_input(false)
+	var ui = win_ui.instantiate()
+	get_parent().get_node_or_null("UICanvasLayer").add_child(ui)

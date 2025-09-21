@@ -474,12 +474,12 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BulletBelt" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("11_7gwfg")]
+[node name="BulletBelt" parent="UICanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("11_7gwfg")]
 player = NodePath("../../Player")
 
-[node name="HealthUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("2_trxt2")]
+[node name="HealthUI" parent="UICanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("2_trxt2")]
 player = NodePath("../../Player")
 
 [node name="Shotgun-pickup3" parent="." instance=ExtResource("14_oumif")]
@@ -499,5 +499,3 @@ position = Vector2(288, 112)
 
 [node name="Shotgun-pickup6" parent="." instance=ExtResource("14_oumif")]
 position = Vector2(304, 112)
-
-[connection signal="belt_changed" from="Player" to="CanvasLayer/BulletBelt" method="_on_player_belt_changed"]
