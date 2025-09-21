@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cjica8bsjaigj"]
+[gd_scene load_steps=13 format=3 uid="uid://cjica8bsjaigj"]
 
 [ext_resource type="Script" uid="uid://df32wexvnypc8" path="res://scenes/scripts/shotgun_bullet.gd" id="1_ehau3"]
 [ext_resource type="Texture2D" uid="uid://buqpkbwg280om" path="res://assets/sprites/Player/ShotgunBlast-Sheet.png" id="2_w8qm5"]
+[ext_resource type="AudioStream" uid="uid://dkjhota1tcd00" path="res://assets/audio/SFX/Shoot.wav" id="3_fjplf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ehau3"]
 
@@ -77,3 +78,6 @@ position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_w8qm5")
 animation = &"explode"
 autoplay = "explode"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fjplf")

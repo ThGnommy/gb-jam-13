@@ -191,6 +191,7 @@ region_enabled = true
 region_rect = Rect2(0, 288, 32, 32)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
+z_index = 1
 sprite_frames = SubResource("SpriteFrames_q574h")
 animation = &"AttackUp"
 autoplay = "idle"
