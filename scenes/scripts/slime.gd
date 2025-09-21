@@ -29,7 +29,12 @@ func add_obstacles(obstacles : Array[Vector2i]):
 	for obst in obstacles:
 		pathfinding.set_point_solid(obst, true)
 
+
 func do_action(target: Vector2) -> void:
+	print(is_active)
+	if should_skip_turn():
+		pass_turn()
+		return
 	assert(TurnManager.TurnState.Enemies == TurnManager.current_turn)
 	# number of action (max 1 attack)
 	for i in 2:

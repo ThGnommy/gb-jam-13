@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://cwnorjh1oblav" path="res://assets/sprites/Player/Player-Sheet.png" id="5_qmwv1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8s8x2"]
-size = Vector2(24, 24)
+size = Vector2(24, 19)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_81wja"]
 shader = ExtResource("3_fjs6v")
@@ -180,7 +180,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_down",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -197,7 +197,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle_up",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -211,7 +211,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_down",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -225,7 +225,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_side",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -239,7 +239,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"jump_top",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -318,13 +318,13 @@ metadata/_edit_group_ = true
 
 [node name="Shadow" type="Sprite2D" parent="SpritesRoot"]
 material = SubResource("ShaderMaterial_81wja")
-position = Vector2(0, -4)
+position = Vector2(0, -3)
 texture = ExtResource("5_qmwv1")
 region_enabled = true
 region_rect = Rect2(0.110302, 214.6, 16.0805, 25.5397)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SpritesRoot"]
-position = Vector2(0, -4)
+position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_82b1i")
 animation = &"jump_top"
 autoplay = "idle"

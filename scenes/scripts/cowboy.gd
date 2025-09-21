@@ -8,6 +8,10 @@ func _ready() -> void:
 	super._ready()
 
 func do_action(target:Vector2) -> void:
+	if should_skip_turn():
+		pass_turn()
+		return
+
 	assert(TurnManager.TurnState.Enemies == TurnManager.current_turn)
 	if _is_in_range(target):
 		_attack(target)
@@ -15,7 +19,7 @@ func do_action(target:Vector2) -> void:
 	
 	var dir = _choose_direction(target)
 	$JumpAudioStream.play()
-	animate(dir)
+	animate_jump(dir)
 	await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( current_cell.x + dir.x, current_cell.y + dir.y))
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
@@ -32,26 +36,7 @@ func _is_in_range(target: Vector2):
 
 func _attack(target: Vector2):
 	var dir = (target - position).normalized()
-	
-	match dir:
-		Vector2.RIGHT:
-			anim.flip_h = false
-			anim.play("shoot_right")
-			await anim.animation_finished
-			anim.play("idle")
-		Vector2.UP:
-			anim.play("shoot_up")
-			await anim.animation_finished
-			anim.play("idle_up")
-		Vector2.LEFT:
-			anim.flip_h = true
-			anim.play("shoot_right")
-			await anim.animation_finished
-			anim.play("idle")
-		Vector2.DOWN:
-			anim.play("shoot_down")
-			await anim.animation_finished
-			anim.play("idle_down")
+	animate_shoot(dir)
 	
 	# Create and shoot the bullet
 	var bullet_instance :Bullet = BulletFactory.create_bullet("Regular")
@@ -64,14 +49,14 @@ func _attack(target: Vector2):
 func jump_animation(px_height: int) -> void:
 	var jump_tween = create_tween()
 	$SpritesRoot/AnimatedSprite2D.animation = "jump"
-	jump_tween.tween_property(anim, "position:y", -px_height, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	jump_tween.tween_property(anim, "position:y", 0, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
+	jump_tween.tween_property($SpritesRoot/AnimatedSprite2D, "position:y", -px_height, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	jump_tween.tween_property($SpritesRoot/AnimatedSprite2D, "position:y", -2.0, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	jump_tween.tween_callback(play_idle_anim)
 
 func play_idle_anim() -> void:
 	$SpritesRoot/AnimatedSprite2D.animation = "idle"
 
-func animate(dir) -> void:
+func animate_jump(dir) -> void:
 	match dir:
 		Vector2.RIGHT:
 			jump_animation(10)
@@ -93,6 +78,27 @@ func animate(dir) -> void:
 		Vector2.DOWN:
 			jump_animation(5)
 			anim.play("jump_down")
+			await anim.animation_finished
+			anim.play("idle_down")
+
+func animate_shoot(dir) -> void:
+	match dir:
+		Vector2.RIGHT:
+			anim.flip_h = false
+			anim.play("shoot_right")
+			await anim.animation_finished
+			anim.play("idle")
+		Vector2.UP:
+			anim.play("shoot_up")
+			await anim.animation_finished
+			anim.play("idle_up")
+		Vector2.LEFT:
+			anim.flip_h = true
+			anim.play("shoot_right")
+			await anim.animation_finished
+			anim.play("idle")
+		Vector2.DOWN:
+			anim.play("shoot_down")
 			await anim.animation_finished
 			anim.play("idle_down")
 
