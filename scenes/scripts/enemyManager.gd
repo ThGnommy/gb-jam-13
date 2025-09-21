@@ -43,6 +43,15 @@ func move_enemies() -> void:
 	for enemy in enemy_array:
 		TurnManager.add_entity_from_current_turn(enemy)
 	for enemy in enemy_array:
+		if enemy.has_method("add_obstacles"):
+			var obstacles : Array[Vector2i]
+			for row in occupancy_map.size():
+				for col in occupancy_map[0].size():
+					var entityType = occupancy_map[row][col]["entityType"]
+					if entityType == EntityType.Environment || entityType == EntityType.Enemy:
+						obstacles.append(Vector2i(row,col))
+					
+			enemy.add_obstacles(obstacles)
 		enemy.do_action(player.position)
 
 func map_matrix_init():
