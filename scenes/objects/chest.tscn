@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://c6echt6whwfxt"]
 
-[ext_resource type="Script" uid="uid://ckk3ajiu4q41c" path="res://scenes/scripts/object.gd" id="1_pev8c"]
+[ext_resource type="Script" uid="uid://b4fy5jklv6oad" path="res://scenes/scripts/chest.gd" id="1_pev8c"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="2_nj372"]
 [ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="3_5vikd"]
 [ext_resource type="Texture2D" uid="uid://wv3gjn5hbi04" path="res://assets/sprites/Environment/Chest-Sheet.png" id="4_pev8c"]

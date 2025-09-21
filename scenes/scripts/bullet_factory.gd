@@ -1,13 +1,15 @@
 extends Node2D
 
-enum BulletType {
-	Regular,
-}
-
 var regular_bullet_scene: PackedScene = preload("res://scenes/objects/bullets/regular_bullet.tscn")
 var barrel_bullet_scene: PackedScene = preload("res://scenes/objects/bullets/dynamite_bullet.tscn")
 var mortar_bullet_scene: PackedScene = preload("res://scenes/objects/bullets/mortar_bullet.tscn")
 var shotgun_bullet_scene: PackedScene = preload("res://scenes/objects/bullets/shotgun_bullet.tscn")
+
+var barrel_bullet_pickup_scene: PackedScene = preload("res://scenes/objects/pickups/dynamite-pickup.tscn")
+var mortar_bullet_pickup_scene: PackedScene = preload("res://scenes/objects/pickups/mortar-pickup.tscn")
+var shotgun_bullet_pickup_scene: PackedScene = preload("res://scenes/objects/pickups/shotgun-pickup.tscn")
+
+var not_spawned_pickups: Array = ["Dynamite", "Mortar", "Shotgun"]
 
 func create_bullet(bullet_type: String) -> Node2D:
 	match bullet_type:
@@ -27,3 +29,14 @@ func bullet_offset_mult(bullet_type : String) -> float:
 		return 0
 	else:
 		return 1
+
+func create_bullet_pickup(bullet_type: String) -> Node2D:
+	match bullet_type:
+		"Dynamite":
+			return barrel_bullet_pickup_scene.instantiate()
+		"Mortar":
+			return mortar_bullet_pickup_scene.instantiate()
+		"Shotgun":
+			return shotgun_bullet_pickup_scene.instantiate()
+		_:
+			return null

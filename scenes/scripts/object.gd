@@ -1,5 +1,7 @@
 extends Node2D
 
+class_name AnObject
+
 var current_cell: Vector2i
 
 func _ready() -> void:
