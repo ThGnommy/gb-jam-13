@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c6echt6whwfxt"]
+[gd_scene load_steps=15 format=3 uid="uid://cify5iat2vx5p"]
 
 [ext_resource type="Script" uid="uid://b4fy5jklv6oad" path="res://scenes/scripts/chest.gd" id="1_pev8c"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="2_nj372"]
@@ -63,7 +63,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"destroy",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -84,7 +84,7 @@ script = ExtResource("1_pev8c")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7kndf")
-animation = &"idle"
+animation = &"destroy"
 autoplay = "idle"
 offset = Vector2(0, -1)
 

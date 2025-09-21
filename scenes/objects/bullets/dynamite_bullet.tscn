@@ -76,7 +76,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"explode",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [node name="Dynamite" type="Node2D"]
@@ -98,6 +98,8 @@ disabled = true
 sprite_frames = SubResource("SpriteFrames_rnwde")
 animation = &"explode"
 autoplay = "explode"
+frame = 6
+frame_progress = 1.0
 
 [node name="ExplosionSprite2" type="AnimatedSprite2D" parent="ExplosionSprites"]
 sprite_frames = SubResource("SpriteFrames_rnwde")

@@ -63,7 +63,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"destroy",
-"speed": 5.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -131,7 +131,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"explode",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [node name="Barrel" type="Node2D"]
@@ -141,7 +141,7 @@ script = ExtResource("1_kldud")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7kndf")
-animation = &"idle"
+animation = &"destroy"
 autoplay = "idle"
 offset = Vector2(0, -1)
 

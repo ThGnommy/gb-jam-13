@@ -358,11 +358,14 @@ sources/0 = SubResource("TileSetAtlasSource_7lrji")
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_5vibx")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_5vibx")]
 position = Vector2(112, 208)
 animation_speed = 3.0
+camera = NodePath("Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 20.0
 metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

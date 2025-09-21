@@ -76,7 +76,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"explode",
-"speed": 10.0
+"speed": 20.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0ol4g"]
