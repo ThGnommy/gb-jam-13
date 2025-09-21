@@ -72,6 +72,7 @@ func pass_turn():
 
 func _attack(target: Vector2):
 	$SpritesRoot/AnimatedSprite2D.play("attack")
+	$SlimeAttack.play()
 	var cell = GridManager.world_to_cell(target)
 	var hitEntity = GridManager.get_entity_at_cell(cell)
 	var healthComp = hitEntity.get_node_or_null("HealthComponent")

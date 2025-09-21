@@ -1,10 +1,11 @@
-[gd_scene load_steps=26 format=3 uid="uid://bbjeql1p5x66x"]
+[gd_scene load_steps=27 format=3 uid="uid://bbjeql1p5x66x"]
 
 [ext_resource type="Script" uid="uid://pt31v6o02cc7" path="res://scenes/scripts/slime.gd" id="1_82kmp"]
 [ext_resource type="Texture2D" uid="uid://ds0wjj48ohst4" path="res://assets/sprites/Enemies/Slime-Sheet.png" id="2_lp353"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="3_q2f8i"]
 [ext_resource type="Shader" uid="uid://daa147mjlexqi" path="res://shaders/2d_shadow.gdshader" id="3_sxr25"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="4_unfyt"]
+[ext_resource type="AudioStream" uid="uid://dhx64b4djqk5e" path="res://assets/audio/SFX/SlimeAttack.wav" id="6_unfyt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2147m"]
 size = Vector2(16, 16)
@@ -194,5 +195,9 @@ sprite_frames = SubResource("SpriteFrames_q574h")
 animation = &"AttackUp"
 autoplay = "idle"
 metadata/_edit_group_ = true
+
+[node name="SlimeAttack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_unfyt")
+volume_db = -3.0
 
 [connection signal="animation_finished" from="SpritesRoot/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
