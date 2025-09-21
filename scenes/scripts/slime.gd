@@ -54,7 +54,7 @@ func do_action(target: Vector2) -> void:
 				Vector2i.DOWN:
 					anim.play("AttackDown")
 					await anim.animation_finished
-					
+			$SlimeAttack.play()
 			await _attack(target)
 			pass_turn()
 			return

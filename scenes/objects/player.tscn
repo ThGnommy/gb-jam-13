@@ -380,7 +380,7 @@ currentHealth = 5
 maxHealth = 5
 
 [node name="SpritesRoot" type="Node2D" parent="."]
-position = Vector2(0, -4)
+position = Vector2(0, -3)
 
 [node name="Shadow" type="Sprite2D" parent="SpritesRoot"]
 material = SubResource("ShaderMaterial_2rlf8")
