@@ -55,10 +55,10 @@ func _unhandled_input(event: InputEvent) -> void:
 			set_player_direction(dir)
 			set_idle_animation()
 
-	if event.is_action_pressed("fire"):
+	if event.is_action("fire"):
 		shoot()
 
-	if event.is_action_pressed("move"):
+	if event.is_action("move"):
 		if not TurnManager.is_turn_of(TurnManager.TurnState.Player):
 			return
 		move()

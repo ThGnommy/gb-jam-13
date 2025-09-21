@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxireqj4bo3t7"]
 
-[ext_resource type="Script" uid="uid://bail7i5ylypff" path="res://scenes/UI/win_ui.gd" id="1_18lts"]
-[ext_resource type="Theme" uid="uid://bfocqed0xdxmf" path="res://ui_theme.tres" id="2_utex6"]
+[ext_resource type="Script" path="res://scenes/UI/win_ui.gd" id="1_18lts"]
+[ext_resource type="Theme" path="res://ui_theme.tres" id="2_utex6"]
 [ext_resource type="FontFile" uid="uid://b8eif6kg2ita4" path="res://ui/fonts/AGoblinAppears-o2aV.ttf" id="3_3h4n4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njkqv"]
@@ -59,10 +59,10 @@ layout_mode = 2
 theme = ExtResource("2_utex6")
 theme_override_colors/font_color = Color(1, 0.945098, 0.823529, 1)
 theme_override_fonts/font = ExtResource("3_3h4n4")
-theme_override_font_sizes/font_size = 14
-text = "Lucky
-This Time"
+theme_override_font_sizes/font_size = 7
+text = "Thanks for playing! "
 horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -73,6 +73,7 @@ alignment = 1
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("2_utex6")
+theme_override_font_sizes/font_size = 7
 text = "Main Menu"
 flat = true
 
@@ -80,6 +81,7 @@ flat = true
 texture_filter = 1
 layout_mode = 2
 theme = ExtResource("2_utex6")
+theme_override_font_sizes/font_size = 7
 text = "Quit"
 flat = true
 
