@@ -24,10 +24,7 @@ func do_action(target:Vector2) -> void:
 
 func should_skip_turn()->bool:
 	var distance = GridManager.player.position - position
-	print("distance", distance)
-	print(is_active)
 	if is_active:
-		print("1")
 		return false
 
 	if  abs(distance.x) > x_activation_range || abs(distance.y) > y_activation_range:

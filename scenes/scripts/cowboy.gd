@@ -44,6 +44,5 @@ func _attack(target: Vector2):
 	bullet_instance.bullet_destroyed.connect(pass_turn)
 
 func pass_turn():
-	print("Cowboy pass turn")
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()

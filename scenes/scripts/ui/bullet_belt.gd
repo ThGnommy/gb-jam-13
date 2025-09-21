@@ -36,12 +36,11 @@ func _on_player_belt_shot(index: Variant) -> void:
 	var offset = 0
 
 	for already in already_shot:
-		if index >= already:
+		if index + offset>= already:
 			offset += 1
-	
 	set_bullet_active(index + offset, false)
-	already_shot.append(index)
-
+	already_shot.append(index + offset)
+	already_shot.sort()
 
 
 func set_bullet_active(index, active: bool):
