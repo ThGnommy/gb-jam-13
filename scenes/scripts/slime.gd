@@ -37,7 +37,7 @@ func do_action(target: Vector2) -> void:
 		return
 	assert(TurnManager.TurnState.Enemies == TurnManager.current_turn)
 	# number of action (max 1 attack)
-	for i in 2:
+	for i in 1:
 		if _is_in_range(target):
 			var dir = Vector2i(_choose_direction(target))
 			match dir:
