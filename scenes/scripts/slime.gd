@@ -54,13 +54,17 @@ func do_action(target: Vector2) -> void:
 					await anim.animation_finished
 					
 			_attack(target)
+			pass_turn()
+			return
 			# anim.play("idle")
 		else:
 			var path_to_player = pathfinding.get_point_path(position / 16, target / 16)
 			if not path_to_player.is_empty():
 				path_to_player.remove_at(0)
 				await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i( path_to_player[0]/16 ))
+		pass_turn()
 
+func pass_turn():
 	for obst in cache_obstacles:
 		pathfinding.set_point_solid(obst, false)
 	TurnManager.remove_entity_from_current_turn(self)
