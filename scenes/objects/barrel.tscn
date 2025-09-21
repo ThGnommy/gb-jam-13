@@ -84,7 +84,7 @@ script = ExtResource("1_1kn84")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_7kndf")
-animation = &"destroy"
+animation = &"idle"
 autoplay = "idle"
 offset = Vector2(0, -1)
 

@@ -155,11 +155,7 @@ func shoot() -> void:
 	remaining_bullets.remove_at(random_chamber)
 
 	# Create and shoot the bullet
-	var bullet_instance : Bullet = BulletFactory.create_bullet(bullet_type)
-	bullet_instance.position = position + player_direction * (GridManager.CELL_SIZE * BulletFactory.bullet_offset_mult(bullet_type))
-	get_parent().add_child(bullet_instance)
-	bullet_instance.set_direction(player_direction)
-	bullet_instance.bullet_destroyed.connect(_pass_turn)
+	BulletFactory.shoot_bullet(bullet_type, position, player_direction, self)
 	await anim.animation_finished
 	set_idle_animation()
 	$ShootAudioStream.play()
