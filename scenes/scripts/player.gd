@@ -46,7 +46,7 @@ func _ready() -> void:
 	reload()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if moving or dead:
+	if moving or dead or shooting:
 		return
 	
 	for dir in inputs.keys():
@@ -114,7 +114,7 @@ func update_raycast(dir) -> void:
 	raycast.force_raycast_update()
 
 func shoot() -> void:
-	if shooting:
+	if shooting or moving:
 		return
 
 	if TurnManager.is_turn_of(TurnManager.TurnState.Enemies):
