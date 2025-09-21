@@ -4,6 +4,7 @@ signal health_change
 
 @export var currentHealth : int = 1
 @export var maxHealth : int = 1
+@onready var is_disabled = false
 
 func init(health: int):
 	maxHealth = health
@@ -22,6 +23,8 @@ func heal(healAmount : int):
 	health_change.emit()
 
 func take_damage(damage: int):
+	if is_disabled:
+		return
 	assert(damage >= 0)
 	if currentHealth - damage < 1:
 		currentHealth = 0
@@ -30,6 +33,9 @@ func take_damage(damage: int):
 		currentHealth -= damage
 
 	health_change.emit()
+	
+func disable():
+	is_disabled = true  # Like Fabio
 	
 func handle_death():
 	assert(get_parent().has_method("die"))

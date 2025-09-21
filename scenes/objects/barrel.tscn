@@ -1,6 +1,6 @@
-[gd_scene load_steps=15 format=3 uid="uid://c5yswikogtdy6"]
+[gd_scene load_steps=23 format=3 uid="uid://c5yswikogtdy6"]
 
-[ext_resource type="Script" uid="uid://ckk3ajiu4q41c" path="res://scenes/scripts/object.gd" id="1_1kn84"]
+[ext_resource type="Script" path="res://scenes/scripts/barrel.gd" id="1_kldud"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="2_kldud"]
 [ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="3_kldud"]
 [ext_resource type="Texture2D" uid="uid://14owcfhpdnx4" path="res://assets/sprites/Environment/Barrel.png" id="3_tw3it"]
@@ -77,8 +77,65 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6obf0"]
 size = Vector2(16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0euvw"]
+atlas = ExtResource("3_kldud")
+region = Rect2(0, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s31fp"]
+atlas = ExtResource("3_kldud")
+region = Rect2(24, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iajcx"]
+atlas = ExtResource("3_kldud")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0lvj"]
+atlas = ExtResource("3_kldud")
+region = Rect2(72, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xbyhe"]
+atlas = ExtResource("3_kldud")
+region = Rect2(96, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdgk0"]
+atlas = ExtResource("3_kldud")
+region = Rect2(120, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3c64l"]
+atlas = ExtResource("3_kldud")
+region = Rect2(144, 48, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kldud"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0euvw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s31fp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iajcx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0lvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xbyhe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gdgk0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3c64l")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 5.0
+}]
+
 [node name="Barrel" type="Node2D"]
-script = ExtResource("1_1kn84")
+script = ExtResource("1_kldud")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_kldud")]
 
@@ -92,3 +149,50 @@ offset = Vector2(0, -1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_6obf0")
+
+[node name="ExplosionSprites" type="Node2D" parent="."]
+
+[node name="ExplosionSprite" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_kldud")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="ExplosionSprite2" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_kldud")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="ExplosionSprite3" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_kldud")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="ExplosionSprite4" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_kldud")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="ExplosionSprite5" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_kldud")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="ExplosionSprite6" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_kldud")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="ExplosionSprite7" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_kldud")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="ExplosionSprite8" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_kldud")
+animation = &"explode"
+autoplay = "explode"
+
+[node name="ExplosionSprite9" type="AnimatedSprite2D" parent="ExplosionSprites"]
+sprite_frames = SubResource("SpriteFrames_kldud")
+animation = &"explode"
+autoplay = "explode"
