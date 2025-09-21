@@ -31,7 +31,6 @@ func add_obstacles(obstacles : Array[Vector2i]):
 
 
 func do_action(target: Vector2) -> void:
-	print(is_active)
 	if should_skip_turn():
 		pass_turn()
 		return
@@ -49,14 +48,13 @@ func do_action(target: Vector2) -> void:
 					anim.play("AttackUp")
 					await anim.animation_finished
 				Vector2i.LEFT:
-					print("attack", dir)
 					anim.flip_h = true
 					anim.play("Attack")
 					await anim.animation_finished
 				Vector2i.DOWN:
 					anim.play("AttackDown")
 					await anim.animation_finished
-					
+			$SlimeAttack.play()
 			await _attack(target)
 			pass_turn()
 			return
@@ -81,14 +79,12 @@ func play_idle_anim() -> void:
 	$SpritesRoot/AnimatedSprite2D.animation = "idle"
 
 func pass_turn():
-	print("slime pass")
 	for obst in cache_obstacles:
 		pathfinding.set_point_solid(obst, false)
 	TurnManager.remove_entity_from_current_turn(self)
 	TurnManager.try_update_to_next_turn()
 
 func _attack(target: Vector2):
-	print("slime attack")
 	var cell = GridManager.world_to_cell(target)
 	var hitEntity = GridManager.get_entity_at_cell(cell)
 	var healthComp = hitEntity.get_node_or_null("HealthComponent")

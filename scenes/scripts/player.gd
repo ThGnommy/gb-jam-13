@@ -14,7 +14,7 @@ signal reload_signal
 
 var win_ui: PackedScene = preload("res://scenes/UI/win_ui.tscn")
 var game_over_ui: PackedScene = preload("res://scenes/UI/game_over.tscn")
-
+var remaining_bullets_indexes : Array = []
 var player_direction: Vector2i
 
 @onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
@@ -23,8 +23,6 @@ var player_direction: Vector2i
 #@onready var belt : Array = ["Regular", "Mortar", "Dynamite", "Regular", "Dynamite", "Mortar"]
 #@onready var belt : Array = ["Regular", "Regular", "Regular", "Regular", "Regular", "Regular"]
 #@onready var belt : Array = ["Mortar"]
-
-var remaining_bullets : Array
 
 var current_cell: Vector2i
 
@@ -122,7 +120,7 @@ func shoot() -> void:
 		return
 	shooting = true
 
-	if remaining_bullets.size() == 0:
+	if remaining_bullets_indexes.size() == 0:
 		reload()
 		$ReloadAudioStream.play()
 		anim.play("reload")
@@ -154,11 +152,12 @@ func shoot() -> void:
 			anim.play("shootDown")
 
 	# Choose a random bullet from the remaining bullets
-	var random_chamber = randi() % remaining_bullets.size()
-	var bullet_type = remaining_bullets[random_chamber]
+	remaining_bullets_indexes.shuffle()
+	assert(remaining_bullets_indexes.size() > 0)
+	var random_chamber = remaining_bullets_indexes.pop_front()
+	var bullet_type = belt[random_chamber]
 
 	# Remove the bullet from the remaining bullets
-	remaining_bullets.remove_at(random_chamber)
 	belt_shot.emit(random_chamber)
 
 	# Create and shoot the bullet
@@ -172,9 +171,7 @@ func _pass_turn():
 	TurnManager.try_update_to_next_turn()
 
 func reload() -> void:
-	remaining_bullets.clear()
-	remaining_bullets = belt.duplicate()
-	print("Reloaded! Now have %d bullets." % remaining_bullets.size())
+	remaining_bullets_indexes = [0,1,2,3,4,5]
 	reload_signal.emit()
 	_pass_turn()
 
@@ -206,10 +203,14 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 			$HealthComponent.heal(2)
 			print($HealthComponent.currentHealth)
 		else:
-			var index = randi_range(0, belt.size())
+			var index = randi_range(0, belt.size() - 1)
+			assert(index != 6)
 			var random_pos = randi() % belt.size()
+			assert(belt.size() == 6)
 			belt.remove_at(index)
+			assert(belt.size() == 5)
 			belt.insert(random_pos, pickup_name)
+			assert(belt.size() == 6)
 			belt_changed.emit(pickup_name)
 			reload()
 

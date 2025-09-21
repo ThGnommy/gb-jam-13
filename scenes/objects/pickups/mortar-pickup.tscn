@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b7ojdd4s1bkts"]
 
-[ext_resource type="Script" path="res://scenes/scripts/pick_up.gd" id="1_huq7x"]
+[ext_resource type="Script" uid="uid://f6343bibjii1" path="res://scenes/scripts/pick_up.gd" id="1_huq7x"]
 [ext_resource type="Texture2D" uid="uid://doaybsk03jlxj" path="res://assets/sprites/Player/StandardBullet-Sheet.png" id="2_fgo8a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_u5ts0"]

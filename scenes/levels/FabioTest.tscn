@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d1s0l4yeb3yqe" path="res://scenes/UI/bullet_belt.tscn" id="11_7gwfg"]
 [ext_resource type="PackedScene" uid="uid://cq4v1p1n4sxwi" path="res://scenes/objects/pickups/Beer-pickup.tscn" id="14_oumif"]
 [ext_resource type="PackedScene" uid="uid://c7sxae77oiyev" path="res://scenes/objects/pickups/lucky-pickup.tscn" id="15_fsg2e"]
-[ext_resource type="PackedScene" path="res://scenes/objects/chest.tscn" id="16_cssd7"]
+[ext_resource type="PackedScene" uid="uid://cify5iat2vx5p" path="res://scenes/objects/chest.tscn" id="16_cssd7"]
 [ext_resource type="PackedScene" uid="uid://cf7nmojtvmslc" path="res://scenes/objects/cowboy.tscn" id="17_oumif"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
@@ -358,7 +358,7 @@ sources/0 = SubResource("TileSetAtlasSource_7lrji")
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_du1ks")]
-position = Vector2(288, 32)
+position = Vector2(96, 48)
 animation_speed = 3.0
 camera = NodePath("Camera2D")
 
@@ -502,3 +502,6 @@ position = Vector2(288, 112)
 
 [node name="Shotgun-pickup6" parent="." instance=ExtResource("14_oumif")]
 position = Vector2(304, 112)
+
+[node name="Cowboy" parent="." instance=ExtResource("17_oumif")]
+position = Vector2(128, 48)
