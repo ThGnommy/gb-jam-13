@@ -48,7 +48,6 @@ func _attack(target: Vector2):
 
 func jump_animation(px_height: int) -> void:
 	var jump_tween = create_tween()
-	$SpritesRoot/AnimatedSprite2D.animation = "jump"
 	jump_tween.tween_property($SpritesRoot/AnimatedSprite2D, "position:y", -px_height, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	jump_tween.tween_property($SpritesRoot/AnimatedSprite2D, "position:y", -2.0, 1.0 / animation_speed / 2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN)
 	jump_tween.tween_callback(play_idle_anim)

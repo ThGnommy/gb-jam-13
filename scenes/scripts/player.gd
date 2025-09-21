@@ -12,6 +12,7 @@ signal reload_signal
 @onready var raycast = $RayCast2D
 @onready var anim = $SpritesRoot/AnimatedSprite2D
 
+var dead = false
 var win_ui: PackedScene = preload("res://scenes/UI/win_ui.tscn")
 var game_over_ui: PackedScene = preload("res://scenes/UI/game_over.tscn")
 var remaining_bullets_indexes : Array = []
@@ -45,7 +46,7 @@ func _ready() -> void:
 	reload()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if moving:
+	if moving or dead:
 		return
 	
 	for dir in inputs.keys():
@@ -177,6 +178,7 @@ func reload() -> void:
 
 func die():
 	# todo player animation
+	dead = true
 	game_over()
 
 func player_turn():

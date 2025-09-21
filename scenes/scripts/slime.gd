@@ -2,14 +2,14 @@ class_name Slime
 extends Enemy
 
 var tilemap_layer: TileMapLayer = null
-
 var pathfinding : AStarGrid2D = AStarGrid2D.new()
+var cache_obstacles : Array[Vector2i]
 
 @export var damage = 1 
 @onready var anim = $SpritesRoot/AnimatedSprite2D
 
 func _ready() -> void:
-	tilemap_layer = %WallsLayer 
+	tilemap_layer = %WallsLayer
 	super._ready()
 	pathfinding.region = tilemap_layer.get_used_rect()
 	pathfinding.cell_size = Vector2(16,16)
@@ -18,17 +18,6 @@ func _ready() -> void:
 
 	for cell in tilemap_layer.get_used_cells():
 		pathfinding.set_point_solid(cell, true)
-
-
-var cache_obstacles : Array[Vector2i]
-
-func add_obstacles(obstacles : Array[Vector2i]):
-
-	cache_obstacles.clear()
-	cache_obstacles = obstacles
-	for obst in obstacles:
-		pathfinding.set_point_solid(obst, true)
-
 
 func do_action(target: Vector2) -> void:
 	if should_skip_turn():

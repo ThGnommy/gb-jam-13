@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cbcup720qa3wd" path="res://assets/sprites/Enemies/Cowboy-Sheet.png" id="1_awf0c"]
 [ext_resource type="Script" uid="uid://dwnv72mh1hp0s" path="res://scenes/scripts/cowboy.gd" id="1_fjs6v"]
 [ext_resource type="PackedScene" uid="uid://cyd3qfm83ijsf" path="res://HealthComponent.tscn" id="3_8s8x2"]
-[ext_resource type="Shader" path="res://shaders/2d_shadow.gdshader" id="3_fjs6v"]
+[ext_resource type="Shader" uid="uid://daa147mjlexqi" path="res://shaders/2d_shadow.gdshader" id="3_fjs6v"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="4_5j0ne"]
 [ext_resource type="Texture2D" uid="uid://cwnorjh1oblav" path="res://assets/sprites/Player/Player-Sheet.png" id="5_qmwv1"]
 

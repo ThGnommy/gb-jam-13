@@ -82,7 +82,6 @@ func get_target_range() -> int:
 	var target_range = abs(position-aiming).length() / GridManager.CELL_SIZE
 	return target_range
 
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if ($AnimatedSprite2D.animation == "shooting"):
 		$AnimatedSprite2D.play("idle")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxireqj4bo3t7"]
 
-[ext_resource type="Script" path="res://scenes/UI/win_ui.gd" id="1_18lts"]
-[ext_resource type="Theme" path="res://ui_theme.tres" id="2_utex6"]
+[ext_resource type="Script" uid="uid://bail7i5ylypff" path="res://scenes/UI/win_ui.gd" id="1_18lts"]
+[ext_resource type="Theme" uid="uid://bfocqed0xdxmf" path="res://ui_theme.tres" id="2_utex6"]
 [ext_resource type="FontFile" uid="uid://b8eif6kg2ita4" path="res://ui/fonts/AGoblinAppears-o2aV.ttf" id="3_3h4n4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njkqv"]
