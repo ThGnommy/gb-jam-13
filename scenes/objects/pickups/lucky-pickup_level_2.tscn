@@ -1,38 +1,38 @@
-[gd_scene load_steps=13 format=3 uid="uid://c7sxae77oiyev"]
+[gd_scene load_steps=13 format=3 uid="uid://brqn5sv3bmfu7"]
 
-[ext_resource type="Script" uid="uid://f6343bibjii1" path="res://scenes/scripts/pick_up.gd" id="1_m6qeb"]
-[ext_resource type="Texture2D" uid="uid://bpmcptdkiffcx" path="res://assets/sprites/Environment/FourLeafClover-Sheet.png" id="2_m6qeb"]
+[ext_resource type="Script" uid="uid://f6343bibjii1" path="res://scenes/scripts/pick_up.gd" id="1_o3xjr"]
+[ext_resource type="Texture2D" uid="uid://bpmcptdkiffcx" path="res://assets/sprites/Environment/FourLeafClover-Sheet.png" id="2_ukxkj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0p8ld"]
-atlas = ExtResource("2_m6qeb")
+atlas = ExtResource("2_ukxkj")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ces4p"]
-atlas = ExtResource("2_m6qeb")
+atlas = ExtResource("2_ukxkj")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3bwu2"]
-atlas = ExtResource("2_m6qeb")
+atlas = ExtResource("2_ukxkj")
 region = Rect2(32, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0nw0"]
-atlas = ExtResource("2_m6qeb")
+atlas = ExtResource("2_ukxkj")
 region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1sw3t"]
-atlas = ExtResource("2_m6qeb")
+atlas = ExtResource("2_ukxkj")
 region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kc4sv"]
-atlas = ExtResource("2_m6qeb")
+atlas = ExtResource("2_ukxkj")
 region = Rect2(80, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ojwnb"]
-atlas = ExtResource("2_m6qeb")
+atlas = ExtResource("2_ukxkj")
 region = Rect2(96, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_411l7"]
-atlas = ExtResource("2_m6qeb")
+atlas = ExtResource("2_ukxkj")
 region = Rect2(112, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wvi6x"]
@@ -71,8 +71,8 @@ animations = [{
 radius = 4.0
 
 [node name="Lucky-Pickup" type="Node2D"]
-script = ExtResource("1_m6qeb")
-type = "ToLevel2"
+script = ExtResource("1_o3xjr")
+type = "ToLevel3"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_wvi6x")
