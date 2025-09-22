@@ -155,6 +155,6 @@ position = Vector2(48, 64)
 sprite_frames = SubResource("SpriteFrames_5d4ag")
 autoplay = "default"
 
-[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_reload_pressed"]
+[connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Quit" to="." method="_on_quit_pressed"]
