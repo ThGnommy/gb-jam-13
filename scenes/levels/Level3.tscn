@@ -358,7 +358,7 @@ sources/0 = SubResource("TileSetAtlasSource_7lrji")
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_vjdto")]
-position = Vector2(560, 208)
+position = Vector2(112, 208)
 animation_speed = 3.0
 camera = NodePath("Camera2D")
 
