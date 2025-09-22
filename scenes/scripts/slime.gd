@@ -59,7 +59,8 @@ func do_action(target: Vector2) -> void:
 			if not path_to_player.is_empty():
 				path_to_player.remove_at(0)
 				jump_animation(10)
-				await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i(path_to_player[0]/16))
+				if not path_to_player.is_empty():
+					await GridManager.move_entity(self, GridManager.EntityType.Enemy,Vector2i(path_to_player[0]/16))
 	pass_turn()
 
 

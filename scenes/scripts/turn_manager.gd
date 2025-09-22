@@ -20,7 +20,11 @@ func try_update_to_next_turn() -> void:
 			current_turn = TurnState.Player
 			current_turn_objects.append(GridManager.player)
 			GridManager.player.player_turn()
+			GridManager.stop_timer()
 			
+func set_player_turn():
+	current_turn_objects.clear()
+	try_update_to_next_turn()
 
 func get_current_turn() -> TurnState:
 	return current_turn

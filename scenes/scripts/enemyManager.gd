@@ -26,8 +26,22 @@ var occupancy_map : Array = []
 func _init() -> void:
 	map_matrix_init()
 	
+
+@onready var timer : Timer
+
 func _ready() -> void:
+	timer = Timer.new()
+	add_child(timer)
+	timer.wait_time = 2
+	timer.one_shot = true
+	timer.timeout.connect(skip_enemy_turn)
 	fill_matrix_with_walls()
+
+func skip_enemy_turn():
+	TurnManager.set_player_turn()
+
+func stop_timer():
+	timer.stop()
 
 func set_player(p: Player) -> void:
 	player = p
@@ -36,6 +50,7 @@ func add_enemy(enemy: Enemy) -> void:
 	enemy_array.append(enemy)
 
 func move_enemies() -> void:
+	timer.start()
 	if enemy_array.is_empty():
 		TurnManager.try_update_to_next_turn()
 		return
