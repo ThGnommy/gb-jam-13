@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_cn12u"]
 [ext_resource type="Script" uid="uid://dtk71t6jho560" path="res://scenes/scripts/enemyManager.gd" id="3_f0uld"]
 [ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/barrel.tscn" id="4_qelpf"]
-[ext_resource type="Shader" path="res://shaders/palette_swap.gdshader" id="5_1usdx"]
+[ext_resource type="Shader" uid="uid://ce3l41fe36x0c" path="res://shaders/palette_swap.gdshader" id="5_1usdx"]
 [ext_resource type="PackedScene" uid="uid://c7sxae77oiyev" path="res://scenes/objects/pickups/lucky-pickup.tscn" id="5_qelpf"]
 [ext_resource type="PackedScene" uid="uid://cq4v1p1n4sxwi" path="res://scenes/objects/pickups/Beer-pickup.tscn" id="6_1usdx"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="6_efck0"]
@@ -449,6 +449,9 @@ position = Vector2(384, 248)
 [node name="Shotgun-pickup10" parent="Objects" instance=ExtResource("6_1usdx")]
 position = Vector2(384, 184)
 
+[node name="Shotgun-pickup13" parent="Objects" instance=ExtResource("6_1usdx")]
+position = Vector2(384, 200)
+
 [node name="Shotgun-pickup11" parent="Objects" instance=ExtResource("6_1usdx")]
 position = Vector2(496, 168)
 
@@ -639,10 +642,10 @@ position = Vector2(800, 192)
 position = Vector2(656, 192)
 
 [node name="Mortar" parent="." instance=ExtResource("17_1usdx")]
-position = Vector2(624, 176)
+position = Vector2(624, 160)
 
 [node name="Mortar4" parent="." instance=ExtResource("17_1usdx")]
-position = Vector2(528, 96)
+position = Vector2(576, 96)
 
 [node name="Mortar2" parent="." instance=ExtResource("17_1usdx")]
 position = Vector2(832, 176)
