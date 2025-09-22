@@ -358,7 +358,7 @@ sources/0 = SubResource("TileSetAtlasSource_7lrji")
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_60s12")]
-position = Vector2(992, 272)
+position = Vector2(112, 208)
 animation_speed = 3.0
 camera = NodePath("Camera2D")
 
@@ -491,6 +491,10 @@ grow_vertical = 2
 
 [node name="Slime" parent="Enemies" instance=ExtResource("9_x7k7o")]
 position = Vector2(240, 176)
+animation_speed = 3.0
+
+[node name="Slime17" parent="Enemies" instance=ExtResource("9_x7k7o")]
+position = Vector2(224, 256)
 animation_speed = 3.0
 
 [node name="Slime2" parent="Enemies" instance=ExtResource("9_x7k7o")]
