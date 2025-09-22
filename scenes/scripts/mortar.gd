@@ -79,8 +79,8 @@ func _pass_turn():
 	TurnManager.try_update_to_next_turn()
 
 func get_target_range() -> int:
-	var target_range = abs(position-aiming).length() / GridManager.CELL_SIZE
-	return target_range
+	var target_range : float = abs(position-aiming).length() / float(GridManager.CELL_SIZE)
+	return roundi(target_range)
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if ($AnimatedSprite2D.animation == "shooting"):
