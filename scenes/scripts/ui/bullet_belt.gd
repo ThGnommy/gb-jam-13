@@ -10,9 +10,7 @@ var bullet_map: Dictionary = {
 	"Shotgun": "res://assets/sprites/Player/ShotgunBullet.png"
 }
 
-
 func _ready() -> void:
-	player.belt_changed.connect(_on_player_belt_changed)
 	player.belt_shot.connect(_on_player_belt_shot)
 	player.reload_signal.connect(_on_player_reload_signal)
 	_on_player_reload_signal()
@@ -30,10 +28,8 @@ func update_belt() -> void:
 	for i in ui_belt.get_children().size():
 		set_bullet(i, bullet_belt[i])
 
-
 func _on_player_belt_shot(index: Variant) -> void:
 	set_bullet_active(index, false)
-
 
 func set_bullet_active(index, active: bool):
 	var cross : Control = ui_belt.get_child(index).get_child(0)
@@ -45,7 +41,6 @@ func is_active(index):
 
 func _on_player_belt_changed(value: Variant) -> void:
 	update_belt()
-
 
 func _on_player_reload_signal() -> void:
 	if not ui_belt:

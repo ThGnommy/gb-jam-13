@@ -1,10 +1,10 @@
-[gd_scene load_steps=21 format=4 uid="uid://65s0naaddc23"]
+[gd_scene load_steps=20 format=4 uid="uid://65s0naaddc23"]
 
 [ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_5vibx"]
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_cn12u"]
 [ext_resource type="Script" uid="uid://dtk71t6jho560" path="res://scenes/scripts/enemyManager.gd" id="3_f0uld"]
 [ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/barrel.tscn" id="4_qelpf"]
-[ext_resource type="Shader" uid="uid://ce3l41fe36x0c" path="res://shaders/palette_swap.gdshader" id="5_1usdx"]
+[ext_resource type="Shader" path="res://shaders/palette_swap.gdshader" id="5_1usdx"]
 [ext_resource type="PackedScene" uid="uid://c7sxae77oiyev" path="res://scenes/objects/pickups/lucky-pickup.tscn" id="5_qelpf"]
 [ext_resource type="PackedScene" uid="uid://cq4v1p1n4sxwi" path="res://scenes/objects/pickups/Beer-pickup.tscn" id="6_1usdx"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="6_efck0"]
@@ -15,7 +15,6 @@
 [ext_resource type="PackedScene" uid="uid://cf8sf0tirl3aj" path="res://scenes/UI/health_ui.tscn" id="11_mojt8"]
 [ext_resource type="PackedScene" uid="uid://cify5iat2vx5p" path="res://scenes/objects/chest.tscn" id="12_uy26i"]
 [ext_resource type="PackedScene" uid="uid://cf7nmojtvmslc" path="res://scenes/objects/cowboy.tscn" id="13_dor7n"]
-[ext_resource type="AudioStream" uid="uid://dwexdh8skf0hv" path="res://assets/audio/BGM/MainTheme.ogg" id="14_cn12u"]
 [ext_resource type="PackedScene" uid="uid://bn7cnddwruav2" path="res://scenes/objects/mortar.tscn" id="17_1usdx"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
@@ -589,12 +588,12 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BulletBelt" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("10_qfbnf")]
+[node name="BulletBelt" parent="UICanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("10_qfbnf")]
 player = NodePath("../../Player")
 
-[node name="HealthUI" parent="CanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("11_mojt8")]
+[node name="HealthUI" parent="UICanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("11_mojt8")]
 player = NodePath("../../Player")
 
 [node name="Chest" parent="." instance=ExtResource("12_uy26i")]
@@ -639,11 +638,6 @@ position = Vector2(800, 192)
 [node name="Cowboy4" parent="." instance=ExtResource("13_dor7n")]
 position = Vector2(656, 192)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("14_cn12u")
-autoplay = true
-parameters/looping = true
-
 [node name="Mortar" parent="." instance=ExtResource("17_1usdx")]
 position = Vector2(624, 176)
 
@@ -656,4 +650,4 @@ position = Vector2(832, 176)
 [node name="Mortar3" parent="." instance=ExtResource("17_1usdx")]
 position = Vector2(752, 224)
 
-[connection signal="belt_changed" from="Player" to="CanvasLayer/BulletBelt" method="_on_player_belt_changed"]
+[connection signal="belt_changed" from="Player" to="UICanvasLayer/BulletBelt" method="_on_player_belt_changed"]
