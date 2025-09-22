@@ -15,10 +15,25 @@ var min_range = 1
 var aiming : Vector2
 var target_marker_animation : AnimatedSprite2D
 
+func is_in_range(target):
+
+	var distance = roundi((target - position).length()/ 16)
+	print(distance)
+
+
+	return (distance <= max_range && distance > min_range)
+
 func do_action(target):
 	if should_skip_turn():
 		_pass_turn()
 		return
+
+
+	if state == 0 && not is_in_range(target):
+		print("pass")
+		_pass_turn()
+		return
+
 
 	match state:
 		0:
