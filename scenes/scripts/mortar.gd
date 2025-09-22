@@ -96,3 +96,8 @@ func get_target_range() -> int:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if ($AnimatedSprite2D.animation == "shooting"):
 		$AnimatedSprite2D.play("idle")
+
+
+func _on_tree_exited() -> void:
+	if target_marker_animation != null:
+		target_marker_animation.queue_free()
