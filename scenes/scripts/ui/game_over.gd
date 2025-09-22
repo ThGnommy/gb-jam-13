@@ -1,7 +1,6 @@
 extends Control
 
 @onready var reload = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Reload
-var path_main_scene = "res://scenes/levels/MainScene.tscn"
 
 func _ready() -> void:
 	reload.grab_focus()
@@ -19,4 +18,4 @@ func reset_game_states() -> void:
 
 func _on_reload_pressed() -> void:
 	reset_game_states()
-	get_tree().change_scene_to_file(path_main_scene)
+	get_tree().reload_current_scene()

@@ -207,6 +207,14 @@ func _on_area_shape_entered(area_rid: RID, area: Area2D, area_shape_index: int, 
 		parent.delete()
 		if pickup_name == "Lucky":
 			win()
+		elif pickup_name == "ToLevel2":
+			go_to_level("res://scenes/levels/Level2.tscn")
+		elif pickup_name == "ToLevel3":
+			go_to_level("res://scenes/levels/Level3.tscn")
+		elif pickup_name == "ToLevel4":
+			go_to_level("res://scenes/levels/Level4.tscn")
+		elif pickup_name == "ToLevel5":
+			go_to_level("res://scenes/levels/Level5.tscn")
 		elif pickup_name =="Beer":
 			print($HealthComponent.currentHealth)
 			$HealthComponent.heal(2)
@@ -232,3 +240,6 @@ func win() -> void:
 	set_process_input(false)
 	var ui = win_ui.instantiate()
 	get_parent().get_node_or_null("UICanvasLayer").add_child(ui)
+
+func go_to_level(path: String):
+	get_tree().change_scene_to_file(path)
