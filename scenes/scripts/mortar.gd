@@ -10,7 +10,7 @@ extends Enemy
 
 var state = 0
 
-var max_range = 7
+var max_range = 6
 var min_range = 1
 var aiming : Vector2
 var target_marker_animation : AnimatedSprite2D
