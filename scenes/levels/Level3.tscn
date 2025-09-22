@@ -1,30 +1,30 @@
-[gd_scene load_steps=20 format=4 uid="uid://lcslcdexjvlf"]
+[gd_scene load_steps=20 format=4 uid="uid://cj4fnf0slbrv7"]
 
-[ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_vjdto"]
-[ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_bqc3i"]
-[ext_resource type="Script" uid="uid://dtk71t6jho560" path="res://scenes/scripts/enemyManager.gd" id="3_ljeji"]
-[ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/barrel.tscn" id="4_8qlrg"]
-[ext_resource type="PackedScene" uid="uid://c7sxae77oiyev" path="res://scenes/objects/pickups/lucky-pickup.tscn" id="5_ugcos"]
-[ext_resource type="PackedScene" uid="uid://cq4v1p1n4sxwi" path="res://scenes/objects/pickups/Beer-pickup.tscn" id="6_rs68w"]
-[ext_resource type="Shader" uid="uid://ce3l41fe36x0c" path="res://shaders/palette_swap.gdshader" id="7_20mws"]
-[ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="8_ewe7k"]
-[ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="9_nik0u"]
-[ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="10_jy1lg"]
-[ext_resource type="Script" uid="uid://dwcde8tcd6suj" path="res://scenes/scripts/debug_turn_ui.gd" id="11_h8kw8"]
-[ext_resource type="PackedScene" uid="uid://d1s0l4yeb3yqe" path="res://scenes/UI/bullet_belt.tscn" id="12_0i7gq"]
-[ext_resource type="PackedScene" uid="uid://cf8sf0tirl3aj" path="res://scenes/UI/health_ui.tscn" id="13_51yjx"]
-[ext_resource type="PackedScene" uid="uid://cify5iat2vx5p" path="res://scenes/objects/chest.tscn" id="14_l0o4u"]
-[ext_resource type="PackedScene" uid="uid://cf7nmojtvmslc" path="res://scenes/objects/cowboy.tscn" id="15_f30i7"]
-[ext_resource type="PackedScene" uid="uid://bn7cnddwruav2" path="res://scenes/objects/mortar.tscn" id="16_cqetg"]
+[ext_resource type="PackedScene" uid="uid://b8ebdasa41hb3" path="res://scenes/objects/player.tscn" id="1_p5s5a"]
+[ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_njy47"]
+[ext_resource type="Script" uid="uid://dtk71t6jho560" path="res://scenes/scripts/enemyManager.gd" id="3_j7nyf"]
+[ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/barrel.tscn" id="4_xbvxr"]
+[ext_resource type="PackedScene" uid="uid://c7sxae77oiyev" path="res://scenes/objects/pickups/lucky-pickup.tscn" id="5_bspq0"]
+[ext_resource type="PackedScene" uid="uid://cq4v1p1n4sxwi" path="res://scenes/objects/pickups/Beer-pickup.tscn" id="6_dqba7"]
+[ext_resource type="Shader" uid="uid://ce3l41fe36x0c" path="res://shaders/palette_swap.gdshader" id="7_usw5k"]
+[ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="8_jsker"]
+[ext_resource type="PackedScene" uid="uid://bbjeql1p5x66x" path="res://scenes/objects/slime.tscn" id="9_6ex7q"]
+[ext_resource type="Texture2D" uid="uid://bkbqm608d7a5f" path="res://assets/sprites/Environment/TileSet.png" id="10_ijfg6"]
+[ext_resource type="Script" uid="uid://dwcde8tcd6suj" path="res://scenes/scripts/debug_turn_ui.gd" id="11_ijoxy"]
+[ext_resource type="PackedScene" uid="uid://d1s0l4yeb3yqe" path="res://scenes/UI/bullet_belt.tscn" id="12_t2wor"]
+[ext_resource type="PackedScene" uid="uid://cf8sf0tirl3aj" path="res://scenes/UI/health_ui.tscn" id="13_l40or"]
+[ext_resource type="PackedScene" uid="uid://cify5iat2vx5p" path="res://scenes/objects/chest.tscn" id="14_hnhv5"]
+[ext_resource type="PackedScene" uid="uid://cf7nmojtvmslc" path="res://scenes/objects/cowboy.tscn" id="15_86um8"]
+[ext_resource type="PackedScene" uid="uid://bn7cnddwruav2" path="res://scenes/objects/mortar.tscn" id="16_hpass"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
-shader = ExtResource("7_20mws")
+shader = ExtResource("7_usw5k")
 shader_parameter/brightness = 4.75e-08
-shader_parameter/source_palette = ExtResource("2_bqc3i")
-shader_parameter/target_palette = ExtResource("8_ewe7k")
+shader_parameter/source_palette = ExtResource("2_njy47")
+shader_parameter/target_palette = ExtResource("8_jsker")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7lrji"]
-texture = ExtResource("10_jy1lg")
+texture = ExtResource("10_ijfg6")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 1:0/0 = 0
@@ -357,7 +357,7 @@ sources/0 = SubResource("TileSetAtlasSource_7lrji")
 
 [node name="Main" type="Node2D"]
 
-[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_vjdto")]
+[node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_p5s5a")]
 position = Vector2(112, 208)
 animation_speed = 3.0
 camera = NodePath("Camera2D")
@@ -370,101 +370,101 @@ metadata/_edit_lock_ = true
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 scale = Vector2(10, 10)
-texture = ExtResource("2_bqc3i")
+texture = ExtResource("2_njy47")
 
 [node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("tilemap_walls")]
-script = ExtResource("3_ljeji")
+script = ExtResource("3_j7nyf")
 tilemap_walls = NodePath("../WallsLayer")
 metadata/_edit_lock_ = true
 
 [node name="Objects" type="Node2D" parent="."]
 position = Vector2(272, 40)
 
-[node name="Barrel5" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel5" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(96, 168)
 
-[node name="Barrel6" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel6" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(192, 120)
 
-[node name="Barrel7" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel7" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(128, 216)
 
-[node name="Barrel8" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel8" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(464, 168)
 
-[node name="Barrel13" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel13" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(624, 248)
 
-[node name="Barrel15" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel15" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(656, 248)
 
-[node name="Barrel16" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel16" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(688, 248)
 
-[node name="Barrel12" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel12" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(464, 184)
 
-[node name="Barrel14" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel14" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(528, 120)
 
-[node name="Barrel9" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel9" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(576, 104)
 
-[node name="Barrel10" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel10" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(528, 184)
 
-[node name="Barrel11" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel11" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(464, 104)
 
-[node name="Barrel2" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel2" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(-64, 168)
 
-[node name="Barrel3" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel3" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(-80, 136)
 
-[node name="Barrel4" parent="Objects" instance=ExtResource("4_8qlrg")]
+[node name="Barrel4" parent="Objects" instance=ExtResource("4_xbvxr")]
 position = Vector2(-112, 216)
 
-[node name="Lucky-Pickup" parent="Objects" instance=ExtResource("5_ugcos")]
+[node name="Lucky-Pickup" parent="Objects" instance=ExtResource("5_bspq0")]
 position = Vector2(720, 248)
 
-[node name="Shotgun-pickup" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(112, 264)
 
-[node name="Shotgun-pickup3" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup3" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(288, 184)
 
-[node name="Shotgun-pickup4" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup4" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(112, 168)
 
-[node name="Shotgun-pickup5" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup5" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(416, 56)
 
-[node name="Shotgun-pickup6" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup6" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(608, 248)
 
-[node name="Shotgun-pickup7" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup7" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(384, 248)
 
-[node name="Shotgun-pickup10" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup10" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(384, 184)
 
-[node name="Shotgun-pickup13" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup13" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(384, 200)
 
-[node name="Shotgun-pickup11" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup11" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(496, 168)
 
-[node name="Shotgun-pickup12" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup12" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(496, 168)
 
-[node name="Shotgun-pickup8" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup8" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(384, 104)
 
-[node name="Shotgun-pickup9" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup9" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(608, 56)
 
-[node name="Shotgun-pickup2" parent="Objects" instance=ExtResource("6_rs68w")]
+[node name="Shotgun-pickup2" parent="Objects" instance=ExtResource("6_dqba7")]
 position = Vector2(128, 72)
 
 [node name="Control" type="Control" parent="."]
@@ -492,67 +492,67 @@ grow_vertical = 2
 
 [node name="Enemies" type="Node" parent="."]
 
-[node name="Slime" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(240, 176)
 animation_speed = 3.0
 
-[node name="Slime2" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime2" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(432, 160)
 animation_speed = 3.0
 
-[node name="Slime3" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime3" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(432, 256)
 animation_speed = 3.0
 
-[node name="Slime15" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime15" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(496, 208)
 animation_speed = 3.0
 
-[node name="Slime14" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime14" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(368, 224)
 animation_speed = 3.0
 
-[node name="Slime16" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime16" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(384, 176)
 animation_speed = 3.0
 
-[node name="Slime4" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime4" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(688, 192)
 animation_speed = 3.0
 
-[node name="Slime5" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime5" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(880, 160)
 animation_speed = 3.0
 
-[node name="Slime6" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime6" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(848, 208)
 animation_speed = 3.0
 
-[node name="Slime7" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime7" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(784, 272)
 animation_speed = 3.0
 
-[node name="Slime8" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime8" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(656, 272)
 animation_speed = 3.0
 
-[node name="Slime9" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime9" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(784, 112)
 animation_speed = 3.0
 
-[node name="Slime10" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime10" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(608, 256)
 animation_speed = 3.0
 
-[node name="Slime11" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime11" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(592, 160)
 animation_speed = 3.0
 
-[node name="Slime12" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime12" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(624, 112)
 animation_speed = 3.0
 
-[node name="Slime13" parent="Enemies" instance=ExtResource("9_nik0u")]
+[node name="Slime13" parent="Enemies" instance=ExtResource("9_6ex7q")]
 position = Vector2(768, 192)
 animation_speed = 3.0
 
@@ -581,7 +581,7 @@ offset_left = 80.0
 offset_top = 160.0
 offset_right = 120.0
 offset_bottom = 200.0
-script = ExtResource("11_h8kw8")
+script = ExtResource("11_ijoxy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Debug"]
 visible = false
@@ -593,64 +593,64 @@ offset_bottom = 23.0
 
 [node name="UICanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BulletBelt" parent="UICanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("12_0i7gq")]
+[node name="BulletBelt" parent="UICanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("12_t2wor")]
 player = NodePath("../../Player")
 
-[node name="HealthUI" parent="UICanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("13_51yjx")]
+[node name="HealthUI" parent="UICanvasLayer" node_paths=PackedStringArray("player") instance=ExtResource("13_l40or")]
 player = NodePath("../../Player")
 
-[node name="Chest" parent="." instance=ExtResource("14_l0o4u")]
+[node name="Chest" parent="." instance=ExtResource("14_hnhv5")]
 position = Vector2(288, 208)
 
-[node name="Chest2" parent="." instance=ExtResource("14_l0o4u")]
+[node name="Chest2" parent="." instance=ExtResource("14_hnhv5")]
 position = Vector2(384, 112)
 
-[node name="Chest3" parent="." instance=ExtResource("14_l0o4u")]
+[node name="Chest3" parent="." instance=ExtResource("14_hnhv5")]
 position = Vector2(400, 304)
 
-[node name="Chest4" parent="." instance=ExtResource("14_l0o4u")]
+[node name="Chest4" parent="." instance=ExtResource("14_hnhv5")]
 position = Vector2(448, 224)
 
-[node name="Chest6" parent="." instance=ExtResource("14_l0o4u")]
+[node name="Chest6" parent="." instance=ExtResource("14_hnhv5")]
 position = Vector2(528, 208)
 
-[node name="Chest7" parent="." instance=ExtResource("14_l0o4u")]
+[node name="Chest7" parent="." instance=ExtResource("14_hnhv5")]
 position = Vector2(528, 160)
 
-[node name="Chest8" parent="." instance=ExtResource("14_l0o4u")]
+[node name="Chest8" parent="." instance=ExtResource("14_hnhv5")]
 position = Vector2(656, 112)
 
-[node name="Chest9" parent="." instance=ExtResource("14_l0o4u")]
+[node name="Chest9" parent="." instance=ExtResource("14_hnhv5")]
 position = Vector2(624, 144)
 
-[node name="Chest5" parent="." instance=ExtResource("14_l0o4u")]
+[node name="Chest5" parent="." instance=ExtResource("14_hnhv5")]
 position = Vector2(448, 192)
 
-[node name="Cowboy" parent="." instance=ExtResource("15_f30i7")]
+[node name="Cowboy" parent="." instance=ExtResource("15_86um8")]
 position = Vector2(480, 208)
 
-[node name="Cowboy3" parent="." instance=ExtResource("15_f30i7")]
+[node name="Cowboy3" parent="." instance=ExtResource("15_86um8")]
 position = Vector2(880, 256)
 
-[node name="Cowboy5" parent="." instance=ExtResource("15_f30i7")]
+[node name="Cowboy5" parent="." instance=ExtResource("15_86um8")]
 position = Vector2(800, 288)
 
-[node name="Cowboy6" parent="." instance=ExtResource("15_f30i7")]
+[node name="Cowboy6" parent="." instance=ExtResource("15_86um8")]
 position = Vector2(800, 192)
 
-[node name="Cowboy4" parent="." instance=ExtResource("15_f30i7")]
+[node name="Cowboy4" parent="." instance=ExtResource("15_86um8")]
 position = Vector2(656, 192)
 
-[node name="Mortar" parent="." instance=ExtResource("16_cqetg")]
+[node name="Mortar" parent="." instance=ExtResource("16_hpass")]
 position = Vector2(624, 160)
 
-[node name="Mortar4" parent="." instance=ExtResource("16_cqetg")]
+[node name="Mortar4" parent="." instance=ExtResource("16_hpass")]
 position = Vector2(576, 96)
 
-[node name="Mortar2" parent="." instance=ExtResource("16_cqetg")]
+[node name="Mortar2" parent="." instance=ExtResource("16_hpass")]
 position = Vector2(832, 176)
 
-[node name="Mortar3" parent="." instance=ExtResource("16_cqetg")]
+[node name="Mortar3" parent="." instance=ExtResource("16_hpass")]
 position = Vector2(752, 224)
 
 [connection signal="belt_changed" from="Player" to="UICanvasLayer/BulletBelt" method="_on_player_belt_changed"]

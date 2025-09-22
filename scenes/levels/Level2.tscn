@@ -4,7 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://cjd4htteekib" path="res://assets/sprites/Palette/GreyscalePalette.png" id="2_mctl7"]
 [ext_resource type="Script" uid="uid://dtk71t6jho560" path="res://scenes/scripts/enemyManager.gd" id="3_fpd7d"]
 [ext_resource type="PackedScene" uid="uid://c5yswikogtdy6" path="res://scenes/objects/barrel.tscn" id="4_nkm7c"]
-[ext_resource type="PackedScene" uid="uid://c7sxae77oiyev" path="res://scenes/objects/pickups/lucky-pickup.tscn" id="5_uh3oe"]
 [ext_resource type="PackedScene" uid="uid://cq4v1p1n4sxwi" path="res://scenes/objects/pickups/Beer-pickup.tscn" id="6_4p5gg"]
 [ext_resource type="Shader" uid="uid://ce3l41fe36x0c" path="res://shaders/palette_swap.gdshader" id="7_hmwnr"]
 [ext_resource type="Texture2D" uid="uid://c377mmmtxjhuc" path="res://assets/sprites/Palette/BrownPalette.png" id="8_4ao78"]
@@ -14,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d1s0l4yeb3yqe" path="res://scenes/UI/bullet_belt.tscn" id="12_d2rr3"]
 [ext_resource type="PackedScene" uid="uid://cf8sf0tirl3aj" path="res://scenes/UI/health_ui.tscn" id="13_rjd1d"]
 [ext_resource type="PackedScene" uid="uid://cify5iat2vx5p" path="res://scenes/objects/chest.tscn" id="14_8n7ay"]
+[ext_resource type="PackedScene" uid="uid://brqn5sv3bmfu7" path="res://scenes/objects/pickups/lucky-pickup_level_2.tscn" id="15_5v643"]
 [ext_resource type="PackedScene" uid="uid://cf7nmojtvmslc" path="res://scenes/objects/cowboy.tscn" id="15_o163v"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j4d2a"]
@@ -357,7 +357,7 @@ sources/0 = SubResource("TileSetAtlasSource_7lrji")
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_o6ptl")]
-position = Vector2(112, 208)
+position = Vector2(592, 192)
 animation_speed = 3.0
 camera = NodePath("Camera2D")
 
@@ -405,9 +405,6 @@ position = Vector2(-80, 136)
 
 [node name="Barrel4" parent="Objects" instance=ExtResource("4_nkm7c")]
 position = Vector2(-112, 216)
-
-[node name="Lucky-Pickup" parent="Objects" instance=ExtResource("5_uh3oe")]
-position = Vector2(336, 168)
 
 [node name="Shotgun-pickup" parent="Objects" instance=ExtResource("6_4p5gg")]
 position = Vector2(112, 264)
@@ -530,5 +527,8 @@ position = Vector2(352, 144)
 
 [node name="Cowboy2" parent="." instance=ExtResource("15_o163v")]
 position = Vector2(208, 176)
+
+[node name="Lucky-Pickup" parent="." instance=ExtResource("15_5v643")]
+position = Vector2(608, 208)
 
 [connection signal="belt_changed" from="Player" to="UICanvasLayer/BulletBelt" method="_on_player_belt_changed"]
