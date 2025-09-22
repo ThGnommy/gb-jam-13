@@ -47,7 +47,6 @@ func do_action(target):
 		aiming = target
 		create_target_marker()
 		$AcquireTargetAudioStream.play()
-		_pass_turn()
 	elif state == 3:
 		if target_marker_animation:
 			var target_marker_position = target_marker_animation.global_position
@@ -59,10 +58,7 @@ func do_action(target):
 			$AnimatedSprite2D.play("shooting")
 		else:
 			print("No target marker to shoot at!")
-			# Still pass the turn if there's no target marker
-			_pass_turn()
-	else:
-		_pass_turn()
+	_pass_turn()
 
 	state+=1 
 	state = state %5
