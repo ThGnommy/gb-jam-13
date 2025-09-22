@@ -242,4 +242,10 @@ func win() -> void:
 	get_parent().get_node_or_null("UICanvasLayer").add_child(ui)
 
 func go_to_level(path: String):
+	GridManager.enemy_array = []
+	GridManager.occupancy_map = []
+	GridManager.map_matrix_init()
+	GridManager.fill_matrix_with_walls()
+	TurnManager.current_turn_objects = []
+	TurnManager.current_turn = TurnManager.TurnState.Player
 	get_tree().change_scene_to_file(path)
