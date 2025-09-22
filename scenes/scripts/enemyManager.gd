@@ -32,7 +32,7 @@ func _init() -> void:
 func _ready() -> void:
 	timer = Timer.new()
 	add_child(timer)
-	timer.wait_time = 2
+	timer.wait_time = 1.5
 	timer.one_shot = true
 	timer.timeout.connect(skip_enemy_turn)
 	fill_matrix_with_walls()
