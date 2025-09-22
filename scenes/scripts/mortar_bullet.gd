@@ -3,6 +3,7 @@ extends DynamiteBullet
 var target_distance : float = 0
 var target_marker_cell = Vector2i.ZERO
 var target_marker_animation : AnimatedSprite2D
+var is_marker_disabled : bool = false
 
 func _ready() -> void:
 	super._ready()
@@ -15,7 +16,12 @@ func _ready() -> void:
 	# Mortar bullet explodes in a 9-cell area (the target cell and the 8 surrounding cells)
 	other_cells_modifier = [Vector2(0, -1), Vector2(0, 1), Vector2(1, 0), Vector2(-1, 0),Vector2(1, 1), Vector2(1, -1), Vector2(-1, 1), Vector2(-1, -1)]
 
+func disableMarker():
+	is_marker_disabled = true
+
 func create_target_marker() -> void:
+	if is_marker_disabled:
+		return
 	## Create an animation 2D node parented to the main tree
 	target_marker_animation = AnimatedSprite2D.new()
 	target_marker_animation.sprite_frames = preload("res://assets/sprites/Player/mortar_bullet.tres")
@@ -51,4 +57,5 @@ func set_direction(dir : Vector2) -> void:
 
 func hit_something(cell: Vector2) -> void:
 	super.hit_something(cell)
-	target_marker_animation.queue_free()
+	if target_marker_animation != null:
+		target_marker_animation.queue_free()
