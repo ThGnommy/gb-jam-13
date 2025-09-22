@@ -2,7 +2,7 @@ extends Control
 
 @onready var play = $MarginContainer/Panel/MarginContainer/VBoxContainer/VBoxContainer/Play
 
-var path_main_scene = "res://scenes/levels/MainScene.tscn"
+var path_main_scene = "res://scenes/levels/Level1.tscn"
 
 func _ready() -> void:
 	play.grab_focus()

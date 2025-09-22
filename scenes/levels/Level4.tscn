@@ -358,7 +358,7 @@ sources/0 = SubResource("TileSetAtlasSource_7lrji")
 [node name="Main" type="Node2D"]
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("1_60s12")]
-position = Vector2(560, 208)
+position = Vector2(992, 272)
 animation_speed = 3.0
 camera = NodePath("Camera2D")
 
@@ -424,9 +424,6 @@ position = Vector2(-80, 136)
 
 [node name="Barrel4" parent="Objects" instance=ExtResource("4_qdxfc")]
 position = Vector2(-112, 216)
-
-[node name="Lucky-Pickup" parent="Objects" instance=ExtResource("5_rgdxs")]
-position = Vector2(720, 248)
 
 [node name="Shotgun-pickup" parent="Objects" instance=ExtResource("6_sxl7l")]
 position = Vector2(112, 264)
@@ -652,5 +649,9 @@ position = Vector2(832, 176)
 
 [node name="Mortar3" parent="." instance=ExtResource("16_1x4kh")]
 position = Vector2(752, 224)
+
+[node name="Lucky-Pickup" parent="." instance=ExtResource("5_rgdxs")]
+position = Vector2(992, 288)
+type = "Lucky"
 
 [connection signal="belt_changed" from="Player" to="UICanvasLayer/BulletBelt" method="_on_player_belt_changed"]
