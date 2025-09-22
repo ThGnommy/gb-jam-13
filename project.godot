@@ -13,7 +13,9 @@ config_version=5
 config/name="GBJam13"
 run/main_scene="uid://dc3uogl047tm3"
 config/features=PackedStringArray("4.5", "Mobile")
+boot_splash/bg_color=Color(0.2509804, 0.22352941, 0.18431373, 1)
 boot_splash/use_filter=false
+boot_splash/image="uid://deedbge88xsbm"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=2000
 
